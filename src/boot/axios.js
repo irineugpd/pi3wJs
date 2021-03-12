@@ -6,3 +6,4 @@ export const api = axios.create({
 })
 
 Vue.prototype.$axios = axios
+Vue.prototype.$api = api
