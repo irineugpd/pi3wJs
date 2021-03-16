@@ -1,15 +1,17 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-header elevated>
+    <q-header>
+      <q-toolbar class="colortop">
         <q-btn
           flat
           dense
           round
           icon="menu"
           aria-label="Menu"
+          color="black"
           @click="leftDrawerOpen = !leftDrawerOpen"
         />
-        <div></div>
+      </q-toolbar>
     </q-header>
 
     <q-drawer
