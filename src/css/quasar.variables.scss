@@ -22,6 +22,13 @@ $positive  : #21BA45;
 $negative  : #C10015;
 $info      : #31CCEC;
 $warning   : #F2C037;
+
+
+.registroVacina{
+  background-color: $positive;
+  font-weight: bold;
+}
+
 $btn       : #297747;
 
 .colortop{
@@ -30,4 +37,3 @@ $btn       : #297747;
 .registroAnimal {
   background-color: #00e676;
 }
-
