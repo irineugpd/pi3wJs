@@ -27,6 +27,7 @@
           </q-card-section>
         </q-card>
         <q-btn flat style="color: gray" label="Cadastro de Animais" size="10px" to="/cadastroAnimais"/>
+        <q-btn flat style="color: gray" label="Cadastro de Vacinas" size="10px" to="/cadastroVacina"/>
     </div>
   </q-page>
 </template>
