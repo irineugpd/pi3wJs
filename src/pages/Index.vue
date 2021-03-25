@@ -23,7 +23,7 @@
             <q-btn unelevated size="lg" color="green-13" class="full-width text-white" label="Entrar" @click="login()" />
           </q-card-actions>
           <q-card-section class="text-center q-pa-sm">
-            <q-btn flat style="color: gray" label="Esqueceu a senha ?" size="11px"/>
+            <q-btn flat style="color: gray" label="Esqueceu a senha ?" size="11px" to="/confirmarEmail"/>
           </q-card-section>
         </q-card>
         <q-btn flat style="color: gray" label="Cadastro de Animais" size="10px" to="/cadastroAnimais"/>
