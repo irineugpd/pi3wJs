@@ -4,9 +4,12 @@ const routes = [
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: '/cadastroUsuario', component: () => import('pages/Index.vue') },
+      { path: '/', component: () => import('pages/Index.vue') },
       { path: '/cadastroVacina', component: () => import('pages/cadastroVacina.vue') },
-      { path: '/cadastroAnimais', component: () => import('pages/cadastroAnimais.vue') }
+      { path: '/cadastroAnimais', component: () => import('pages/cadastroAnimais.vue') },
+      { path: '/confirmarEmail', component: () => import('pages/confirmarEmail.vue') },
+      { path: '/recuperarSenha', component: () => import('pages/recuperarSenha.vue') },
+      { path: '/cadastroAgenda', component: () => import('pages/cadastroAgenda.vue') }
     ]
   },
 
