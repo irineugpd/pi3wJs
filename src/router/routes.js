@@ -8,6 +8,7 @@ const routes = [
       { path: '/cadastroVacina', component: () => import('pages/cadastroVacina.vue') },
       { path: '/cadastroAnimais', component: () => import('pages/cadastroAnimais.vue') },
       { path: '/confirmarEmail', component: () => import('pages/confirmarEmail.vue') },
+      { path: '/recuperarSenha', component: () => import('pages/recuperarSenha.vue') },
       { path: '/cadastroAgenda', component: () => import('pages/cadastroAgenda.vue') }
     ]
   },
