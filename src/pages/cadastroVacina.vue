@@ -13,7 +13,7 @@
           </q-card-section>
           <q-card-section>
             <q-form class="q-px-sm q-pt-xl q-pb-lg">
-              <q-input class="q-pa-sm" standout v-model="vaccine" placeholder="Nome da Vacina" type="name" autogrow/>
+              <q-input class="q-pa-sm" standout v-model="name" placeholder="Nome da Vacina" type="name" autogrow/>
               <q-input class="q-pa-sm" standout v-model="quantity" type="number" label="Qtde. de aplicações:"/>
               <q-input class="q-pa-sm" standout v-model="days" type="number" label="Dias entre aplicações:"/>
               <q-input class="q-pa-sm" standout v-model="description" type="text" placeholder="Descrição" autogrow/>
