@@ -32,6 +32,7 @@
         </q-card>
         <q-btn flat style="color: gray" label="Cadastro de Animais" size="10px" to="/cadastroAnimais"/>
         <q-btn flat style="color: gray" label="Cadastro de Vacinas" size="10px" to="/cadastroVacina"/>
+        <q-btn flat style="color: gray" label="Resetar Senha de Usuário" size="10px" to="/resetAdm"/>
     </div>
   </q-page>
 </template>
