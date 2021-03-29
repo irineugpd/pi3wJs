@@ -16,7 +16,7 @@
               <q-input class="q-pa-sm" standout v-model="name" placeholder="Nome"/>
               <q-input class="q-pa-sm" standout v-model="email" placeholder="E-mail"/>
               <q-input class="q-pa-sm" standout v-model="age" placeholder="Idade"/>
-              <q-input v-model="password" filled :type="isPwd ? 'password' : 'text'" label="Senha">
+              <q-input class="q-pa-sm" standout v-model="password" filled :type="isPwd ? 'password' : 'text'" label="Senha">
                 <template v-slot:append>
                   <q-icon :name="isPwd ? 'visibility_off' : 'visibility'" class="cursor-pointer q-pa-sm" standout @click="isPwd = !isPwd"/>
                 </template>
