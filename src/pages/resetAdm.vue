@@ -30,7 +30,7 @@
             </q-form>
           </q-card-section>
           <q-card-actions class="q-px-lg">
-            <q-btn unelevated size="lg" color="green-13" class="full-width text-white" label="Marcar evento" @click="register()" />
+            <q-btn unelevated size="lg" color="green-13" class="full-width text-white" label="Resetar Senha" @click="register()" />
           </q-card-actions>
           <q-card-section class="text-center q-pa-sm">
             <q-btn flat style="color: gray" label="Retornar para LogIn" size="11px" to="/"/>
