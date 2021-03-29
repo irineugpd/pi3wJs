@@ -20,9 +20,9 @@
                 </template>
               </q-input>
               <h5 class="text-h5 text-black q-my-sm">Repita a senha:</h5>
-              <q-input v-model="password2" filled :type="isPwd ? 'password' : 'text'" label="Repita a senha">
+              <q-input v-model="password2" filled :type="isPwd2 ? 'password' : 'text'" label="Repita a senha">
                 <template v-slot:append>
-                  <q-icon :name="isPwd ? 'visibility_off' : 'visibility'" class="cursor-pointer" @click="isPwd = !isPwd"/>
+                  <q-icon :name="isPwd2 ? 'visibility_off' : 'visibility'" class="cursor-pointer" @click="isPwd2 = !isPwd2"/>
                 </template>
               </q-input>
             </q-form>
@@ -46,6 +46,7 @@ export default {
   data () {
     return {
       isPwd: true,
+      isPwd2: true,
       password: '',
       password2: ''
     }
