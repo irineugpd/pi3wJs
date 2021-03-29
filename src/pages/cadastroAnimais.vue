@@ -13,10 +13,10 @@
           </q-card-section>
           <q-card-section>
             <q-form class="q-px-sm q-pt-xl q-pb-lg">
-              <q-input class="q-pa-sm" standout v-model="name" placeholder="Nome"/>
-              <q-input class="q-pa-sm" standout v-model="fluff" placeholder="Pelagem"/>
-              <q-input class="q-pa-sm" filled v-model="birth_date" type="date" color="white" />
-              <q-input class="q-pa-sm" standout v-model="race" placeholder="Raça"/>
+              <q-input filled v-model="name" label="Nome" class="q-pa-sm"/>
+              <q-input filled v-model="fluff" label="Pelagem" class="q-pa-sm"/>
+              <q-input v-model="birth_date" filled type="date" class="q-pa-sm" />
+              <q-input filled v-model="race" label="Raça" class="q-pa-sm"/>
             </q-form>
           </q-card-section>
           <q-card-actions class="q-px-lg">
