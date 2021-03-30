@@ -14,15 +14,13 @@
           <q-card-section>
             <q-form class="q-px-sm q-pt-xl q-pb-lg">
               <h5 class="text-h5 text-black q-my-sm">Digite a nova senha:</h5>
-              <q-input v-model="nPassword" filled :type="isPwd ? 'password' : 'text'" hint="Digite a nova senha">
+              <q-input v-model="nPassword" filled :type="isPwd ? 'password' : 'text'" label="Digite a nova senha">
                 <template v-slot:append>
-                  <q-icon :name="isPwd ? 'visibility_off' : 'visibility'" class="cursor-pointer" @click="isPwd = !isPwd"/>
+                  <q-icon :name="isPwd ? 'visibility_off' : 'visibility'" class="cursor-pointer q-pa-sm" standout @click="isPwd = !isPwd"/>
                 </template>
               </q-input>
-            </q-form>
-            <q-form class="q-px-sm q-pt-xl q-pb-lg">
-              <h5 class="text-h5 text-black q-my-sm">Digite a nova senha:</h5>
-              <q-input v-model="repeatPassword" filled :type="isPwd2 ? 'password' : 'text'" hint="Confirme a nova senha">
+              <h5 class="text-h5 text-black q-my-sm">Confirme a nova senha:</h5>
+              <q-input v-model="repeatPassword" filled :type="isPwd2 ? 'password' : 'text'" label="Confirme a nova senha">
                 <template v-slot:append>
                   <q-icon :name="isPwd2 ? 'visibility_off' : 'visibility'" class="cursor-pointer" @click="isPwd2 = !isPwd2"/>
                 </template>

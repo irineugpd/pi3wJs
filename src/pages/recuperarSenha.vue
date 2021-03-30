@@ -4,7 +4,7 @@
     style="background: white;"
   >
     <div class="column q-pa-lg">
-        <q-card square class="shadow-24" style="width:300px;height:525px;">
+        <q-card square class="shadow-24" style="width:300px;height:600px;">
           <q-card-section class="registroAnimal">
             <h4 class="text-h5 text-white q-my-sm">Recuperar Senha</h4>
             <div class="absolute-bottom-right q-pr-md" style="transform: translateY(50%);">

@@ -46,22 +46,22 @@ import EssentialLink from 'components/EssentialLink.vue'
 
 const linksData = [
   {
-    title: 'Docs',
-    caption: 'quasar.dev',
-    icon: 'school',
-    link: 'https://quasar.dev'
+    title: 'LOGIN CS_VET APP',
+    caption: 'Login',
+    icon: 'account_box',
+    link: '/'
   },
   {
-    title: 'Github',
-    caption: 'github.com/quasarframework',
-    icon: 'code',
-    link: 'https://github.com/quasarframework'
+    title: 'CADASTRO ANIMAL',
+    caption: 'Cadastro de Animais',
+    icon: 'pets',
+    link: '#/cadastroAnimais'
   },
   {
-    title: 'Discord Chat Channel',
-    caption: 'chat.quasar.dev',
-    icon: 'chat',
-    link: 'https://chat.quasar.dev'
+    title: 'CADASTRO DE VACINAS',
+    caption: 'Cadastro Vacina',
+    icon: 'medical_services',
+    link: '#/cadastroVacina'
   },
   {
     title: 'Forum',
