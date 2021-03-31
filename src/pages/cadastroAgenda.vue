@@ -46,13 +46,13 @@ export default {
   methods: {
     async register () {
       const params = {
-        name_event: this.name_event,
-        description: this.description,
-        event_date: this.event_date,
+        name: this.name_event,
+        message: this.description,
+        date: this.event_date,
         owner_id: '60a23d26-2d2b-4827-b20a-fa77385ea659'
 
       }
-      const response = await api.post('/events', params)
+      const response = await api.post('/appointments', params)
 
       console.log(response.data)
     }
