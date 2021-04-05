@@ -10,6 +10,7 @@ const routes = [
       { path: '/confirmarEmail', component: () => import('pages/confirmarEmail.vue') },
       { path: '/recuperarSenha', component: () => import('pages/recuperarSenha.vue') },
       { path: '/cadastroAgenda', component: () => import('pages/cadastroAgenda.vue') },
+      { path: '/calendario', component: () => import('pages/calendario.vue') },
       { path: '/resetAdm', component: () => import('pages/resetAdm.vue') }
     ]
   },
