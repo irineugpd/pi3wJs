@@ -25,7 +25,7 @@
           header
           class="text-grey-8"
         >
-          Essential Links
+          Links Rápidos
         </q-item-label>
         <EssentialLink
           v-for="link in essentialLinks"
@@ -64,10 +64,10 @@ const linksData = [
     link: '#/cadastroVacina'
   },
   {
-    title: 'Forum',
-    caption: 'forum.quasar.dev',
-    icon: 'record_voice_over',
-    link: 'https://forum.quasar.dev'
+    title: 'CALENDÁRIO DE EVENTOS',
+    caption: 'Eventos marcados',
+    icon: 'event',
+    link: '#/calendario'
   },
   {
     title: 'Twitter',
