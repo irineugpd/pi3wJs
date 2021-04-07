@@ -4,7 +4,7 @@
     style="background: white;"
   >
     <div class="column q-pa-lg">
-        <q-card square class="shadow-24" style="width:300px;height:525px;">
+        <q-card square class="shadow-24" style="width:300px;height:600px;">
           <q-card-section class="registroAnimal">
             <h4 class="text-h5 text-white q-my-sm">Agenda</h4>
             <div class="absolute-bottom-right q-pr-md" style="transform: translateY(50%);">
@@ -46,13 +46,13 @@ export default {
   methods: {
     async register () {
       const params = {
-        name: this.name_event,
-        message: this.description,
-        date: this.event_date,
+        name_event: this.name_event,
+        description: this.description,
+        event_date: this.event_date,
         owner_id: '60a23d26-2d2b-4827-b20a-fa77385ea659'
 
       }
-      const response = await api.post('/appointments', params)
+      const response = await api.post('/events', params)
 
       console.log(response.data)
     }
