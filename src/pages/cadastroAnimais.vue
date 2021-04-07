@@ -51,12 +51,16 @@ export default {
         name: this.name,
         fluff: this.fluff,
         birth_date: this.birth_date,
-        owner_id: '60a23d26-2d2b-4827-b20a-fa77385ea659',
+        owner_id: '96bf63d7-5b39-4552-a04f-0b15ef40847a',
         race: this.race
       }
-      const response = await api.post('/horses', params)
-
-      console.log(response.data)
+      try {
+        console.log(this.birth_date)
+        const response = await api.post('/horses', params)
+        console.log(response)
+      } catch (e) {
+        console.log(e)
+      }
     }
   }
 }
