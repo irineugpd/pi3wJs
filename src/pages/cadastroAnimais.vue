@@ -13,10 +13,10 @@
           </q-card-section>
           <q-card-section>
             <q-form class="q-px-sm q-pt-xl q-pb-lg">
-              <q-input class="q-pa-sm" standout v-model="name" placeholder="Nome"/>
-              <q-input class="q-pa-sm" standout v-model="fluff" placeholder="Pelagem"/>
-              <q-input class="q-pa-sm" filled v-model="birth_date" type="date" color="white" />
-              <q-input class="q-pa-sm" standout v-model="race" placeholder="Raça"/>
+              <q-input filled v-model="name" label="Nome" class="q-pa-sm"/>
+              <q-input filled v-model="fluff" label="Pelagem" class="q-pa-sm"/>
+              <q-input v-model="birth_date" filled type="date" class="q-pa-sm" />
+              <q-input filled v-model="race" label="Raça" class="q-pa-sm"/>
             </q-form>
           </q-card-section>
           <q-card-actions class="q-px-lg">
@@ -51,12 +51,16 @@ export default {
         name: this.name,
         fluff: this.fluff,
         birth_date: this.birth_date,
-        owner_id: '60a23d26-2d2b-4827-b20a-fa77385ea659',
+        owner_id: '96bf63d7-5b39-4552-a04f-0b15ef40847a',
         race: this.race
       }
-      const response = await api.post('/horses', params)
-
-      console.log(response.data)
+      try {
+        console.log(this.birth_date)
+        const response = await api.post('/horses', params)
+        console.log(response)
+      } catch (e) {
+        console.log(e)
+      }
     }
   }
 }

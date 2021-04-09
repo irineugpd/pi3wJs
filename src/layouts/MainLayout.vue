@@ -25,7 +25,7 @@
           header
           class="text-grey-8"
         >
-          Essential Links
+          Links Rápidos
         </q-item-label>
         <EssentialLink
           v-for="link in essentialLinks"
@@ -46,28 +46,28 @@ import EssentialLink from 'components/EssentialLink.vue'
 
 const linksData = [
   {
-    title: 'Docs',
-    caption: 'quasar.dev',
-    icon: 'school',
-    link: 'https://quasar.dev'
+    title: 'LOGIN CS_VET APP',
+    caption: 'Login',
+    icon: 'account_box',
+    link: '/'
   },
   {
-    title: 'Github',
-    caption: 'github.com/quasarframework',
-    icon: 'code',
-    link: 'https://github.com/quasarframework'
+    title: 'CADASTRO ANIMAL',
+    caption: 'Cadastro de Animais',
+    icon: 'pets',
+    link: '#/cadastroAnimais'
   },
   {
-    title: 'Discord Chat Channel',
-    caption: 'chat.quasar.dev',
-    icon: 'chat',
-    link: 'https://chat.quasar.dev'
+    title: 'CADASTRO DE VACINAS',
+    caption: 'Cadastro Vacina',
+    icon: 'medical_services',
+    link: '#/cadastroVacina'
   },
   {
-    title: 'Forum',
-    caption: 'forum.quasar.dev',
-    icon: 'record_voice_over',
-    link: 'https://forum.quasar.dev'
+    title: 'CALENDÁRIO DE EVENTOS',
+    caption: 'Eventos marcados',
+    icon: 'event',
+    link: '#/calendario'
   },
   {
     title: 'Twitter',
