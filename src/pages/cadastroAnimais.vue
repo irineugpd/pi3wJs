@@ -46,7 +46,7 @@ export default {
   },
   methods: {
     async register () {
-      if (this.name.length || this.race.length || this.birth_date.length || this.fluff.length > 0) {
+      if (this.name.length && this.race.length && this.birth_date.length && this.fluff.length > 0) {
         const params = {
           name: this.name,
           fluff: this.fluff,
