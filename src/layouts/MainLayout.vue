@@ -1,7 +1,6 @@
 <template>
   <q-layout view="hHh lpR lFf">
-    <q-header>
-      <q-toolbar class="colortop">
+    <q-header class="colortop">
         <q-btn
           flat
           dense
@@ -11,7 +10,6 @@
           color="black"
           @click="leftDrawerOpen = !leftDrawerOpen"
         />
-      </q-toolbar>
     </q-header>
 
     <q-drawer
