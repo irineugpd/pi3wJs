@@ -40,9 +40,9 @@ export default {
   data () {
     return {
       date: formattedDate,
-      name_events: ['Evento 1', 'Evento 2', 'Evento 3'],
-      descriptions: ['Descrição 1', 'Descrição 2', 'Descrição 3 '],
-      event_dates: ['2021/04/01', '2021/04/05', '2021/04/06']
+      name_event: ['Evento 1', 'Evento 2', 'Evento 3'],
+      descriptions: ['Feriado', 'Páscoa', 'Feriado'],
+      event_date: ['2021/04/02', '2021/04/04', '2021/04/21']
     }
   },
   methods: {
