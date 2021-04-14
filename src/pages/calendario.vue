@@ -11,10 +11,10 @@
             </div>
             <q-card style="max-width: 75%;">
             <q-tab-panels v-model="date" animated>
-              <q-tab-panel v-for="event_date in event_dates" :key="event_date" :name="event_date">
-                <div v-for="name_event in name_events" :key="name_event" class="q-mb-md">
+              <q-tab-panel v-for="event_date in event_date" :key="event_date" :name="event_date">
+                <div v-for="name_event in name_event" :key="name_event" class="q-mb-md">
                   <h4 class="text-h4">{{ name_event }}</h4>
-                  <p v-for="description in descriptions" :key="description">{{description}}</p>
+                  <p v-for="description in description" :key="description">{{description}}</p>
                 </div>
               </q-tab-panel>
               </q-tab-panels>
@@ -41,7 +41,7 @@ export default {
     return {
       date: formattedDate,
       name_event: ['Evento 1', 'Evento 2', 'Evento 3'],
-      descriptions: ['Feriado', 'Páscoa', 'Feriado'],
+      description: ['Feriado', 'Páscoa', 'Feriado'],
       event_date: ['2021/04/02', '2021/04/04', '2021/04/21']
     }
   },
