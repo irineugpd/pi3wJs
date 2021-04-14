@@ -29,7 +29,6 @@
 </template>
 
 <script>
-import { api } from 'boot/axios'
 import { date } from 'quasar'
 
 const todayDate = Date.now()
@@ -43,20 +42,6 @@ export default {
       name_event: ['Evento 1', 'Evento 2', 'Evento 3'],
       description: ['Feriado', 'Páscoa', 'Feriado'],
       event_date: ['2021/04/02', '2021/04/04', '2021/04/21']
-    }
-  },
-  methods: {
-    async register () {
-      const params = {
-        name_event: this.name_event,
-        description: this.description,
-        event_date: this.event_date,
-        owner_id: '60a23d26-2d2b-4827-b20a-fa77385ea659'
-
-      }
-      const response = await api.post('/events', params)
-
-      console.log(response.data)
     }
   }
 }
