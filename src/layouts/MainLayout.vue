@@ -75,10 +75,10 @@ const linksData = [
     link: '#/amostraAnimais'
   },
   {
-    title: 'Facebook',
-    caption: '@QuasarFramework',
-    icon: 'public',
-    link: 'https://facebook.quasar.dev'
+    title: 'CARTAO DE VACINA',
+    caption: 'Vacinas do Animal',
+    icon: 'dashboard_customize',
+    link: '#/cartaoVacina'
   },
   {
     title: 'Quasar Awesome',
