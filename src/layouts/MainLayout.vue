@@ -71,10 +71,10 @@ const linksData = [
     link: '#/calendario'
   },
   {
-    title: 'Twitter',
-    caption: '@quasarframework',
-    icon: 'rss_feed',
-    link: 'https://twitter.quasar.dev'
+    title: 'Amostra de Animais',
+    caption: 'Lista de Animais',
+    icon: 'gesture',
+    link: '#/amostraAnimais'
   },
   {
     title: 'Facebook',
