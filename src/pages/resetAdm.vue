@@ -1,10 +1,10 @@
 <template>
   <q-page
-    class="window-height window-width row justify-center items-center"
+    class="justify-center items-center"
     style="background: white;"
   >
     <div class="column q-pa-lg">
-        <q-card square class="shadow-24" style="width:300px;height:600px;">
+        <q-card square class="shadow-24" style="width:auto;height:auto;">
           <q-card-section class="registroAnimal">
             <h4 class="text-h5 text-white q-my-sm">Resetar senha de usuário(a)</h4>
             <div class="absolute-bottom-right q-pr-md" style="transform: translateY(50%);">
@@ -13,14 +13,14 @@
           </q-card-section>
           <q-card-section>
             <q-form class="q-px-sm q-pt-xl q-pb-lg">
-              <h5 class="text-h5 text-black q-my-sm">Digite a nova senha:</h5>
-              <q-input v-model="nPassword" filled :type="isPwd ? 'password' : 'text'" label="Digite a nova senha">
+              <h6 class="text-h6 text-black q-my-sm">Digite a nova senha:</h6>
+              <q-input v-model="nPassword" filled :type="isPwd ? 'password' : 'text'" label="Digite a nova senha" color="teal-10">
                 <template v-slot:append>
                   <q-icon :name="isPwd ? 'visibility_off' : 'visibility'" class="cursor-pointer q-pa-sm" standout @click="isPwd = !isPwd"/>
                 </template>
               </q-input>
-              <h5 class="text-h5 text-black q-my-sm">Confirme a nova senha:</h5>
-              <q-input v-model="repeatPassword" filled :type="isPwd2 ? 'password' : 'text'" label="Confirme a nova senha">
+              <h6 class="text-h6 text-black q-my-sm">Confirme a nova senha:</h6>
+              <q-input v-model="repeatPassword" filled :type="isPwd2 ? 'password' : 'text'" label="Confirme a nova senha" color="teal-10">
                 <template v-slot:append>
                   <q-icon :name="isPwd2 ? 'visibility_off' : 'visibility'" class="cursor-pointer" @click="isPwd2 = !isPwd2"/>
                 </template>
@@ -58,11 +58,21 @@ export default {
         nPassword: this.nPassword,
         repeatPassword: this.repeatPassword,
         owner_id: '60a23d26-2d2b-4827-b20a-fa77385ea659'
-
       }
-      const response = await api.post('/resetPw', params)
-
-      console.log(response.data)
+      try {
+        const response = await api.post('/resetPw', params)
+        console.log(response.data)
+        this.$q.notify({
+          type: 'positive',
+          message: 'Senha alterada com sucesso'
+        })
+      } catch (e) {
+        this.$q.notify({
+          type: 'negative',
+          message: 'Senha não redefinida, verifique os campos e digite novamente',
+          position: 'bottom'
+        })
+      }
     }
   }
 }

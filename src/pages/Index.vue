@@ -5,8 +5,26 @@
       </center>
       <div class="absolute-bottom q-pb-md">
         <q-form class="q-px-sm q-pb-xl">
-          <q-input filled v-model="email" label="E-mail" class="q-pa-md" :rules="[val => !!val || 'Campo Obrigatorio']"/>
-          <q-input v-model="password" filled :type="isPwd ? 'password' : 'text'" label="Senha" class="q-pa-md" :rules="[val => !!val || 'Insira sua senha']">
+          <q-input
+            filled
+            v-model="email"
+            label="E-mail"
+            class="q-pa-md"
+            :rules="[val => val && val.length > 0 || 'E-mail Obrigatorio']"
+            color="teal-10"
+          >
+            <template v-slot:append>
+              <q-icon name="person" class="q-pr-sm"/>
+            </template>
+          </q-input>
+          <q-input
+            v-model="password"
+            filled :type="isPwd ? 'password' : 'text'"
+            label="Senha"
+            class="q-pa-md"
+            :rules="[val => val.length || 'Insira sua senha']"
+            color="teal-10"
+          >
             <template v-slot:append>
               <q-icon :name="isPwd ? 'visibility_off' : 'visibility'" class="cursor-pointer q-pa-sm" standout @click="isPwd = !isPwd"/>
             </template>
@@ -47,7 +65,8 @@ export default {
       } else {
         this.$q.notify({
           type: 'negative',
-          message: 'Preenchaa todos os campos.'
+          message: 'Preencha os campos.',
+          position: 'top'
         })
       }
     }

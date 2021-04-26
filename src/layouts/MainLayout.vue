@@ -17,7 +17,7 @@
       show-if-above
       overlay
       bordered
-      content-class="bg-grey-1"
+      content-class="colortop"
     >
       <q-list>
         <q-item-label
