@@ -1,6 +1,6 @@
 <template>
   <q-page
-    class="justify-center items-center backgroundCadastroAnimais"
+    class="justify-center items-center"
   >
     <div class="column q-pa-lg">
         <q-card square class="shadow-24" style="width:auto;height:auto;">
@@ -58,18 +58,16 @@ export default {
           console.log(this.birth_date)
           const response = await api.post('/horses', params)
           console.log(response)
+          this.$q.notify({
+            type: 'positive',
+            message: 'Animal registrado com sucesso!'
+          })
         } catch (e) {
-          console.log(e)
+          this.$q.notify({
+            type: 'negative',
+            message: 'Animal não cadastrado, verifique os campos e tente novamente!'
+          })
         }
-        this.$q.notify({
-          type: 'positive',
-          message: 'Animal registrado com sucesso!'
-        })
-      } else {
-        this.$q.notify({
-          type: 'negative',
-          message: 'Animal não cadastrado, verifique os campos e tente novamente!'
-        })
       }
     }
   }
