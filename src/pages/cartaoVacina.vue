@@ -5,28 +5,23 @@
         <h4 class="text-h5 text-black q-my-sm">Vacinas</h4>
       </center>
     <div class="col-sm row items-center q-pa-lg">
-      <q-card v-for="vaccine_date in vaccine_date" :key="vaccine_date" class="my-card2 bg-primary text-white">
+      <q-card v-for="singleVaccine in vaccineEvents" :key="singleVaccine.vaccineDate" class="my-card2 bg-primary text-white">
         <q-card-section>
-          <div class="text-h6">{{name}}</div>
-          <div class="text-subtitle2">{{vaccine_date}}</div>
+          <div class="text-h6">{{ singleVaccine.nameEvent }}</div>
+          <div class="text-subtitle2">{{ singleVaccine.vaccineDate }}</div>
         </q-card-section>
 
         <q-card-section>
-          {{diseases_type}}
+          {{ singleVaccine.diseaseType }}
         </q-card-section>
-        <q-separator dark />
-        <q-card-actions vertical>
-          <q-btn flat label="Mais Detalhes" @click="detailBtn=true"/>
-        </q-card-actions>
-      </q-card>
-      <q-dialog v-model="detailBtn">
+        <q-dialog v-model="detailBtn">
         <q-card>
           <q-card-section>
             <div class="text-h6">Descrição:</div>
           </q-card-section>
 
           <q-card-section class="q-pt-none">
-            {{description}}
+          {{ singleVaccine.description }}
           </q-card-section>
 
           <q-card-actions align="right">
@@ -34,6 +29,11 @@
           </q-card-actions>
         </q-card>
       </q-dialog>
+        <q-separator dark />
+        <q-card-actions vertical>
+          <q-btn flat label="Mais Detalhes" @click="detailBtn=true"/>
+        </q-card-actions>
+      </q-card>
     </div>
     </div>
   </q-page>
@@ -45,22 +45,59 @@ import {
 } from 'boot/axios'
 
 export default {
-  name: 'amostraAnimais',
+  name: 'cartaoVacina',
   data () {
     return {
-      name: 'Vacina ABC',
-      vaccine_date: ['08/05/2021', '09/05/2021', '10/05/2021', '11/05/2021', '12/05/2021', '13/05/2021', '14/05/2021', '15/05/2021', '16/05/2021', '17/05/2021', '18/05/2021', '19/05/2021', '20/05/2021', '21/05/2021'],
-      diseases_type: 'Febre Amarela',
-      description: 'Vacina para tratamento precoce da febre amarela em cavalos.',
-      detailBtn: false
+      detailBtn: false,
+      vaccineEvents: [
+        {
+          vaccineName: 'Vacina 1',
+          description: 'Descrição 1',
+          diseaseType: 'Doença 1',
+          vaccineDate: '08/05/2021'
+        },
+        {
+          vaccineName: 'Vacina 2',
+          description: 'Descrição 2',
+          diseaseType: 'Doença 2',
+          vaccineDate: '09/05/2021'
+        },
+        {
+          vaccineName: 'Vacina 3',
+          description: 'Descrição 3',
+          diseaseType: 'Doença 3',
+          vaccineDate: '10/05/2021'
+        },
+        {
+          vaccineName: 'Vacina 4',
+          description: 'Descrição 4',
+          diseaseType: 'Doença 4',
+          vaccineDate: '11/05/2021'
+        },
+        {
+          vaccineName: 'Vacina 5',
+          description: 'Descrição 5',
+          diseaseType: 'Doença 5',
+          vaccineDate: '12/05/2021'
+        },
+        {
+          vaccineName: 'Vacina 6',
+          description: 'Descrição 6',
+          diseaseType: 'Doença 6',
+          vaccineDate: '13/05/2021'
+        },
+        {
+          vaccineName: 'Vacina 7',
+          description: 'Descrição 7',
+          diseaseType: 'Doença 7',
+          vaccineDate: '14/05/2021'
+        }
+      ]
     }
   },
   methods: {
     async register () {
       const params = {
-        name: '',
-        diseases_type: '',
-        description: '',
         owner_id: '60a23d26-2d2b-4827-b20a-fa77385ea659'
       }
       const response = await api.post('/amostraAnimais', params)
