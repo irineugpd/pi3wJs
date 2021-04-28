@@ -2,15 +2,23 @@
 const routes = [
   {
     path: '/',
+    component: () => import('layouts/IndexLayout.vue'),
+    children: [
+      { path: '/', component: () => import('src/pages/Index.vue') }
+    ]
+  },
+  {
+    path: '/Login',
     component: () => import('layouts/LoginLayout.vue'),
     children: [
-      { path: '/', component: () => import('pages/Index.vue') }
+      { path: '/Login', component: () => import('src/pages/Login.vue') }
     ]
   },
   {
     path: '/dashboard',
     component: () => import('layouts/MainLayout.vue'),
     children: [
+      { path: '/Login', component: () => import('src/pages/Login.vue') },
       { path: '/cadastroVacina', component: () => import('pages/cadastroVacina.vue') },
       { path: '/cadastroAnimais', component: () => import('pages/cadastroAnimais.vue') },
       { path: '/cadastroAgenda', component: () => import('pages/cadastroAgenda.vue') },

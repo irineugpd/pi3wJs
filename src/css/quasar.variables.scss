@@ -14,7 +14,7 @@
 
 $primary   : #0d301e;
 $secondary : #26A69A;
-$accent    : #0c2415;
+$accent    : #0d0e0d;
 
 $dark      : #aeb8b0;
 
@@ -25,14 +25,8 @@ $warning   : #F2C037;
 
 $btn       : #297747;
 
-.colortop{
+.backgroundMainLayout {
   background-color: transparent !important;
-}
-.backgroundCadastroAnimais {
-  background-image: url(https://i.pinimg.com/originals/8e/83/ce/8e83ce8f258305531c9488bbf11ff3ff.png);
-  background-position: center; 
-  background-repeat: no-repeat; 
-  background-size: cover;
 }
 .registroAnimal {
   background-color: #00e676;

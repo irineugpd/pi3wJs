@@ -1,5 +1,5 @@
 <template>
-  <q-layout view="hHh Lpr lFr">
+  <q-layout view="hHh Lpr lFr" class="backgroundIndex">
     <q-page-container>
       <router-view />
     </q-page-container>
@@ -9,6 +9,6 @@
 <script>
 
 export default {
-  name: 'LoginLayout'
+  name: 'IndexLayout'
 }
 </script>
