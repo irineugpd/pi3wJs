@@ -7,18 +7,14 @@
         <center>
           <div class="overflow-hidden">
             <div class="q-pa-md">
-              <q-date v-model="date" today-btn :events="event_date" event-color="black"/>
+              <q-date v-model="date" @navigation="loadEventsByDateAndYear" today-btn :events="event_date" event-color="black"/>
             </div>
-            <q-card style="max-width: 75%;">
-            <q-tab-panels v-model="date" animated>
-              <q-tab-panel v-for="event_date in event_date" :key="event_date" :name="event_date">
-                <div v-for="name_event in name_event" :key="name_event" class="q-mb-md">
-                  <h4 class="text-h4">{{ name_event }}</h4>
-                  <p v-for="description in description" :key="description">{{description}}</p>
-                </div>
-              </q-tab-panel>
-              </q-tab-panels>
-              </q-card>
+            <q-card v-for="event in events" :key="event.id" v-bind="event.id" style="max-width: 75%;">
+              <div class="q-mb-md">
+                <h4 class="text-h4">{{ event.title }}</h4>
+                <p>{{event.message}}</p>
+              </div>
+            </q-card>
           </div>
         </center>
         <center>
@@ -29,6 +25,7 @@
 </template>
 
 <script>
+import { api } from 'boot/axios'
 import { date } from 'quasar'
 
 const todayDate = Date.now()
@@ -41,8 +38,65 @@ export default {
       date: formattedDate,
       name_event: ['Evento 1', 'Evento 2', 'Evento 3'],
       description: ['Feriado', 'Páscoa', 'Feriado'],
-      event_date: ['2021/04/02', '2021/04/04', '2021/04/21']
+      event_date: [],
+      events: []
+    }
+  },
+  watch: {
+    date: async function (date) {
+      const dateObject = new Date(date)
+      const year = dateObject.getUTCFullYear()
+      const month = dateObject.getUTCMonth() + 1
+      const day = dateObject.getUTCDate()
+      api.defaults.headers.authorization = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MTk0Njc4MjQsImV4cCI6MTYyMjA1OTgyNCwic3ViIjoie1wiaWRcIjpcImY1ODU0OGQ2LWU5MWQtNGUwOC1iMWYyLTIyZWI4OTJhM2Y4OFwiLFwiaXNfYWRtaW5pc3RyYXRvclwiOnRydWV9In0.JG0FzC4YYJOSCJzfsjME8tFSgGZBVGkdGel2b6hCIv4'
+      const response = await api.get(`/appointments/day?month=${month}&year=${year}&day=${day}`)
+      const events = response.data.map(element => {
+        const date = new Date(element.date)
+        const day = String(date.getUTCDate()).padStart(2, '0')
+        const month = String(date.getUTCMonth() + 1).padStart(2, '0')
+        const year = date.getUTCFullYear()
+        return {
+          id: element.id,
+          name: `${year}/${month}/${day}`,
+          title: element.name,
+          message: element.message
+        }
+      })
+      this.events = events
+      console.log(this.events)
+    }
+  },
+  async created () {
+    const currentDate = new Date()
+    const month = currentDate.getUTCMonth() + 1
+    const year = currentDate.getUTCFullYear()
+    api.defaults.headers.authorization = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MTk0Njc4MjQsImV4cCI6MTYyMjA1OTgyNCwic3ViIjoie1wiaWRcIjpcImY1ODU0OGQ2LWU5MWQtNGUwOC1iMWYyLTIyZWI4OTJhM2Y4OFwiLFwiaXNfYWRtaW5pc3RyYXRvclwiOnRydWV9In0.JG0FzC4YYJOSCJzfsjME8tFSgGZBVGkdGel2b6hCIv4'
+    const response = await api.get(`/availability/month-availability?month=${month}&year=${year}`)
+    const hasEventDates = response.data.filter(element => {
+      return element.hasEvent
+    })
+    const datesFormated = hasEventDates.map(element => {
+      const formatedDay = String(element.day).padStart(2, '0')
+      const formatedMonth = String(month).padStart(2, '0')
+      return `${year}/${formatedMonth}/${formatedDay}`
+    })
+    this.event_date = datesFormated
+  },
+  methods: {
+    async loadEventsByDateAndYear ({ year, month }) {
+      api.defaults.headers.authorization = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MTk0Njc4MjQsImV4cCI6MTYyMjA1OTgyNCwic3ViIjoie1wiaWRcIjpcImY1ODU0OGQ2LWU5MWQtNGUwOC1iMWYyLTIyZWI4OTJhM2Y4OFwiLFwiaXNfYWRtaW5pc3RyYXRvclwiOnRydWV9In0.JG0FzC4YYJOSCJzfsjME8tFSgGZBVGkdGel2b6hCIv4'
+      const response = await api.get(`/availability/month-availability?month=${month}&year=${year}`)
+      const hasEventDates = response.data.filter(element => {
+        return element.hasEvent
+      })
+      const datesFormated = hasEventDates.map(element => {
+        const formatedDay = String(element.day).padStart(2, '0')
+        const formatedMonth = String(month).padStart(2, '0')
+        return `${year}/${formatedMonth}/${formatedDay}`
+      })
+      this.event_date = datesFormated
     }
   }
+
 }
 </script>

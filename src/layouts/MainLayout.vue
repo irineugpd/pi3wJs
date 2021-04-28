@@ -1,6 +1,7 @@
 <template>
-  <q-layout view="hHh lpR lFf">
-    <q-header class="colortop">
+  <q-layout view="hHh Lpr lFr">
+    <q-header>
+      <q-toolbar>
         <q-btn
           flat
           dense
@@ -10,6 +11,7 @@
           color="black"
           @click="leftDrawerOpen = !leftDrawerOpen"
         />
+      </q-toolbar>
     </q-header>
 
     <q-drawer
@@ -17,7 +19,6 @@
       show-if-above
       overlay
       bordered
-      content-class="bg-grey-1"
     >
       <q-list>
         <q-item-label

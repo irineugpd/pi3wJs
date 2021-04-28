@@ -1,10 +1,9 @@
 <template>
   <q-page
-    class="window-height window-width row justify-center items-center"
-    style="background: white;"
+    class="justify-center items-center"
   >
     <div class="column q-pa-lg">
-        <q-card square class="shadow-24" style="width:300px;height:725px;">
+        <q-card square class="shadow-24" style="width:auto;height:auto;">
           <q-card-section class="registroAnimal">
             <h4 class="text-h5 text-white q-my-sm">Cadastro de Vacina</h4>
             <div class="absolute-bottom-right q-pr-md" style="transform: translateY(50%);">
@@ -13,12 +12,12 @@
           </q-card-section>
           <q-card-section>
             <q-form class="q-px-sm q-pt-xl q-pb-lg">
-              <q-input class="q-pa-sm" standout v-model="name" placeholder="Nome da Vacina" type="name" autogrow/>
-              <q-input class="q-pa-sm" standout v-model="diseases_type" placeholder="Doença a ser tratada" type="name" autogrow/>
+              <q-input class="q-pa-sm" filled v-model="name" placeholder="Nome da Vacina" type="name" color="teal-10"/>
+              <q-input class="q-pa-sm" filled v-model="diseases_type" placeholder="Doença a ser tratada" type="name" color="teal-10"/>
               <q-input class="q-pa-sm" filled v-model="first_date" type="date" color="white" />
-              <q-input class="q-pa-sm" standout v-model="number_of_doses" type="number" label="Qtde. de aplicações:"/>
-              <q-input class="q-pa-sm" standout v-model="period_days_bettwen_doses" type="number" label="Dias entre aplicações:"/>
-              <q-input class="q-pa-sm" standout v-model="description" type="text" placeholder="Descrição" autogrow/>
+              <q-input class="q-pa-sm" filled v-model="number_of_doses" type="number" label="Qtde. de aplicações:" color="teal-10"/>
+              <q-input class="q-pa-sm" filled v-model="period_days_bettwen_doses" type="number" label="Dias entre aplicações:" color="teal-10"/>
+              <q-input class="q-pa-sm" filled v-model="description" type="text" placeholder="Descrição" color="teal-10"/>
             </q-form>
           </q-card-section>
           <q-card-actions class="q-px-lg">
@@ -51,19 +50,32 @@ export default {
   },
   methods: {
     async register () {
-      const params = {
-        name: this.name,
-        diseases_type: this.diseases_type,
-        first_date: this.first_date,
-        description: this.description,
-        number_of_doses: this.number_of_doses,
-        period_days_bettwen_doses: this.period_days_bettwen_doses,
-        horse_id: '5852b061-293e-4ecf-be55-156d2dee693b',
-        user_id: '60a23d26-2d2b-4827-b20a-fa77385ea658'
+      if (this.name.length && this.diseases_type.length && this.number_of_doses.length && this.first_date.length && this.period_days_bettwen_doses.length && this.description.length > 0) {
+        const params = {
+          name: this.name,
+          diseases_type: this.diseases_type,
+          first_date: this.first_date,
+          description: this.description,
+          number_of_doses: this.number_of_doses,
+          period_days_bettwen_doses: this.period_days_bettwen_doses,
+          horse_id: '5852b061-293e-4ecf-be55-156d2dee693b',
+          user_id: '60a23d26-2d2b-4827-b20a-fa77385ea658'
+        }
+        try {
+          const response = await api.post('/vacines', params)
+          console.log(response.data)
+          this.$q.notify({
+            type: 'positive',
+            message: 'Vacina cadastrada com sucesso!'
+          })
+        } catch (e) {
+          this.$q.notify({
+            type: 'negative',
+            message: 'Vacina não cadastrada, verifique os campos e tente novamente!',
+            position: 'top'
+          })
+        }
       }
-      const response = await api.post('/vacines', params)
-
-      console.log(response.data)
     }
   }
 }
