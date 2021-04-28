@@ -53,12 +53,20 @@ export default {
   },
   methods: {
     async solicitar () {
-      const params = {
-        password: this.password
-      }
-      const response = await api.post('/recuperarSenha', params)
+      if (this.password.length && this.password2.length > 0) {
+        const params = {
+          password: this.password
+        }
+        const response = await api.post('/recuperarSenha', params)
 
-      console.log(response.data)
+        console.log(response.data)
+      } else {
+        this.$q.notify({
+          type: 'negative',
+          message: 'Preencha os campos.',
+          position: 'top'
+        })
+      }
     }
   }
 }
