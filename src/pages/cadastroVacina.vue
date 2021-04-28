@@ -1,7 +1,6 @@
 <template>
   <q-page
     class="justify-center items-center"
-    style="background: white;"
   >
     <div class="column q-pa-lg">
         <q-card square class="shadow-24" style="width:auto;height:auto;">
