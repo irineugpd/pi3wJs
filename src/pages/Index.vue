@@ -47,7 +47,7 @@ export default {
       } else {
         this.$q.notify({
           type: 'negative',
-          message: 'Preenchaa todos os campos.'
+          message: 'Preencha todos os campos.'
         })
       }
     }
