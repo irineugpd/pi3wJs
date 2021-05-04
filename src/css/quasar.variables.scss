@@ -25,6 +25,28 @@ $warning   : #F2C037;
 
 $btn       : #297747;
 
+.emailInstagram {
+  position: absolute;
+  text-decoration: bold;
+  color: white;
+  bottom: 100px;
+  left: 100px;
+}
+.avatar {
+  background-image: url(/avatarCamila.png);
+  background-repeat: no-repeat;
+  bottom: 100px;
+  left: 25px;
+  position: absolute;
+}
+.buttonFont {
+  font-family: 'tomorrow';
+}
+.backgroundIndex {
+  background-image: url(/backgroundIndex.png);
+  background-position: top;
+  background-repeat: no-repeat;
+}
 .backgroundMainLayout {
   background-color: transparent !important;
 }
