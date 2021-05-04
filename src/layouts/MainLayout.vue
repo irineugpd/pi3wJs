@@ -49,7 +49,7 @@ const linksData = [
     title: 'LOGIN CS_VET APP',
     caption: 'Login',
     icon: 'account_box',
-    link: '/'
+    link: '#/Login'
   },
   {
     title: 'CADASTRO ANIMAL',
