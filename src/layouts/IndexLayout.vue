@@ -1,5 +1,5 @@
 <template>
-  <q-layout view="hHh Lpr lFr" class="backgroundIndex">
+  <q-layout view="hHh Lpr lFr">
     <q-page-container>
       <router-view />
     </q-page-container>

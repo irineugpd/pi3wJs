@@ -4,37 +4,37 @@
       <center>
         <h4 class="text-h5 text-black q-my-sm">Vacinas</h4>
       </center>
-    <div class="col-sm row items-center q-pa-lg">
-      <q-card v-for="singleVaccine in vaccineEvents" :key="singleVaccine.vaccineDate" class="my-card2 bg-primary text-white">
-        <q-card-section>
-          <div class="text-h6">{{ singleVaccine.vaccineName }}</div>
-          <div class="text-subtitle2">{{ singleVaccine.vaccineDate }}</div>
-        </q-card-section>
-
-        <q-card-section>
-          {{ singleVaccine.diseaseType }}
-        </q-card-section>
-        <q-dialog v-model="detailBtn">
-        <q-card>
+      <div class="col-sm row items-center q-pa-lg">
+        <q-card v-for="singleVaccine in vaccineEvents" :key="singleVaccine.vaccineDate" class="my-card2 bg-primary text-white">
           <q-card-section>
-            <div class="text-h6">Descrição:</div>
+            <div class="text-h6">{{ singleVaccine.vaccineName }}</div>
+            <div class="text-subtitle2">{{ singleVaccine.vaccineDate }}</div>
           </q-card-section>
 
-          <q-card-section class="q-pt-none">
-          {{ singleVaccine.description }}
+          <q-card-section>
+            {{ singleVaccine.diseaseType }}
           </q-card-section>
 
-          <q-card-actions align="right">
-            <q-btn flat label="OK" color="primary" v-close-popup />
+          <q-dialog v-model="detailBtn">
+            <q-card>
+              <q-card-section>
+                <div class="text-h6">Descrição:</div>
+              </q-card-section>
+              <q-card-section class="q-pt-none">
+                {{ singleVaccine.description }}
+              </q-card-section>
+              <q-card-actions align="right">
+                <q-btn flat label="OK" color="primary" v-close-popup />
+              </q-card-actions>
+            </q-card>
+          </q-dialog>
+
+          <q-separator dark />
+          <q-card-actions vertical>
+            <q-btn flat label="Mais Detalhes" @click="detailBtn=true"/>
           </q-card-actions>
         </q-card>
-      </q-dialog>
-        <q-separator dark />
-        <q-card-actions vertical>
-          <q-btn flat label="Mais Detalhes" @click="detailBtn=true"/>
-        </q-card-actions>
-      </q-card>
-    </div>
+      </div>
     </div>
   </q-page>
 </template>
@@ -103,6 +103,11 @@ export default {
       const response = await api.post('/amostraAnimais', params)
 
       console.log(response.data)
+    }
+  },
+  computed: {
+    getDescription () {
+      return this.vaccineOptions.map(option => option.description)
     }
   }
 }

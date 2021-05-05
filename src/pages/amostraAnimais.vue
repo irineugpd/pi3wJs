@@ -12,29 +12,62 @@
           </div>
         </q-card-section>
         <center>
-          <q-avatar class="q-pt-sm">
-            <img src="https://cdn.icon-icons.com/icons2/1286/PNG/512/94_85291.png">
-          </q-avatar>
+          <h5>Insira uma imagem para</h5>
+          <h5>para o perfil do animal:</h5>
         </center>
-        <div class="q-pa-md row items-start q-gutter-md">
-          <q-card-section class="my-card">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-          </q-card-section>
-        </div>
         <center>
-          <q-avatar>
-            <img src="https://cdn.icon-icons.com/icons2/1286/PNG/512/94_85291.png">
-          </q-avatar>
+          <div class="q-pa-md">
+            <div class="q-pa-md">
+                <q-uploader
+                :factory="factoryFn"
+                multiple
+                style="max-width: 300px"
+                />
+            </div>
+          </div>
         </center>
-        <div class="q-pa-md row items-start q-gutter-md">
-          <q-card-section>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-          </q-card-section>
+        <center>
+        <div class="q-pa-md">
+          <div class="q-gutter-y-md column" style="max-width: 300px">
+            <div class="text-bold">
+              <h5>NOME:</h5>
+            </div>
+            <p>
+              {{horseName}}
+            </p>
+          </div>
         </div>
+        <div class="q-pa-md">
+          <h5>PELAGEM:</h5>
+          <div class="q-gutter-y-md column" style="max-width: 300px">
+            <p>
+              {{fluffy}}
+            </p>
+          </div>
+        </div>
+        <div class="q-pa-md">
+          <h5>DATA DE NASCIMENTO:</h5>
+          <div class="q-gutter-y-md column" style="max-width: 300px">
+            <p>
+              {{birthDate}}
+            </p>
+          </div>
+        </div>
+        <div class="q-pa-md">
+          <h5>RAÇA DO ANIMAL:</h5>
+          <div class="q-gutter-y-md column" style="max-width: 300px">
+            <p>
+              {{racaAnimal}}
+            </p>
+          </div>
+        </div>
+        </center>
+          <q-card-actions class="q-px-lg">
+            <q-btn unelevated size="lg" color="green-13" class="full-width text-white" label="Salvar perfil" @click="register()" />
+          </q-card-actions>
+          <q-card-section class="text-center q-pa-sm">
+              <q-btn flat style="color: gray" label="Retornar para LogIn" size="11px" to="/"/>
+          </q-card-section>
       </q-card>
     </div>
   </q-page>
@@ -42,30 +75,26 @@
 
 <script>
 import {
-  api
 } from 'boot/axios'
 
 export default {
   name: 'amostraAnimais',
   data () {
     return {
-      isPwd: true,
-      isPwd2: true,
-      nPassword: '',
-      repeatPassword: ''
+      horseName: 'Junin Pangaré',
+      fluffy: 'Preta',
+      birthDate: '10/05/2015',
+      racaAnimal: 'Manga Larga',
+      filesImages: null,
+      text: '',
+      ph: '',
+      dense: false
     }
   },
   methods: {
-    async register () {
-      const params = {
-        nPassword: this.nPassword,
-        repeatPassword: this.repeatPassword,
-        owner_id: '60a23d26-2d2b-4827-b20a-fa77385ea659'
-
-      }
-      const response = await api.post('/amostraAnimais', params)
-
-      console.log(response.data)
+    factoryFn (files) {
+      this.filesimages = files
+      console.log(this.filesImages)
     }
   }
 }
