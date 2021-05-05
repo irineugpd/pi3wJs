@@ -7,7 +7,7 @@
     <div class="col-sm row items-center q-pa-lg">
       <q-card v-for="singleVaccine in vaccineEvents" :key="singleVaccine.vaccineDate" class="my-card2 bg-primary text-white">
         <q-card-section>
-          <div class="text-h6">{{ singleVaccine.nameEvent }}</div>
+          <div class="text-h6">{{ singleVaccine.vaccineName }}</div>
           <div class="text-subtitle2">{{ singleVaccine.vaccineDate }}</div>
         </q-card-section>
 
