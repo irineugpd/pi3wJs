@@ -32,6 +32,11 @@ $btn       : #297747;
   bottom: 100px;
   left: 100px;
 }
+.loginTitle {
+  font-family: 'tomorrow';
+  color: white;
+  font-style: bold;
+}
 .avatar {
   background-image: url(/avatarCamila.png);
   background-repeat: no-repeat;
@@ -41,6 +46,11 @@ $btn       : #297747;
 }
 .buttonFont {
   font-family: 'tomorrow';
+}
+.backgroundLogin {
+  background-image: url(/backgroundLogin.png);
+  background-repeat: no-repeat;
+  background-position: center;
 }
 .backgroundIndex {
   background-image: url(/backgroundIndex.png);
