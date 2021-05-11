@@ -82,6 +82,7 @@ export default {
       isPwd2: true,
       name: '',
       email: '',
+      cpf: '',
       password: '',
       password2: ''
     }
@@ -93,7 +94,9 @@ export default {
           const params = {
             email: this.email,
             name: this.name,
-            password: this.password
+            cpf: this.cpf,
+            password: this.password,
+            password2: this.password2
           }
           const response = await api.post('/users', params)
           console.log(response.data)
