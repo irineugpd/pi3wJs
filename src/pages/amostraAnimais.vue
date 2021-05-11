@@ -66,7 +66,7 @@
             <q-btn unelevated size="lg" color="green-13" class="full-width text-white" label="Salvar perfil" @click="register()" />
           </q-card-actions>
           <q-card-section class="text-center q-pa-sm">
-              <q-btn flat style="color: gray" label="Retornar para LogIn" size="22px" to="/"/>
+              <q-btn flat style="color: gray" label="Retornar para LogIn" size="11px" to="/"/>
           </q-card-section>
       </q-card>
     </div>
@@ -74,8 +74,7 @@
 </template>
 
 <script>
-import {
-} from 'boot/axios'
+import { api } from 'boot/axios'
 
 export default {
   name: 'amostraAnimais',
@@ -92,9 +91,9 @@ export default {
     }
   },
   methods: {
-    factoryFn (files) {
-      this.filesimages = files
-      console.log(this.filesImages)
+    async getHorse (id) {
+      api.defaults.headers.authorization = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MjA3MzU0MzcsImV4cCI6MTYyMzMyNzQzNywic3ViIjoie1wiaWRcIjpcImY1ODU0OGQ2LWU5MWQtNGUwOC1iMWYyLTIyZWI4OTJhM2Y4OFwiLFwiaXNfYWRtaW5pc3RyYXRvclwiOnRydWV9In0.O923JprdiG5q2RKmzWQh41FYWV6fqM3oYVbEWAnQ-iQ'
+      const horses = await api.get(`/horses/${id}`)
     }
   }
 }
