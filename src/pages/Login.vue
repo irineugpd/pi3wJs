@@ -1,7 +1,7 @@
 <template>
   <q-page class="q-pa-md">
       <center>
-        <h4>Login</h4>
+        <h4 class="loginTitle">CS.VET</h4>
       </center>
       <div class="absolute-bottom q-pb-md">
         <q-form class="q-px-sm q-pb-xl">

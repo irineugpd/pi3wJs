@@ -31,7 +31,7 @@
             <q-btn unelevated size="lg" color="green-13" class="full-width text-white" label="Solicitar" @click="solicitar()" />
           </q-card-actions>
           <q-card-section class="text-center q-pa-sm">
-            <q-btn flat style="color: gray" label="Retornar para LogIn" size="11px" to="/" color="teal-10"/>
+            <q-btn flat style="color: gray" label="Retornar para LogIn" size="11px" to="/Login" color="teal-10"/>
           </q-card-section>
         </q-card>
     </div>
