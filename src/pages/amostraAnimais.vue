@@ -92,9 +92,8 @@ export default {
     }
   },
   methods: {
-    factoryFn (files) {
-      this.filesimages = files
-      console.log(this.filesImages)
+    async getHorse (id) {
+      const horse = await api.get()
     }
   }
 }
