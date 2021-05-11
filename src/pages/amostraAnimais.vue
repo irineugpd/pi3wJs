@@ -66,7 +66,7 @@
             <q-btn unelevated size="lg" color="green-13" class="full-width text-white" label="Salvar perfil" @click="register()" />
           </q-card-actions>
           <q-card-section class="text-center q-pa-sm">
-              <q-btn flat style="color: gray" label="Retornar para LogIn" size="11px" to="/"/>
+              <q-btn flat style="color: gray" label="Retornar para LogIn" size="22px" to="/"/>
           </q-card-section>
       </q-card>
     </div>
