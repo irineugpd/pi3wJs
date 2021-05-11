@@ -8,7 +8,7 @@
     </p>
     <center class="absolute-bottom q-pa-md q-gutter-md buttonFont">
       <q-btn outline rounded color="black" label="LOGIN" class="q-px-lg" size="20px" to="/Login"/>
-      <q-btn filled rounded color="black" label="REGISTRAR" class="q-px-sm" size="20px"/>
+      <q-btn filled rounded color="black" label="REGISTRAR" class="q-px-sm" size="20px" to="/cadastroUsuario"/>
     </center>
   </q-page>
 </template>
