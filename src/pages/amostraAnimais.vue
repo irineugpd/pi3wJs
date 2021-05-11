@@ -87,9 +87,6 @@ export default {
   methods: {
     async getHorse (id) {
       api.defaults.headers.authorization = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MjA3MzU0MzcsImV4cCI6MTYyMzMyNzQzNywic3ViIjoie1wiaWRcIjpcImY1ODU0OGQ2LWU5MWQtNGUwOC1iMWYyLTIyZWI4OTJhM2Y4OFwiLFwiaXNfYWRtaW5pc3RyYXRvclwiOnRydWV9In0.O923JprdiG5q2RKmzWQh41FYWV6fqM3oYVbEWAnQ-iQ'
-<<<<<<< HEAD
-      const horses = await api.get(`/horses/${id}`)
-=======
       try {
         const response = await api.get(`/horses/${id}`)
         this.horse = response.data
@@ -100,7 +97,6 @@ export default {
       } catch (e) {
         console.log(e)
       }
->>>>>>> f965bd071db32376841bc3ed750aecba4266e522
     }
   },
   async created () {
