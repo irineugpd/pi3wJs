@@ -31,7 +31,7 @@
           </q-input>
         </q-form>
         <center>
-          <q-btn unelevated rounded color="green-13" label="Confirmar" class="q-px-lg" @click="recuperar()" />
+          <q-btn unelevated rounded color="green-13" label="Confirmar" class="q-px-lg" @click="cadastrar()" />
           <q-btn flat color="gray-8" label="Voltar para o Login" to="/Login"/>
         </center>
       </div>
@@ -54,7 +54,7 @@ export default {
     }
   },
   methods: {
-    async recuperar () {
+    async cadastrar () {
       if (this.password.length && this.password2.length > 0) {
         if (this.password === this.password2) {
           const params = {

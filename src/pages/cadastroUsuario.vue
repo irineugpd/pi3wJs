@@ -82,9 +82,9 @@ export default {
       isPwd2: true,
       name: '',
       email: '',
+      cpf: '',
       password: '',
-      password2: '',
-      cpf: ''
+      password2: ''
     }
   },
   methods: {
@@ -94,6 +94,7 @@ export default {
           const params = {
             email: this.email,
             name: this.name,
+            cpf: this.cpf,
             password: this.password,
             password2: this.password2
           }

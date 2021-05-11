@@ -47,16 +47,15 @@ export default {
   methods: {
     async register () {
       if (this.name.length && this.race.length && this.birth_date.length && this.fluff.length > 0) {
-        const params = {
-          name: this.name,
-          fluff: this.fluff,
-          birth_date: this.birth_date,
-          owner_id: '96bf63d7-5b39-4552-a04f-0b15ef40847a',
-          race: this.race
-        }
+        const data = new FormData()
+        data.append('name', this.name)
+        data.append('user_id', '1c59d308-76d3-4645-9921-8b759a1565dd')
+        data.append('fluff', this.fluff)
+        data.append('birth_date', this.birth_date)
+        data.append('race', this.race)
         try {
-          console.log(this.birth_date)
-          const response = await api.post('/horses', params)
+          api.defaults.headers.authorization = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MjA3MzU0MzcsImV4cCI6MTYyMzMyNzQzNywic3ViIjoie1wiaWRcIjpcImY1ODU0OGQ2LWU5MWQtNGUwOC1iMWYyLTIyZWI4OTJhM2Y4OFwiLFwiaXNfYWRtaW5pc3RyYXRvclwiOnRydWV9In0.O923JprdiG5q2RKmzWQh41FYWV6fqM3oYVbEWAnQ-iQ'
+          const response = await api.post('/horses', data)
           console.log(response)
           this.$q.notify({
             type: 'positive',
