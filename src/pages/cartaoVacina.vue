@@ -15,7 +15,7 @@
             {{ singleVaccine.diseaseType }}
           </q-card-section>
 
-          <q-dialog v-model="detailBtn">
+          <q-dialog v-model="singleVaccine.detailBtn">
             <q-card>
               <q-card-section>
                 <div class="text-h6">Descrição:</div>
@@ -31,7 +31,7 @@
 
           <q-separator dark />
           <q-card-actions vertical>
-            <q-btn flat label="Mais Detalhes" @click="detailBtn=true"/>
+            <q-btn flat label="Mais Detalhes" @click="singleVaccine.detailBtn=true"/>
           </q-card-actions>
         </q-card>
       </div>
@@ -48,45 +48,51 @@ export default {
   name: 'cartaoVacina',
   data () {
     return {
-      detailBtn: false,
       vaccineEvents: [
         {
+          detailBtn: false,
           vaccineName: 'Vacina 1',
           description: 'Descrição 1',
           diseaseType: 'Doença 1',
           vaccineDate: '08/05/2021'
         },
         {
+          detailBtn: false,
           vaccineName: 'Vacina 2',
           description: 'Descrição 2',
           diseaseType: 'Doença 2',
           vaccineDate: '09/05/2021'
         },
         {
+          detailBtn: false,
           vaccineName: 'Vacina 3',
           description: 'Descrição 3',
           diseaseType: 'Doença 3',
           vaccineDate: '10/05/2021'
         },
         {
+          detailBtn: false,
           vaccineName: 'Vacina 4',
           description: 'Descrição 4',
           diseaseType: 'Doença 4',
           vaccineDate: '11/05/2021'
         },
         {
+          detailBtn: false,
           vaccineName: 'Vacina 5',
           description: 'Descrição 5',
           diseaseType: 'Doença 5',
           vaccineDate: '12/05/2021'
         },
         {
+          detailBtn: false,
           vaccineName: 'Vacina 6',
           description: 'Descrição 6',
           diseaseType: 'Doença 6',
           vaccineDate: '13/05/2021'
         },
         {
+          detailBtn: false,
           vaccineName: 'Vacina 7',
           description: 'Descrição 7',
           diseaseType: 'Doença 7',

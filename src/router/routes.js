@@ -12,7 +12,9 @@ const routes = [
     component: () => import('layouts/LoginLayout.vue'),
     children: [
       { path: '/Login', component: () => import('src/pages/Login.vue') },
-      { path: '/cadastroUsuario', component: () => import('src/pages/cadastroUsuario.vue') }
+      { path: '/cadastroUsuario', component: () => import('src/pages/cadastroUsuario.vue') },
+      { path: '/confirmarEmail', component: () => import('pages/confirmarEmail.vue') },
+      { path: '/recuperarSenha', component: () => import('pages/recuperarSenha.vue') }
     ]
   },
   {
@@ -23,8 +25,6 @@ const routes = [
       { path: '/cadastroAnimais', component: () => import('pages/cadastroAnimais.vue') },
       { path: '/cadastroAgenda', component: () => import('pages/cadastroAgenda.vue') },
       { path: '/cartaoVacina', component: () => import('pages/cartaoVacina.vue') },
-      { path: '/confirmarEmail', component: () => import('pages/confirmarEmail.vue') },
-      { path: '/recuperarSenha', component: () => import('pages/recuperarSenha.vue') },
       { path: '/amostraAnimais', component: () => import('pages/amostraAnimais.vue') },
       { path: '/calendario', component: () => import('pages/calendario.vue') },
       { path: '/resetAdm', component: () => import('pages/resetAdm.vue') }
