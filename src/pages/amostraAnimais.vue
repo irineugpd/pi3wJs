@@ -8,64 +8,54 @@
         <q-card-section class="registroAnimal">
           <h4 class="text-h5 text-white q-my-sm">Amostra de Animais:</h4>
           <div class="absolute-bottom-right q-pr-md" style="transform: translateY(50%);">
-            <q-btn fab icon="list" color="green-13" />
           </div>
         </q-card-section>
-        <center>
-          <h5>Insira uma imagem para</h5>
-          <h5>para o perfil do animal:</h5>
-        </center>
-        <center>
-          <div class="q-pa-md">
-            <div class="q-pa-md">
-                <q-uploader
-                :factory="factoryFn"
-                multiple
-                style="max-width: 300px"
-                />
-            </div>
+        <br>
+    <center>
+      <div class="col-6">
+            <q-img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGrwExi5piK1AWFndmZDORgr3JGZPx4a51QQ&usqp=CAU" native-context-menu>
+          <div class="absolute-bottom-right text-subtitle2">
+            Junin Cavalus
           </div>
-        </center>
+        </q-img>
+      </div>
+    </center>
         <center>
         <div class="q-pa-md">
           <div class="q-gutter-y-md column" style="max-width: 300px">
             <div class="text-bold">
-              <h5>NOME:</h5>
-            </div>
+              <h5 class="text-h5 text-black q-my-sm">Nome:</h5>
             <p>
               {{this.horse.name}}
             </p>
           </div>
         </div>
         <div class="q-pa-md">
-          <h5>PELAGEM:</h5>
-          <div class="q-gutter-y-md column" style="max-width: 300px">
+            <h5 class="text-h5 text-black q-my-sm">Pelagem:</h5>
+          <div class="q-gutter-y-md column" style="max-width: 200px">
             <p>
               {{this.horse.fluff}}
             </p>
           </div>
         </div>
         <div class="q-pa-md">
-          <h5>DATA DE NASCIMENTO:</h5>
-          <div class="q-gutter-y-md column" style="max-width: 300px">
+            <h5 class="text-h5 text-black q-my-sm">Data de Nascimento:</h5>
+          <div class="q-gutter-y-md column" style="max-width: 200px">
             <p>
               {{this.horse.birth_date}}
             </p>
           </div>
         </div>
         <div class="q-pa-md">
-          <h5>RAÇA DO ANIMAL:</h5>
-          <div class="q-gutter-y-md column" style="max-width: 300px">
+            <h5 class="text-h5 text-black q-my-sm">Raça do Animal:</h5>
+          <div class="q-gutter-y-md column" style="max-width: 200px">
             <p>
               {{this.horse.race}}
             </p>
           </div>
         </div>
+        </div>
         </center>
-          <!--<q-card-actions class="q-px-lg">
-            <q-btn unelevated size="lg" color="green-13" class="full-width text-white" label="Salvar perfil" @click="register()" />
-          </q-card-actions>
-          -->
           <q-card-section class="text-center q-pa-sm">
               <q-btn flat style="color: gray" label="Retornar para LogIn" size="11px" to="/"/>
           </q-card-section>
