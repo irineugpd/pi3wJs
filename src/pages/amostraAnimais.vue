@@ -9,53 +9,38 @@
       </center>
       <center>
         <div class="q-pa-md">
-          <div class="q-pa-md">
-              <q-uploader
-              :factory="factoryFn"
-              multiple
-              style="max-width: 300px"
-              />
-          </div>
+            <q-uploader :factory="factoryFn" multiple style="max-width: 75%;"/>
         </div>
       </center>
       <center>
         <div class="q-pa-md">
-          <div class="q-gutter-y-md column" style="max-width: 300px">
-            <div class="text-bold">
-              <h5>NOME:</h5>
-            </div>
-            <p>
-              {{horseName}}
-            </p>
-          </div>
+          <h5>NOME:</h5>
+          <h6>
+            {{horseName}}
+          </h6>
         </div>
         <div class="q-pa-md">
           <h5>PELAGEM:</h5>
-          <div class="q-gutter-y-md column" style="max-width: 300px">
-            <p>
-              {{fluffy}}
-            </p>
-          </div>
+          <h6>
+            {{fluffy}}
+          </h6>
         </div>
         <div class="q-pa-md">
           <h5>DATA DE NASCIMENTO:</h5>
-          <div class="q-gutter-y-md column" style="max-width: 300px">
-            <p>
-              {{birthDate}}
-            </p>
-          </div>
+          <h6>
+            {{birthDate}}
+          </h6>
         </div>
         <div class="q-pa-md">
           <h5>RAÇA DO ANIMAL:</h5>
-          <div class="q-gutter-y-md column" style="max-width: 300px">
-            <p>
-              {{racaAnimal}}
-            </p>
-          </div>
+          <h6>
+            {{racaAnimal}}
+          </h6>
         </div>
       </center>
       <center>
-        <q-btn unelevated size="lg" color="primary" filled rounded class="center text-white" label="Salvar perfil" @click="salvar()" />
+        <q-btn unelevated size="lg" color="primary" filled rounded class="q-px-lg" label="Salvar perfil" @click="salvar()" />
+        <q-btn unelevated size="lg" outline rounded color="red" label="Cancelar" class="center" to="/"/>
       </center>
     </div>
   </q-page>
