@@ -19,7 +19,7 @@
           </q-input>
         </q-form>
         <center>
-          <q-btn unelevated rounded color="green-13" label="Confirmar" class="q-px-lg" @click="confirmar()" />
+          <q-btn unelevated rounded color="green-13" label="Confirmar" class="q-px-lg" @click="confirmar()"/>
           <q-btn flat color="gray-8" label="Voltar para o Login" to="/Login"/>
         </center>
       </div>
@@ -36,8 +36,7 @@ export default {
   data () {
     return {
       alert: false,
-      email: '',
-      fullWidth: false
+      email: ''
     }
   },
   methods: {
