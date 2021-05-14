@@ -27,6 +27,7 @@ const routes = [
       { path: '/cartaoVacina', component: () => import('pages/cartaoVacina.vue') },
       { path: '/amostraAnimais', component: () => import('pages/amostraAnimais.vue') },
       { path: '/calendario', component: () => import('pages/calendario.vue') },
+      { path: '/listarAnimais', component: () => import('pages/listarAnimais.vue') },
       { path: '/resetAdm', component: () => import('pages/resetAdm.vue') }
     ]
   },
