@@ -3,6 +3,7 @@
     <q-header>
       <q-toolbar>
         <q-btn
+          class="absolute-top"
           flat
           dense
           round
