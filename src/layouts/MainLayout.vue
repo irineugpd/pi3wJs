@@ -82,10 +82,10 @@ const linksData = [
     link: '#/cartaoVacina'
   },
   {
-    title: 'Quasar Awesome',
-    caption: 'Community Quasar projects',
-    icon: 'favorite',
-    link: 'https://awesome.quasar.dev'
+    title: 'LISTA DE ANIMAIS',
+    caption: 'Perfil de Animais',
+    icon: 'list',
+    link: '#/listarAnimais'
   }
 ]
 
