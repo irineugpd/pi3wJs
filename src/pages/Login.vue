@@ -1,8 +1,8 @@
 <template>
   <q-page class="q-pa-md">
-      <center>
-        <h4 class="loginTitle"></h4>
-      </center>
+      <!--<center>
+        <h4 class="loginTitle">SEJA<br/>BEM VINDO...</h4>
+      </center>-->
       <div class="absolute-bottom q-pb-md">
         <q-form class="q-px-sm q-pb-xl">
           <q-input
@@ -33,6 +33,9 @@
         <center>
           <q-btn unelevated rounded color="green-13" label="Entrar" class="q-px-lg" @click="login()"/>
           <q-btn flat color="gray-8" label="Esqueceu a senha ?" to="/confirmarEmail"/>
+        </center>
+        <center>
+          <q-btn flat style="color: gray" label="REGISTRAR" size="11px" to="/" class="q-pt-md absolute-botttom"/>
         </center>
       </div>
   </q-page>

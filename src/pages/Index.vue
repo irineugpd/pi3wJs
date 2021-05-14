@@ -1,14 +1,9 @@
 <template>
   <q-page class="backgroundIndex">
-    <div class="avatar">
-      <q-avatar size="70px"/>
-    </div>
-    <p class="emailInstagram">
-      @dracamilasilveiravet
-    </p>
+
     <center class="absolute-bottom q-pa-md q-gutter-md buttonFont">
-      <q-btn outline rounded color="black" label="LOGIN" class="q-px-lg" size="20px" to="/Login"/>
-      <q-btn filled rounded color="black" label="REGISTRAR" class="q-px-sm" size="20px" to="/cadastroUsuario"/>
+      <q-btn filled rounded color="white" label="LOGIN" class="q-px-lg shadow-24" size="20px" to="/Login" text-color="black"/>
+      <q-btn filled rounded color="black" label="REGISTRAR" class="q-px-sm shadow-24" size="20px" to="/cadastroUsuario"/>
     </center>
   </q-page>
 </template>

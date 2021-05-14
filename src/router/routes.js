@@ -21,16 +21,21 @@ const routes = [
     path: '/UserDashboard',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: '/cadastroVacina', component: () => import('pages/cadastroVacina.vue') },
-      { path: '/cadastroAnimais', component: () => import('pages/cadastroAnimais.vue') },
-      { path: '/cadastroAgenda', component: () => import('pages/cadastroAgenda.vue') },
-      { path: '/cartaoVacina', component: () => import('pages/cartaoVacina.vue') },
       { path: '/amostraAnimais', component: () => import('pages/amostraAnimais.vue') },
       { path: '/calendario', component: () => import('pages/calendario.vue') },
-      { path: '/resetAdm', component: () => import('pages/resetAdm.vue') }
+      { path: '/resetAdm', component: () => import('pages/resetAdm.vue') },
+      { path: '/cartaoVacina', component: () => import('pages/cartaoVacina.vue') }
     ]
   },
-
+  {
+    path: '/AdminDashboard',
+    component: () => import('layouts/AdminLayout.vue'),
+    children: [
+      { path: '/cadastroVacina', component: () => import('pages/cadastroVacina.vue') },
+      { path: '/cadastroAnimais', component: () => import('pages/cadastroAnimais.vue') },
+      { path: '/cadastroAgenda', component: () => import('pages/cadastroAgenda.vue') }
+    ]
+  },
   // Always leave this as last one,
   // but you can also remove it
   {

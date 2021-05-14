@@ -26,16 +26,17 @@ $warning   : #F2C037;
 $btn       : #297747;
 
 .emailInstagram {
-  position: absolute;
-  text-decoration: bold;
-  color: white;
-  bottom: 100px;
-  left: 100px;
+  text-decoration: bolder;
+  color: black;
+  position: center;
+  font-family: 'tomorrow';
 }
 .loginTitle {
   font-family: 'tomorrow';
   color: white;
   font-style: bold;
+  padding-top: 120px;
+  padding-left: 160px;
 }
 .avatar {
   background-image: url(/avatarCamila.png);
@@ -51,11 +52,15 @@ $btn       : #297747;
   background-image: url(/backgroundLogin.png);
   background-repeat: no-repeat;
   background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
 }
 .backgroundIndex {
   background-image: url(/backgroundIndex.png);
-  background-position: top;
   background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
 }
 .backgroundMainLayout {
   background-color: transparent !important;
