@@ -38,9 +38,16 @@
           </h6>
         </div>
       </center>
+      <br/>
       <center>
-        <q-btn unelevated size="lg" color="primary" filled rounded class="q-px-lg" label="Salvar perfil" @click="salvar()" />
-        <q-btn unelevated size="lg" outline rounded color="red" label="Cancelar" class="center" to="/"/>
+        <q-btn unelevated size="lg" color="secondary" rounded label="Histórico de Vacinas" class="center" to="/cartaoVacina"/>
+      </center>
+      <br/>
+      <center>
+        <q-btn unelevated size="md" color="primary" filled rounded class="q-px-lg" label="Salvar perfil" @click="salvar()" />
+        <br/>
+        <br/>
+        <q-btn unelevated size="md" outline rounded color="red" label="Cancelar" class="center" to="/listarAnimais"/>
       </center>
     </div>
   </q-page>
