@@ -99,21 +99,28 @@ export default {
   },
   methods: {
     async cadastrar () {
-      if (this.email.length && this.password.length && this.password2.length && this.name.length > 0) {
-        if (this.password === this.password2) {
-          const params = {
-            email: this.email,
-            name: this.name,
-            cpf: this.cpf,
-            password: this.password,
-            password2: this.password2
+      if (this.email.length && this.cpf.length && this.password.length && this.password2.length && this.name.length > 0) {
+        if (this.cpf.length > 13) {
+          if (this.password === this.password2) {
+            const params = {
+              email: this.email,
+              name: this.name,
+              password: this.password,
+              cpf: this.cpf
+            }
+            const response = await api.post('/users', params)
+            console.log(response.data)
+          } else {
+            this.$q.notify({
+              type: 'negative',
+              message: 'As senhas devem ser iguais.',
+              position: 'top'
+            })
           }
-          const response = await api.post('/users', params)
-          console.log(response.data)
         } else {
           this.$q.notify({
             type: 'negative',
-            message: 'As senhas devem ser iguais.',
+            message: 'O CPF deve ser preenchido corretamente!',
             position: 'top'
           })
         }

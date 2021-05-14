@@ -23,8 +23,9 @@ const routes = [
     children: [
       { path: '/amostraAnimais', component: () => import('pages/amostraAnimais.vue') },
       { path: '/calendario', component: () => import('pages/calendario.vue') },
-      { path: '/resetAdm', component: () => import('pages/resetAdm.vue') },
-      { path: '/cartaoVacina', component: () => import('pages/cartaoVacina.vue') }
+      //{ path: '/resetAdm', component: () => import('pages/resetAdm.vue') },
+      { path: '/cartaoVacina', component: () => import('pages/cartaoVacina.vue') },
+      { path: '/listarAnimais', component: () => import('pages/listarAnimais.vue') },
     ]
   },
   {
@@ -33,7 +34,8 @@ const routes = [
     children: [
       { path: '/cadastroVacina', component: () => import('pages/cadastroVacina.vue') },
       { path: '/cadastroAnimais', component: () => import('pages/cadastroAnimais.vue') },
-      { path: '/cadastroAgenda', component: () => import('pages/cadastroAgenda.vue') }
+      { path: '/cadastroAgenda', component: () => import('pages/cadastroAgenda.vue') },
+      { path: '/menu', component: () => import('pages/menu.vue') }
     ]
   },
   // Always leave this as last one,
