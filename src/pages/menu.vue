@@ -1,50 +1,67 @@
 <template>
-  <q-page class="window-height window-width row items-center justify-center">
-    <div class="q-pa-md row justify-center items-center q-gutter-md">
-      <q-card class="my-card bg-secondary text-white">
-        <q-card-section>
-          <div class="text-h6">Cadastro Animais</div>
-        </q-card-section>
+  <q-page class="items-center justify-center">
+    <div class="q-pa-md justify-center items-center q-gutter-md">
+      <q-card class="my-card" flat bordered>
+        <q-item>
+          <q-item-section avatar>
+            <q-avatar>
+              <img src="/horse.png">
+            </q-avatar>
+          </q-item-section>
 
-        <q-card-section>
-          Página do Cadastro de Animais
-        </q-card-section>
+          <q-item-section>
+            <q-item-label>Cadastro De Animais</q-item-label>
+          </q-item-section>
+          <div class="q-pl-xl q-pa-sm q-gutter-md">
+            <q-item-section>
+              <q-btn rounded color="green-13" icon="add" to="/cadastroAnimais"/>
+            </q-item-section>
+          </div>
+        </q-item>
 
-        <q-separator dark />
-
-        <q-card-actions>
-          <q-btn flat label="Cadastrar Animais" to="/cadastroAnimais"/>
-        </q-card-actions>
+        <q-separator />
       </q-card>
-      <q-card class="my-card bg-secondary text-white">
-        <q-card-section>
-          <div class="text-h6">Cadastro Eventos</div>
-        </q-card-section>
 
-        <q-card-section>
-          Página do Cadastro de Eventos
-        </q-card-section>
+      <q-card class="my-card" flat bordered>
+        <q-item>
+          <q-item-section avatar>
+            <q-avatar>
+              <img src="/medical_services.png">
+            </q-avatar>
+          </q-item-section>
 
-        <q-separator dark />
+          <q-item-section>
+            <q-item-label>Cadastro De Vacinas</q-item-label>
+          </q-item-section>
+          <div class="q-pl-xl q-pa-sm q-gutter-md">
+            <q-item-section>
+              <q-btn rounded color="green-13" icon="add" to="/cadastroVacina"/>
+            </q-item-section>
+          </div>
+        </q-item>
 
-        <q-card-actions>
-          <q-btn flat label="Cadastrar Evento" to="/cadastroAgenda"/>
-        </q-card-actions>
+        <q-separator />
       </q-card>
-      <q-card class="my-card bg-secondary text-white">
-        <q-card-section>
-          <div class="text-h6">Cadastro Vacina</div>
-        </q-card-section>
 
-        <q-card-section>
-          Página do Cadastro de Vacinas
-        </q-card-section>
+      <q-card class="my-card" flat bordered>
+        <q-item>
+          <q-item-section avatar>
+            <q-avatar>
+              <img src="/event.png">
+            </q-avatar>
+          </q-item-section>
 
-        <q-separator dark />
+          <q-item-section>
+            <q-item-label>Cadastro De Eventos</q-item-label>
+          </q-item-section>
+          <div class="q-pl-xl q-pa-sm q-gutter-md">
+            <q-item-section>
+              <q-btn rounded color="green-13" icon="add" to="/cadastroAgenda"/>
+            </q-item-section>
+          </div>
+        </q-item>
 
-        <q-card-actions>
-          <q-btn flat label="Cadastrar Vacina" to="/cadastroVacina"/>
-        </q-card-actions>
+        <q-separator />
       </q-card>
     </div>
   </q-page>

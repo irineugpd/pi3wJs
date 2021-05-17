@@ -23,14 +23,14 @@ const routes = [
     children: [
       { path: '/amostraAnimais', component: () => import('pages/amostraAnimais.vue') },
       { path: '/calendario', component: () => import('pages/calendario.vue') },
-      //{ path: '/resetAdm', component: () => import('pages/resetAdm.vue') },
+      // { path: '/resetAdm', component: () => import('pages/resetAdm.vue') },
       { path: '/cartaoVacina', component: () => import('pages/cartaoVacina.vue') },
-      { path: '/listarAnimais', component: () => import('pages/listarAnimais.vue') },
+      { path: '/listarAnimais', component: () => import('pages/listarAnimais.vue') }
     ]
   },
   {
     path: '/AdminDashboard',
-    component: () => import('layouts/AdminLayout.vue'),
+    component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '/cadastroVacina', component: () => import('pages/cadastroVacina.vue') },
       { path: '/cadastroAnimais', component: () => import('pages/cadastroAnimais.vue') },
