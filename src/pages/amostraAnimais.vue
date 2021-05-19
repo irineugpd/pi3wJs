@@ -13,9 +13,9 @@
         <br>
     <center>
       <div class="col-6">
-            <q-img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGrwExi5piK1AWFndmZDORgr3JGZPx4a51QQ&usqp=CAU" native-context-menu>
+            <q-img :src="`${this.horse.avatar_url}`" native-context-menu>
           <div class="absolute-bottom-right text-subtitle2">
-            Junin Cavalus
+            {{this.horse.name}}
           </div>
         </q-img>
       </div>
@@ -23,12 +23,10 @@
         <center>
         <div class="q-pa-md">
           <div class="q-gutter-y-md column" style="max-width: 300px">
-            <div class="text-bold">
-              <h5 class="text-h5 text-black q-my-sm">Nome:</h5>
+            <h5 class="text-h5 text-black q-my-sm">Nome:</h5>
             <p>
               {{this.horse.name}}
             </p>
-          </div>
         </div>
         <div class="q-pa-md">
             <h5 class="text-h5 text-black q-my-sm">Pelagem:</h5>
@@ -79,18 +77,23 @@ export default {
       api.defaults.headers.authorization = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MjA3MzU0MzcsImV4cCI6MTYyMzMyNzQzNywic3ViIjoie1wiaWRcIjpcImY1ODU0OGQ2LWU5MWQtNGUwOC1iMWYyLTIyZWI4OTJhM2Y4OFwiLFwiaXNfYWRtaW5pc3RyYXRvclwiOnRydWV9In0.O923JprdiG5q2RKmzWQh41FYWV6fqM3oYVbEWAnQ-iQ'
       try {
         const response = await api.get(`/horses/${id}`)
-        this.horse = response.data
         const birthDate = new Date(response.data.birth_date)
         const year = birthDate.getFullYear()
+        const month = String(birthDate.getMonth() + 1).padStart(2, '0')
+        const day = String(birthDate.getDate()).padStart(2, '0')
 
-        console.log(year)
+        Object.assign(response.data, {
+          birth_date: `${day}/${month}/${year}`
+        })
+
+        this.horse = response.data
       } catch (e) {
         console.log(e)
       }
     }
   },
   async created () {
-    await this.getHorse('c84f48ba-a1f8-4097-aa96-07e01a37be64')
+    await this.getHorse('49d37b10-929b-4c05-a75c-9edefb88cab2')
     console.log(this.horse)
   }
 }
