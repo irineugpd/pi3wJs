@@ -28,48 +28,60 @@
               {{this.horse.name}}
             </p>
         </div>
+      </center>
+      <center>
         <div class="q-pa-md">
-            <h5 class="text-h5 text-black q-my-sm">Pelagem:</h5>
-          <div class="q-gutter-y-md column" style="max-width: 200px">
-            <p>
-              {{this.horse.fluff}}
-            </p>
-          </div>
-        </div>
-        <div class="q-pa-md">
-            <h5 class="text-h5 text-black q-my-sm">Data de Nascimento:</h5>
-          <div class="q-gutter-y-md column" style="max-width: 200px">
-            <p>
-              {{this.horse.birth_date}}
-            </p>
-          </div>
+          <h5>NOME:</h5>
+          <h6>
+            {{this.horse.name}}
+          </h6>
         </div>
         <div class="q-pa-md">
-            <h5 class="text-h5 text-black q-my-sm">Raça do Animal:</h5>
-          <div class="q-gutter-y-md column" style="max-width: 200px">
-            <p>
-              {{this.horse.race}}
-            </p>
-          </div>
+          <h5>PELAGEM:</h5>
+          <h6>
+            {{this.horse.fluffy}}
+          </h6>
         </div>
+        <div class="q-pa-md">
+          <h5>DATA DE NASCIMENTO:</h5>
+          <h6>
+            {{this.horse.birth_date}}
+          </h6>
         </div>
-        </center>
-          <q-card-section class="text-center q-pa-sm">
-              <q-btn flat style="color: gray" label="Retornar para LogIn" size="11px" to="/"/>
-          </q-card-section>
-      </q-card>
+        <div class="q-pa-md">
+          <h5>RAÇA DO ANIMAL:</h5>
+          <h6>
+            {{this.horse.race}}
+          </h6>
+        </div>
+      </center>
+      <br/>
+      <center>
+        <q-btn unelevated size="lg" color="secondary" rounded label="Histórico de Vacinas" class="center" to="/cartaoVacina"/>
+      </center>
+      <br/>
+      <center>
+        <!--<q-btn unelevated size="md" color="primary" filled rounded class="q-px-lg" label="Salvar perfil" @click="salvar()" /> -->
+        <br/>
+        <br/>
+        <q-btn unelevated size="md" outline rounded color="red" label="Cancelar" class="center" to="/listarAnimais"/>
+      </center>
     </div>
   </q-page>
 </template>
 
 <script>
-import { api } from 'boot/axios'
+import {
+  api
+} from 'boot/axios'
 
 export default {
   name: 'amostraAnimais',
   data () {
     return {
-      horse: {}
+      horse: null,
+      filesImages: null,
+      dense: false
     }
   },
   methods: {

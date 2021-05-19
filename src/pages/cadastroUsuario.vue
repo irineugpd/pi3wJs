@@ -1,12 +1,13 @@
 <template>
   <q-page class="q-pa-md">
-      <center>
-        <h4 class="loginTitle">CS.VET</h4>
-      </center>
+      <!--<center>
+        <h4 class="loginTitle">USUÁRIO</h4>
+      </center>-->
       <div class="absolute-bottom q-pb-md">
         <q-form class="q-px-sm q-pb-xl">
           <q-input
             filled
+            bg-color="grey-3"
             v-model="name"
             label="Nome Completo"
             class="q-pa-md"
@@ -18,14 +19,21 @@
             </template>
           </q-input>
           <q-input
-            standout
+            filled
+            bg-color="grey-3"
             v-model="cpf"
             label="CPF"
             class="q-pa-md"
             mask="###.###.###-##"
-          />
+            :rules="[val => val && val.length > 0 || 'CPF Obrigatório']"
+          >
+            <template v-slot:append>
+              <q-icon name="badge" class="q-pr-sm"/>
+            </template>
+          </q-input>
           <q-input
             filled
+            bg-color="grey-3"
             v-model="email"
             label="E-mail"
             class="q-pa-md"
@@ -37,6 +45,7 @@
             </template>
           </q-input>
           <q-input
+            bg-color="grey-3"
             v-model="password"
             filled :type="isPwd ? 'password' : 'text'"
             label="Senha"
@@ -49,6 +58,7 @@
             </template>
           </q-input>
           <q-input
+            bg-color="grey-3"
             v-model="password2"
             filled :type="isPwd2 ? 'password' : 'text'"
             label="Confirme a senha"
@@ -89,21 +99,28 @@ export default {
   },
   methods: {
     async cadastrar () {
-      if (this.email.length && this.password.length && this.password2.length && this.name.length > 0) {
-        if (this.password === this.password2) {
-          const params = {
-            email: this.email,
-            name: this.name,
-            cpf: this.cpf,
-            password: this.password,
-            password2: this.password2
+      if (this.email.length && this.cpf.length && this.password.length && this.password2.length && this.name.length > 0) {
+        if (this.cpf.length > 13) {
+          if (this.password === this.password2) {
+            const params = {
+              email: this.email,
+              name: this.name,
+              password: this.password,
+              cpf: this.cpf
+            }
+            const response = await api.post('/users', params)
+            console.log(response.data)
+          } else {
+            this.$q.notify({
+              type: 'negative',
+              message: 'As senhas devem ser iguais.',
+              position: 'top'
+            })
           }
-          const response = await api.post('/users', params)
-          console.log(response.data)
         } else {
           this.$q.notify({
             type: 'negative',
-            message: 'As senhas devem ser iguais.',
+            message: 'O CPF deve ser preenchido corretamente!',
             position: 'top'
           })
         }
