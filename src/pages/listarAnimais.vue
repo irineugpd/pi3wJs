@@ -2,51 +2,22 @@
   <q-page class="window-height window-width row justify-center items-center" style="background: white;">
     <div class="column q-pa-lg">
       <center>
-        <h4 class="text-h5 text-black q-my-sm">Listar Animais</h4>
+        <h4 class="text-h5 text-black q-my-sm q-pt-lg absolute-top">Listar Animais</h4>
       </center>
-      <div class="col-sm row items-center q-pa-lg">
-         <q-card class="my-card3">
-            <q-img src="https://cdn.quasar.dev/img/parallax2.jpg">
-              <div class="absolute-bottom">
-                <div class="text-h6">Our Changing Planet</div>
-                <div class="text-subtitle2">by John Doe</div>
-              </div>
-            </q-img>
-
-            <q-card-actions>
-              <q-btn flat>Abril Perfil</q-btn>
-            </q-card-actions>
-          </q-card>
-        <!-- <q-card v-for="singleVaccine in vaccineEvents" :key="singleVaccine.vaccineDate" class="my-card2 bg-primary text-white">
-          <q-card-section>
-            <div class="text-h6">{{ singleVaccine.vaccineName }}</div>
-            <div class="text-subtitle2">{{ singleVaccine.vaccineDate }}</div>
-          </q-card-section>
-
-          <q-card-section>
-            {{ singleVaccine.diseaseType }}
-          </q-card-section>
-
-          <q-dialog v-model="singleVaccine.detailBtn">
-            <q-card>
-              <q-card-section>
-                <div class="text-h6">Descrição:</div>
-              </q-card-section>
-              <q-card-section class="q-pt-none">
-                {{ singleVaccine.description }}
-              </q-card-section>
-              <q-card-actions align="right">
-                <q-btn flat label="OK" color="primary" v-close-popup />
-              </q-card-actions>
-            </q-card>
-          </q-dialog>
-
-          <q-separator dark />
-          <q-card-actions vertical>
-            <q-btn flat label="Mais Detalhes" @click="singleVaccine.detailBtn=true"/>
-          </q-card-actions>
-        </q-card> -->
-      </div>
+      <q-card class="my-card">
+        <q-card-section>
+          <div class="text-h6">Perfis dos Animais</div>
+          <div class="text-subtitle2">by John Doe</div>
+        </q-card-section>
+    <q-separator />
+        <q-card-actions vertical>
+          <q-btn flat to="/amostraAnimais/06c2ff10-cd7b-4374-b061-fd58120eecd">Perfil 1</q-btn>
+          <q-btn flat to="/amostraAnimais/30d6ef0a-b82b-42b5-a9d9-717ddc99919b">Perfil 2</q-btn>
+          <q-btn flat to="/amostraAnimais/a768b60e-e97b-4335-ba3e-01bd1f51ceeb">Perfil 3</q-btn>
+          <q-btn flat to="/amostraAniamis/07933137-4481-4fee-a094-590ea80e80a2">Perfil 4</q-btn>
+          <q-btn flat to="/amostraAnimais/81165ad8-9b05-485a-b328-723de4210fcb">Perfil 5</q-btn>
+        </q-card-actions>
+      </q-card>
     </div>
   </q-page>
 </template>
