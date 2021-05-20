@@ -1,30 +1,21 @@
 <template>
-  <q-page
-    class="justify-center items-center"
-    style="background: white;"
-  >
+  <q-page class="justify-center items-center">
     <div class="column q-pa-lg">
-        <q-card square class="shadow-24" style="width:auto;height:auto;">
-          <q-card-section class="registroAnimal">
-            <h4 class="text-h5 text-white q-my-sm">Agenda</h4>
-            <div class="absolute-bottom-right q-pr-md" style="transform: translateY(50%);">
-              <q-btn fab icon="list" color="green-13" />
-            </div>
-          </q-card-section>
-          <q-card-section>
-            <q-form class="q-px-sm q-pt-xl q-pb-lg">
-              <q-input class="q-pa-sm" filled v-model="name_event" placeholder="Evento" color="teal-10"/>
-              <q-input class="q-pa-sm" filled v-model="description" placeholder="Descrição do evento" color="teal-10"/>
-              <q-input class="q-pa-sm" filled v-model="event_date" type="date" color="teal-10"/>
-            </q-form>
-          </q-card-section>
-          <q-card-actions class="q-px-lg">
-            <q-btn unelevated size="lg" color="green-13" class="full-width text-white" label="Marcar evento" @click="register()" />
-          </q-card-actions>
-          <q-card-section class="text-center q-pa-sm">
-            <q-btn flat style="color: gray" label="Retornar para LogIn" size="11px" to="/"/>
-          </q-card-section>
-        </q-card>
+      <center>
+        <h4 class="text-h5 q-my-sm">Registro de Eventos</h4>
+      </center>
+      <br/>
+      <br/>
+      <div class="text-center q-pa-sm">
+        <q-form class="q-px-sm q-pt-xl q-pb-lg">
+          <q-input class="q-pa-sm" filled v-model="name_event" placeholder="Evento" color="teal-10"/>
+          <q-input class="q-pa-sm" filled v-model="description" placeholder="Descrição do evento" color="teal-10"/>
+          <q-input class="q-pa-sm" filled v-model="event_date" type="date" color="teal-10"/>
+        </q-form>
+      </div>
+      <div class="q-px-lg">
+        <q-btn unelevated size="lg" color="primary" class="full-width text-white" label="Registrar" @click="register()" />
+      </div>
     </div>
   </q-page>
 </template>
