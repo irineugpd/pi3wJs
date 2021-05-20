@@ -1,7 +1,7 @@
 <template>
   <q-layout view="hHh Lpr lFr">
     <q-header>
-      <q-toolbar  class="backgroundAdmDashboard">
+      <q-toolbar>
         <q-btn
           flat
           dense

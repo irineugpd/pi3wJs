@@ -1,25 +1,60 @@
 <template>
   <q-page
-    class="justify-center items-center"
+    class="justify-center items-center backgroundform"
   >
     <div class="column q-pa-lg">
       <center>
-        <h4 class="text-h5 q-my-sm">Registro de Animal</h4>
+        <h4 class="q-my-sm formtitle">Cadastro de Animais</h4>
+        <div class="linha"></div>
       </center>
       <br/>
-      <br/>
       <div class="text-center q-pa-sm">
-        <q-form class="q-px-sm q-pt-xl q-pb-lg">
-          <q-input filled v-model="name" label="Nome" class="q-pa-md" :rules="[val => !!val || 'Campo Obrigatorio']"/>
-          <q-input filled v-model="fluff" label="Pelagem" class="q-pa-md" :rules="[val => !!val || 'Campo Obrigatorio']"/>
-          <q-input v-model="birth_date" filled type="date" class="q-pa-md" :rules="[val => !!val || 'Campo Obrigatorio']" />
-          <q-input filled v-model="race" label="Raça" class="q-pa-md" :rules="[val => !!val || 'Campo Obrigatorio']"/>
+        <q-form class="q-px-sm q-pb-lg">
+          <q-input
+            filled
+            rounded
+            v-model="name"
+            label="Nome"
+            class="q-pa-md"
+            :rules="[val => !!val || 'Campo Obrigatorio']"
+          />
+          <q-input
+              filled
+              rounded
+              v-model="fluff"
+              label="Pelagem"
+              class="q-pa-md"
+              :rules="[val => !!val || 'Campo Obrigatorio']"
+            />
+          <q-input
+            rounded
+            v-model="birth_date"
+            filled type="date"
+            class="q-pa-md"
+            :rules="[val => !!val || 'Campo Obrigatorio']"
+          />
+          <q-input
+            filled
+            rounded
+            v-model="race"
+            label="Raça"
+            class="q-pa-md"
+            :rules="[val => !!val || 'Campo Obrigatorio']"
+          />
         </q-form>
+        <!--<div class="q-px-lg">-->
+          <q-btn
+              unelevated
+              rounded
+              size="lg"
+              color="green-13"
+              class="full-width text-white"
+              label="Registrar"
+              @click="register()"
+          />
+        </div>
       </div>
-      <div class="q-px-lg">
-        <q-btn unelevated size="lg" color="primary" class="full-width text-white" label="Registrar" @click="register()" />
-      </div>
-    </div>
+    <!--</div>-->
   </q-page>
 </template>
 
