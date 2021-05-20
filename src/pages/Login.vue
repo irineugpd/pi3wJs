@@ -35,7 +35,7 @@
           <q-btn flat color="gray-8" label="Esqueceu a senha ?" to="/confirmarEmail"/>
         </center>
         <center>
-          <q-btn flat style="color: gray" label="REGISTRAR" size="11px" to="/" class="q-pt-md absolute-botttom"/>
+          <q-btn flat style="color: gray" label="REGISTRAR" size="11px" to="/cadastroUsuario" class="q-pt-md absolute-botttom"/>
         </center>
       </div>
   </q-page>

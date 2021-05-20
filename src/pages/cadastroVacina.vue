@@ -3,25 +3,93 @@
     class="justify-center items-center"
   >
     <div class="column q-pa-lg">
-      <center>
-        <h4 class="text-h5 q-my-sm">Cadastro de Vacina</h4>
-      </center>
-      <br/>
-      <br/>
-      <div class="text-center q-pa-sm">
-        <q-form class="q-px-sm q-pt-xl q-pb-lg">
-          <q-input class="q-pa-md" filled v-model="name" placeholder="Nome da Vacina" type="name" color="teal-10" :rules="[val => val && val.length > 0 || 'Campo Obrigatório']"/>
-          <q-input class="q-pa-md" filled v-model="diseases_type" placeholder="Doença a ser tratada" type="name" color="teal-10" :rules="[val => val && val.length > 0 || 'Campo Obrigatório']"/>
-          <q-input class="q-pa-md" filled v-model="first_date" type="date" color="white" :rules="[val => val && val.length > 0 || 'Campo Obrigatório']"/>
-          <q-input class="q-pa-md" filled v-model="number_of_doses" type="number" label="Qtde. de aplicações:" color="teal-10" :rules="[val => val && val.length > 0 || 'Campo Obrigatório']"/>
-          <q-input class="q-pa-md" filled v-model="period_days_bettwen_doses" type="number" label="Dias entre aplicações:" color="teal-10" :rules="[val => val && val.length > 0 || 'Campo Obrigatório']"/>
-          <q-input class="q-pa-md" filled v-model="description" type="text" placeholder="Descrição" color="teal-10" :rules="[val => val && val.length > 0 || 'Campo Obrigatório']"/>
-        </q-form>
+        <center>
+            <h4 class="q-my-sm formtitle">Cadastro de Vacina</h4>
+            <div class="linha"></div>
+        </center>
+          <div class="text-center q-pa-sm">
+            <q-form class="q-px-sm q-pb-lg">
+              <q-input
+                class="q-pa-md"
+                rounded
+                filled
+                v-model="name"
+                placeholder="Nome da Vacina"
+                type="name"
+                color="teal-10"
+                :rules="[val => val && val.length > 0 || 'Campo Obrigatório']"
+              />
+              <q-input
+                class="q-pa-md"
+                filled
+                rounded
+                v-model="diseases_type"
+                placeholder="Doença a ser tratada"
+                type="name"
+                color="teal-10"
+                :rules="[val => val && val.length > 0 || 'Campo Obrigatório']"
+              />
+              <q-input
+                class="q-pa-md"
+                filled
+                rounded
+                v-model="first_date"
+                type="date"
+                color="white"
+                :rules="[val => val && val.length > 0 || 'Campo Obrigatório']"
+              />
+              <q-input
+                class="q-pa-md"
+                filled
+                rounded
+                v-model="number_of_doses"
+                type="number"
+                label="Qtde. de aplicações:"
+                color="teal-10"
+                :rules="[val => val && val.length > 0 || 'Campo Obrigatório']"
+              />
+              <q-input
+                class="q-pa-md"
+                filled
+                rounded
+                v-model="period_days_bettwen_doses"
+                type="number"
+                label="Dias entre aplicações:"
+                color="teal-10"
+                :rules="[val => val && val.length > 0 || 'Campo Obrigatório']"
+              />
+              <q-input
+                class="q-pa-md"
+                filled
+                rounded
+                v-model="description"
+                type="text"
+                placeholder="Descrição"
+                color="teal-10"
+                :rules="[val => val && val.length > 0 || 'Campo Obrigatório']"
+              />
+            </q-form>
+          </div>
+          <!--<div class="q-px-lg">-->
+            <q-btn
+              rounded
+              unelevated
+              size="lg"
+              color="green-13"
+              class="full-width text-white"
+              label="Registrar"
+              @click="register()"
+            />
+          <!--</div>-->
+          <q-card-section class="text-center q-pa-sm">
+            <q-btn
+              flat
+              style="color: gray"
+              label="Retornar para LogIn"
+              size="11px"
+              to="/"/>
+          </q-card-section>
       </div>
-      <div class="q-px-lg">
-        <q-btn unelevated size="lg" color="primary" class="full-width text-white" label="Registrar" @click="register()" />
-      </div>
-    </div>
   </q-page>
 </template>
 
