@@ -70,7 +70,6 @@
               />
             </q-form>
           </div>
-          <!--<div class="q-px-lg">-->
             <q-btn
               rounded
               unelevated
@@ -80,14 +79,13 @@
               label="Registrar"
               @click="register()"
             />
-          <!--</div>-->
           <q-card-section class="text-center q-pa-sm">
             <q-btn
               flat
               style="color: gray"
-              label="Retornar para LogIn"
+              label="Retornar para o Menu"
               size="11px"
-              to="/"/>
+              to="/menu"/>
           </q-card-section>
       </div>
   </q-page>
