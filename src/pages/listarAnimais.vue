@@ -7,15 +7,10 @@
       <q-card class="my-card">
         <q-card-section>
           <div class="text-h6">Perfis dos Animais</div>
-          <div class="text-subtitle2">by John Doe</div>
         </q-card-section>
     <q-separator />
         <q-card-actions vertical>
-          <q-btn flat to="/amostraAnimais/06c2ff10-cd7b-4374-b061-fd58120eecd">Perfil 1</q-btn>
-          <q-btn flat to="/amostraAnimais/30d6ef0a-b82b-42b5-a9d9-717ddc99919b">Perfil 2</q-btn>
-          <q-btn flat to="/amostraAnimais/a768b60e-e97b-4335-ba3e-01bd1f51ceeb">Perfil 3</q-btn>
-          <q-btn flat to="/amostraAniamis/07933137-4481-4fee-a094-590ea80e80a2">Perfil 4</q-btn>
-          <q-btn flat to="/amostraAnimais/81165ad8-9b05-485a-b328-723de4210fcb">Perfil 5</q-btn>
+          <q-btn v-bind="horse.id" v-for="horse in horses" :key="horse.id" flat :to="`/amostraAnimais/${horse.id}`">{{horse.name}}</q-btn>
         </q-card-actions>
       </q-card>
     </div>
@@ -31,22 +26,30 @@ export default {
   name: 'listarAnimais',
   data () {
     return {
+      horses: []
     }
   },
   methods: {
-    async register () {
-      const params = {
-        owner_id: '60a23d26-2d2b-4827-b20a-fa77385ea659'
-      }
-      const response = await api.post('/listarAnimais', params)
+    async getHorsesByOwnerId (ownerId) {
+      api.defaults.headers.authorization = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MjEyNTE1ODEsImV4cCI6MTYyMzg0MzU4MSwic3ViIjoie1wiaWRcIjpcImU1MGMzODQyLTQ3ZGQtNGIwNi1iNzUxLWVjNGVlOWRlZDE0YVwiLFwiaXNfYWRtaW5pc3RyYXRvclwiOnRydWV9In0.VlUiuyIIN4MrocMzn4HJLt93KuWVnz7BTPYGuziUAHU'
+      try {
+        const response = await api.get(`/horses?user_id=${ownerId}`)
 
-      console.log(response.data)
+        console.log(response.data)
+
+        this.horses = response.data
+      } catch (e) {
+        console.log(e)
+      }
     }
   },
   computed: {
     getDescription () {
       return this.horseOptions.map(option => option.description)
     }
+  },
+  async created () {
+    await this.getHorsesByOwnerId('d34fdbd4-a379-41db-8524-5c45c2b4f79f')
   }
 }
 </script>

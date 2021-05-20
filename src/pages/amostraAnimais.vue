@@ -51,7 +51,7 @@
       </center>
       <br/>
       <center>
-        <q-btn unelevated size="md" color="primary" filled rounded class="q-px-lg" label="Salvar perfil" @click="salvar()" />
+        <!--<q-btn unelevated size="md" color="primary" filled rounded class="q-px-lg" label="Salvar perfil" @click="salvar()" />-->
         <br/>
         <br/>
         <q-btn unelevated size="md" outline rounded color="red" label="Cancelar" class="center" to="/listarAnimais"/>
