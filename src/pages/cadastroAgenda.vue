@@ -2,7 +2,7 @@
   <q-page class="justify-center items-center">
     <div class="column q-pa-lg">
       <center>
-        <h4 class="text-h5 q-my-sm">Registro de Eventos</h4>
+        <h4 class="text-h5 q-my-sm">Cadastro de Eventos</h4>
       </center>
       <br/>
       <br/>
