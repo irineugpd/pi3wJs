@@ -25,23 +25,29 @@ $warning   : #F2C037;
 
 $btn       : #297747;
 
-.cardActions {
-  text-align: center;
-
+.linha {
+  width: 150px;
+  border: 2px solid;
+  border-color: #39c059;
 }
-
-.emailInstagram {
-  text-decoration: bolder;
+.backgroundAdmDashboard {
+  background-color: #00e676;
+}
+.titleDashboard {
+  text-align: right;
+}
+.formtitle {
   color: black;
-  position: center;
-  font-family: 'tomorrow';
+  font-family: 'bxn';
 }
 .loginTitle {
   font-family: 'tomorrow';
   color: white;
   font-style: bold;
-  padding-top: 120px;
-  padding-left: 160px;
+  // padding-top: 120px;
+  // padding-left: 160px;
+  text-align: center;
+  background: #00000045;
 }
 .avatar {
   border: outset;
