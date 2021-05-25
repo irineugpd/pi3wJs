@@ -1,5 +1,11 @@
 <template>
-  <div class="q-pa-md" style="width:100%;">
+  <div class="q-pa-md">
+    <center>
+      <h4 class="q-my-sm formtitle">Lista de Usuários</h4>
+      <div class="linha"></div>
+    </center>
+    <br/>
+    <br/>
     <q-list bordered style="width:100%;">
       <!-- <q-table title="Usuários" :data="users" :columns="columns" @row-click="onRowClick" row-key="name"/> -->
       <q-item clickable v-ripple v-for="user in users" :key="user.users" to="">
