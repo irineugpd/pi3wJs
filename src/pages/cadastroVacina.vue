@@ -4,7 +4,7 @@
   >
     <div class="column q-pa-lg">
         <center>
-            <h4 class="q-my-sm formtitle">Cadastro de Vacina</h4>
+            <h4 class="q-my-sm formtitle">Vacina</h4>
             <div class="linha"></div>
         </center>
           <div class="text-center q-pa-sm">
@@ -76,7 +76,7 @@
               size="lg"
               color="green-13"
               class="full-width text-white"
-              label="Registrar"
+              label="Cadastrar"
               @click="register()"
             />
           <q-card-section class="text-center q-pa-sm">

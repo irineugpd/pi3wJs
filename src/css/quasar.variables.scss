@@ -27,13 +27,16 @@ $btn       : #297747;
 
 
 .logo {
-  background-image: url(/horselogo.png);
+  background-image: url(/horselogo.jpeg);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
-  padding: auto;
-  width: auto;
+}
+.linha1 {
+  width: 150px;
+  border: 2px solid;
+  border-color: #080f09;
 }
 .linha {
   width: 150px;
@@ -76,11 +79,11 @@ $btn       : #297747;
   background-attachment: fixed;
 }
 .backgroundIndex {
-  background-image: url(/backgroundLogin.png);
+  background-image: url(/backgroundIndex.jpeg);
   background-repeat: no-repeat;
-  background-size: cover;
   background-attachment: fixed;
   background-position: center;
+  background-size: cover;
 }
 .backgroundMainLayout {
   background-color: transparent !important;

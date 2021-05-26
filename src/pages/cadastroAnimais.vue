@@ -4,7 +4,7 @@
   >
     <div class="column q-pa-lg">
       <center>
-        <h4 class="q-my-sm formtitle">Cadastro de Animais</h4>
+        <h4 class="q-my-sm formtitle">Animais</h4>
         <div class="linha"></div>
       </center>
       <br/>
@@ -49,7 +49,7 @@
               size="lg"
               color="green-13"
               class="full-width text-white"
-              label="Registrar"
+              label="Cadastrar"
               @click="register()"
           />
         </div>

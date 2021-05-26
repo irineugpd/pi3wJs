@@ -3,10 +3,10 @@
     <div class="column q-pa-sm">
       <center>
         <h3 class="formtitle q-my-sm">Vacinas</h3>
-        <div class="linha"></div>
+        <div class="linha1"></div>
       </center>
       <div class="col-sm row items-center q-pa-md">
-        <q-card v-for="singleVaccine in vaccineEvents" :key="singleVaccine.vaccineDate" class="my-card2 bg-green-14 text-white">
+        <q-card v-for="singleVaccine in vaccineEvents" :key="singleVaccine.vaccineDate" class="my-card2 bg-teal-9 text-white">
           <q-card-section>
             <center>
               <div class="text-h6">{{ singleVaccine.vaccineName }}</div>
@@ -121,7 +121,6 @@ export default {
 
       console.log(response.data)
     }
-  }
   }
 }
 </script>
