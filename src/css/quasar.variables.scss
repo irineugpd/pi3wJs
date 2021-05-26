@@ -25,6 +25,16 @@ $warning   : #F2C037;
 
 $btn       : #297747;
 
+
+.logo {
+  background-image: url(/horselogo.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  padding: auto;
+  width: auto;
+}
 .linha {
   width: 150px;
   border: 2px solid;
@@ -63,7 +73,7 @@ $btn       : #297747;
   background-attachment: fixed;
 }
 .backgroundIndex {
-  background-image: url(/backgroundIndex.png);
+  background-image: url(/backgroundLogin.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
