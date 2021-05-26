@@ -1,54 +1,39 @@
 <template>
-  <q-page class="window-height window-width row justify-center items-center" style="background: white;">
-    <div class="column q-pa-lg">
-      <center>
-        <h4 class="text-h5 text-black q-my-sm">Listar Animais</h4>
-      </center>
-      <div class="col-sm row items-center q-pa-lg">
-         <q-card class="my-card3">
-            <q-img src="https://cdn.quasar.dev/img/parallax2.jpg">
-              <div class="absolute-bottom">
-                <div class="text-h6">Our Changing Planet</div>
-                <div class="text-subtitle2">by John Doe</div>
-              </div>
-            </q-img>
+  <div class="q-pa-md">
+    <center>
+      <h4 class="q-my-sm formtitle">Lista de Animais</h4>
+      <div class="linha"></div>
+    </center>
+    <br/>
+    <br/>
+    <q-list bordered style="width:100%;">
+      <!-- <q-table title="Usuários" :data="horses" :columns="columns" @row-click="onRowClick" row-key="name"/> -->
+      <q-item clickable v-ripple v-for="horse in horses" :key="horse.horses" to="">
+        <q-item-section avatar>
+          <q-avatar>
+            <q-icon color="primary" name="perm_identity" />
+          </q-avatar>
+        </q-item-section>
 
-            <q-card-actions>
-              <q-btn flat>Abril Perfil</q-btn>
-            </q-card-actions>
-          </q-card>
-        <!-- <q-card v-for="singleVaccine in vaccineEvents" :key="singleVaccine.vaccineDate" class="my-card2 bg-primary text-white">
-          <q-card-section>
-            <div class="text-h6">{{ singleVaccine.vaccineName }}</div>
-            <div class="text-subtitle2">{{ singleVaccine.vaccineDate }}</div>
-          </q-card-section>
-
-          <q-card-section>
-            {{ singleVaccine.diseaseType }}
-          </q-card-section>
-
-          <q-dialog v-model="singleVaccine.detailBtn">
-            <q-card>
-              <q-card-section>
-                <div class="text-h6">Descrição:</div>
-              </q-card-section>
-              <q-card-section class="q-pt-none">
-                {{ singleVaccine.description }}
-              </q-card-section>
-              <q-card-actions align="right">
-                <q-btn flat label="OK" color="primary" v-close-popup />
-              </q-card-actions>
-            </q-card>
-          </q-dialog>
-
-          <q-separator dark />
-          <q-card-actions vertical>
-            <q-btn flat label="Mais Detalhes" @click="singleVaccine.detailBtn=true"/>
-          </q-card-actions>
-        </q-card> -->
-      </div>
-    </div>
-  </q-page>
+        <q-item-section class="userList">
+          {{horse.id}}
+        </q-item-section>
+        <q-item-section class="userList">
+          {{horse.name}}
+        </q-item-section>
+        <q-item-section class="userList">
+          {{horse.race}}
+        </q-item-section>
+        <q-item-section class="userList">
+          {{horse.birth_date}}
+        </q-item-section>
+        <q-item-section class="userList">
+          {{horse.pelagem}}
+        </q-item-section>
+      </q-item>
+      <q-separator />
+    </q-list>
+  </div>
 </template>
 
 <script>
@@ -57,24 +42,59 @@ import {
 } from 'boot/axios'
 
 export default {
-  name: 'listarAnimais',
+  name: 'horseList',
   data () {
     return {
+      // columns: [
+      //   {
+      //     name: 'id',
+      //     label: 'Cliente',
+      //     field: 'id',
+      //     align: 'left'
+      //   },
+      //   {
+      //     name: 'name',
+      //     required: true,
+      //     label: 'Nome',
+      //     field: row => row.name,
+      //     format: val => `${val}`,
+      //     sortable: true
+      //   },
+      //   { name: 'phone_number', label: 'Contato', field: 'phone_number' },
+      //   { name: 'address', label: 'Endereço', field: 'address' },
+      //   { name: 'email', label: 'E-Mail', field: 'email' }
+      // ],
+      horses: [
+        {
+          id: 'd34abcd4-a379-41db-8524-5c45c2b4f79f',
+          name: 'Alasão',
+          pelagem: 'Branco',
+          race: 'Pangaré',
+          birth_date: '19/05/2020'
+        },
+        {
+          id: 'd34abcd4-a379-41db-8524-5c45c2b4f79f',
+          name: 'Alasão 2',
+          pelagem: 'Branco',
+          race: 'Pangaré',
+          birth_date: '21/05/2020'
+        }
+      ]
     }
   },
   methods: {
-    async register () {
-      const params = {
-        owner_id: '60a23d26-2d2b-4827-b20a-fa77385ea659'
-      }
-      const response = await api.post('/listarAnimais', params)
+    // onRowClick (evt, row) {
+    //   console.log('clicked on', row)
+    // },
 
-      console.log(response.data)
-    }
-  },
-  computed: {
-    getDescription () {
-      return this.horseOptions.map(option => option.description)
+    async getHorseList () {
+      api.defaults.headers.authorization = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MjA3MzU0MzcsImV4cCI6MTYyMzMyNzQzNywic3ViIjoie1wiaWRcIjpcImY1ODU0OGQ2LWU5MWQtNGUwOC1iMWYyLTIyZWI4OTJhM2Y4OFwiLFwiaXNfYWRtaW5pc3RyYXRvclwiOnRydWV9In0.O923JprdiG5q2RKmzWQh41FYWV6fqM3oYVbEWAnQ-iQ'
+      try {
+        const response = await api.get('/horses/list')
+        this.horses = response.data
+      } catch (e) {
+        console.log(e)
+      }
     }
   }
 }
