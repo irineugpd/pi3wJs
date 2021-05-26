@@ -1,24 +1,30 @@
 <template>
-  <q-page class="window-height window-width row justify-center items-center" style="background: white;">
-    <div class="column q-pa-lg">
+  <q-page class="justify-center items-center" style="background: white;">
+    <div class="column q-pa-sm">
       <center>
-        <h4 class="text-h5 text-black q-my-sm">Vacinas</h4>
+        <h3 class="formtitle q-my-sm">Vacinas</h3>
+        <div class="linha"></div>
       </center>
-      <div class="col-sm row items-center q-pa-lg">
-        <q-card v-for="singleVaccine in vaccineEvents" :key="singleVaccine.vaccineDate" class="my-card2 bg-primary text-white">
+      <div class="col-sm row items-center q-pa-md">
+        <q-card v-for="singleVaccine in vaccineEvents" :key="singleVaccine.vaccineDate" class="my-card2 bg-green-14 text-white">
           <q-card-section>
-            <div class="text-h6">{{ singleVaccine.vaccineName }}</div>
-            <div class="text-subtitle2">{{ singleVaccine.vaccineDate }}</div>
+            <center>
+              <div class="text-h6">{{ singleVaccine.vaccineName }}</div>
+              <div class="text-subtitle2">{{ singleVaccine.vaccineDate }}</div>
+              <q-separator color="white"/>
+            </center>
           </q-card-section>
 
-          <q-card-section>
-            {{ singleVaccine.diseaseType }}
+          <q-card-section class="q-pb-sm">
+            <center>
+              {{ singleVaccine.diseaseType }}
+            </center>
           </q-card-section>
 
           <q-dialog v-model="singleVaccine.detailBtn">
             <q-card>
               <q-card-section>
-                <div class="text-h6">Descrição:</div>
+                <div class="text-h6">Descrição</div>
               </q-card-section>
               <q-card-section class="q-pt-none">
                 {{ singleVaccine.description }}
@@ -31,7 +37,12 @@
 
           <q-separator dark />
           <q-card-actions vertical>
-            <q-btn flat label="Mais Detalhes" @click="singleVaccine.detailBtn=true"/>
+            <center>
+              <div class="q-gutter-sm">
+                <q-btn padding="xs" icon="list" class="bg-grey-10" @click="singleVaccine.detailBtn=true"/>
+                <q-btn padding="xs" icon="delete" class="bg-grey-10"/>
+              </div>
+            </center>
           </q-card-actions>
         </q-card>
       </div>

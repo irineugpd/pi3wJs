@@ -2,6 +2,7 @@
   <q-page class="backgroundIndex">
 
     <center class="absolute-bottom q-pa-md q-gutter-md buttonFont">
+      <div class="logo"/>
       <q-btn filled rounded color="white" label="LOGIN" class="q-px-lg shadow-24" size="20px" to="/Login" text-color="black"/>
       <q-btn filled rounded color="black" label="REGISTRAR" class="q-px-sm shadow-24" size="20px" to="/cadastroUsuario"/>
     </center>
