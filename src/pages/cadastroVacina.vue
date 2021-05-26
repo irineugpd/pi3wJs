@@ -1,93 +1,52 @@
 <template>
-  <q-page
-    class="justify-center items-center"
-  >
-    <div class="column q-pa-lg">
-        <center>
-            <h4 class="q-my-sm formtitle">Cadastro de Vacina</h4>
-            <div class="linha"></div>
-        </center>
-          <div class="text-center q-pa-sm">
-            <q-form class="q-px-sm q-pb-lg">
-              <q-input
-                class="q-pa-md"
-                rounded
-                filled
-                v-model="name"
-                placeholder="Nome da Vacina"
-                type="name"
-                color="teal-10"
-                :rules="[val => val && val.length > 0 || 'Campo Obrigatório']"
-              />
-              <q-input
-                class="q-pa-md"
-                filled
-                rounded
-                v-model="diseases_type"
-                placeholder="Doença a ser tratada"
-                type="name"
-                color="teal-10"
-                :rules="[val => val && val.length > 0 || 'Campo Obrigatório']"
-              />
-              <q-input
-                class="q-pa-md"
-                filled
-                rounded
-                v-model="first_date"
-                type="date"
-                color="white"
-                :rules="[val => val && val.length > 0 || 'Campo Obrigatório']"
-              />
-              <q-input
-                class="q-pa-md"
-                filled
-                rounded
-                v-model="number_of_doses"
-                type="number"
-                label="Qtde. de aplicações:"
-                color="teal-10"
-                :rules="[val => val && val.length > 0 || 'Campo Obrigatório']"
-              />
-              <q-input
-                class="q-pa-md"
-                filled
-                rounded
-                v-model="period_days_bettwen_doses"
-                type="number"
-                label="Dias entre aplicações:"
-                color="teal-10"
-                :rules="[val => val && val.length > 0 || 'Campo Obrigatório']"
-              />
-              <q-input
-                class="q-pa-md"
-                filled
-                rounded
-                v-model="description"
-                type="text"
-                placeholder="Descrição"
-                color="teal-10"
-                :rules="[val => val && val.length > 0 || 'Campo Obrigatório']"
-              />
-            </q-form>
-          </div>
-            <q-btn
-              rounded
-              unelevated
-              size="lg"
-              color="green-13"
-              class="full-width text-white"
-              label="Registrar"
-              @click="register()"
-            />
-          <q-card-section class="text-center q-pa-sm">
-            <q-btn
-              flat
-              style="color: gray"
-              label="Retornar para o Menu"
-              size="11px"
-              to="/menu"/>
+  <q-page class="justify-center items-center" style="background: white;">
+    <div class="column q-pa-sm">
+      <center>
+        <h3 class="formtitle q-my-sm">Vacinas</h3>
+        <div class="linha"></div>
+      </center>
+      <div class="col-sm row items-center q-pa-md">
+        <q-card v-for="singleVaccine in vaccineEvents" :key="singleVaccine.vaccineDate" class="my-card2 bg-green-14 text-white">
+          <q-card-section>
+            <center>
+              <div class="text-h6">{{ singleVaccine.vaccineName }}</div>
+              <div class="text-subtitle2">{{ singleVaccine.vaccineDate }}</div>
+              <q-separator color="white"/>
+            </center>
           </q-card-section>
+
+          <q-card-section class="q-pb-sm">
+            <center>
+              {{ singleVaccine.diseaseType }}
+            </center>
+          </q-card-section>
+
+          <q-dialog v-model="singleVaccine.detailBtn">
+            <q-card>
+              <q-card-section>
+                <div class="text-h6">Descrição</div>
+              </q-card-section>
+              <q-card-section class="q-pt-none">
+                {{ singleVaccine.description }}
+              </q-card-section>
+              <q-card-actions align="right">
+                <q-btn flat label="OK" color="primary" v-close-popup />
+              </q-card-actions>
+            </q-card>
+          </q-dialog>
+
+          <q-separator dark />
+          <q-card-actions vertical>
+            <center>
+              <div class="q-gutter-sm">
+                <q-btn padding="xs" icon="list" class="bg-grey-10" @click="singleVaccine.detailBtn=true"/>
+                <q-btn padding="xs" icon="delete" class="bg-grey-10"/>
+              </div>
+            </center>
+          </q-card-actions>
+        </q-card>
       </div>
+    </div>
   </q-page>
 </template>
 
@@ -97,45 +56,70 @@ import {
 } from 'boot/axios'
 
 export default {
-  name: 'cadastroVacina',
+  name: 'cartaoVacina',
   data () {
     return {
-      name: '',
-      diseases_type: '',
-      number_of_doses: '',
-      first_date: '',
-      period_days_bettwen_doses: '',
-      description: ''
+      vaccineEvents: [
+        {
+          detailBtn: false,
+          vaccineName: 'Vacina 1',
+          description: 'Descrição 1',
+          diseaseType: 'Doença 1',
+          vaccineDate: '08/05/2021'
+        },
+        {
+          detailBtn: false,
+          vaccineName: 'Vacina 2',
+          description: 'Descrição 2',
+          diseaseType: 'Doença 2',
+          vaccineDate: '09/05/2021'
+        },
+        {
+          detailBtn: false,
+          vaccineName: 'Vacina 3',
+          description: 'Descrição 3',
+          diseaseType: 'Doença 3',
+          vaccineDate: '10/05/2021'
+        },
+        {
+          detailBtn: false,
+          vaccineName: 'Vacina 4',
+          description: 'Descrição 4',
+          diseaseType: 'Doença 4',
+          vaccineDate: '11/05/2021'
+        },
+        {
+          detailBtn: false,
+          vaccineName: 'Vacina 5',
+          description: 'Descrição 5',
+          diseaseType: 'Doença 5',
+          vaccineDate: '12/05/2021'
+        },
+        {
+          detailBtn: false,
+          vaccineName: 'Vacina 6',
+          description: 'Descrição 6',
+          diseaseType: 'Doença 6',
+          vaccineDate: '13/05/2021'
+        },
+        {
+          detailBtn: false,
+          vaccineName: 'Vacina 7',
+          description: 'Descrição 7',
+          diseaseType: 'Doença 7',
+          vaccineDate: '14/05/2021'
+        }
+      ]
     }
   },
   methods: {
     async register () {
-      if (this.name.length && this.diseases_type.length && this.number_of_doses.length && this.first_date.length && this.period_days_bettwen_doses.length && this.description.length > 0) {
-        const params = {
-          name: this.name,
-          diseases_type: this.diseases_type,
-          first_date: this.first_date,
-          description: this.description,
-          number_of_doses: this.number_of_doses,
-          period_days_bettwen_doses: this.period_days_bettwen_doses,
-          horse_id: '5852b061-293e-4ecf-be55-156d2dee693b',
-          user_id: '60a23d26-2d2b-4827-b20a-fa77385ea658'
-        }
-        try {
-          const response = await api.post('/vacines', params)
-          console.log(response.data)
-          this.$q.notify({
-            type: 'positive',
-            message: 'Vacina cadastrada com sucesso!'
-          })
-        } catch (e) {
-          this.$q.notify({
-            type: 'negative',
-            message: 'Vacina não cadastrada, verifique os campos e tente novamente!',
-            position: 'top'
-          })
-        }
+      const params = {
+        owner_id: '60a23d26-2d2b-4827-b20a-fa77385ea659'
       }
+      const response = await api.post('/amostraAnimais', params)
+
+      console.log(response.data)
     }
   }
 }
