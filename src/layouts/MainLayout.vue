@@ -26,7 +26,7 @@
           header
           class="text-grey-8"
         >
-          Links Rápidos
+          CS.VET
         </q-item-label>
         <EssentialLink
           v-for="link in essentialLinks"
@@ -47,46 +47,16 @@ import EssentialLink from 'components/EssentialLink.vue'
 
 const linksData = [
   {
-    title: 'LOGIN CS_VET APP',
-    caption: 'Login',
-    icon: 'account_box',
-    link: '#/Login'
-  },
-  {
-    title: 'CADASTRO ANIMAL',
-    caption: 'Cadastro de Animais',
-    icon: 'pets',
-    link: '#/cadastroAnimais'
-  },
-  {
-    title: 'CADASTRO DE VACINAS',
-    caption: 'Cadastro Vacina',
-    icon: 'medical_services',
-    link: '#/cadastroVacina'
+    title: 'LISTAR ANIMAIS',
+    caption: 'Lista de Animais',
+    icon: 'list',
+    link: '#/listarAnimais'
   },
   {
     title: 'CALENDÁRIO DE EVENTOS',
     caption: 'Eventos marcados',
     icon: 'event',
     link: '#/calendario'
-  },
-  {
-    title: 'AMOSTRA DE ANIMAIS',
-    caption: 'Lista de Animais',
-    icon: 'gesture',
-    link: '#/amostraAnimais'
-  },
-  {
-    title: 'CARTAO DE VACINA',
-    caption: 'Vacinas do Animal',
-    icon: 'dashboard_customize',
-    link: '#/cartaoVacina'
-  },
-  {
-    title: 'LISTA DE ANIMAIS',
-    caption: 'Perfil de Animais',
-    icon: 'list',
-    link: '#/listarAnimais'
   }
 ]
 

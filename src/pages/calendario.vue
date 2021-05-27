@@ -1,13 +1,14 @@
 <template>
-  <q-page class="window-height window-width row justify-center items-center" style="background: white;">
+  <q-page class="justify-center items-center" style="background: white;">
     <div class="column q-pa-lg">
       <center>
-        <h4 class="text-h5 text-black q-my-sm">Eventos</h4>
+        <h3 class="formtitle q-my-sm">Eventos</h3>
+        <div class="linha"></div>
       </center>
         <center>
           <div class="overflow-hidden">
-            <div class="q-pa-md">
-              <q-date v-model="date" @navigation="loadEventsByDateAndYear" today-btn :events="event_date" event-color="black"/>
+            <div class="q-pa-md q-pt-xl">
+              <q-date v-model="date" @navigation="loadEventsByDateAndYear" today-btn :events="event_date" event-color="black" color="green-13"/>
             </div>
             <q-card v-for="event in events" :key="event.id" v-bind="event.id" style="max-width: 75%;">
               <div class="q-mb-md">
