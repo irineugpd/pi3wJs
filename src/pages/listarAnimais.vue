@@ -30,6 +30,15 @@
         <q-item-section class="userList">
           {{horse.pelagem}}
         </q-item-section>
+        <q-item-section class="userList">
+          <center>
+            <div class="q-gutter-sm">
+              <q-btn padding="xs" icon="list" class="bg-green"/>
+              <q-btn padding="xs" icon="edit" class="bg-green"/>
+              <q-btn padding="xs" icon="delete" class="bg-green"/>
+            </div>
+          </center>
+        </q-item-section>
       </q-item>
       <q-separator />
     </q-list>
