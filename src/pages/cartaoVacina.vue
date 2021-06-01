@@ -40,6 +40,7 @@
             <center>
               <div class="q-gutter-sm">
                 <q-btn padding="xs" icon="list" class="bg-grey-10" @click="singleVaccine.detailBtn=true"/>
+                <q-btn padding="xs" icon="edit" class="bg-grey-10"/>
                 <q-btn padding="xs" icon="delete" class="bg-grey-10"/>
               </div>
             </center>
