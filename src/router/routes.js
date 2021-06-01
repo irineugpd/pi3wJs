@@ -21,10 +21,10 @@ const routes = [
     path: '/UserDashboard',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: '/amostraAnimais', component: () => import('pages/amostraAnimais.vue') },
+      { path: '/amostraAnimais/:horse_id', component: () => import('pages/amostraAnimais.vue'), props: true },
       { path: '/calendario', component: () => import('pages/calendario.vue') },
       // { path: '/resetAdm', component: () => import('pages/resetAdm.vue') },
-      { path: '/cartaoVacina', component: () => import('pages/cartaoVacina.vue') },
+      { path: '/cartaoVacina/:horse_id', component: () => import('pages/cartaoVacina.vue'), props: true },
       { path: '/listarAnimais', component: () => import('pages/listarAnimais.vue') }
     ]
   },

@@ -10,7 +10,6 @@
           <div class="absolute-bottom-right q-pr-md" style="transform: translateY(50%);">
           </div>
         </q-card-section>
-        <br>
         <center>
           <div class="col-6">
             <q-img :src="`${this.horse.avatar_url}`" native-context-menu>
@@ -18,16 +17,6 @@
                 {{this.horse.name}}
               </div>
             </q-img>
-          </div>
-        </center>
-        <center>
-          <div class="q-pa-md">
-            <div class="q-gutter-y-md column" style="max-width: 300px">
-              <h5 class="text-h5 text-black q-my-sm">Nome:</h5>
-              <p>
-                {{this.horse.name}}
-              </p>
-            </div>
           </div>
         </center>
         <center>
@@ -58,14 +47,14 @@
         </center>
         <br/>
         <center>
-          <q-btn unelevated size="lg" color="secondary" rounded label="Histórico de Vacinas" class="center" to="/cartaoVacina"/>
+          <q-btn unelevated size="lg" color="secondary" rounded label="Histórico de Vacinas" class="center" :to="`/cartaoVacina/${horse.id}`"/>
         </center>
         <br/>
         <center>
-          <!--<q-btn unelevated size="md" color="primary" filled rounded class="q-px-lg" label="Salvar perfil" @click="salvar()" /> -->
+          <q-btn unelevated size="md" color="primary" filled rounded class="q-px-lg" label="Salvar perfil" @click="salvar()" />
           <br/>
           <br/>
-          <q-btn unelevated size="md" outline rounded color="red" label="Cancelar" class="center" to="/listarAnimais"/>
+          <q-btn unelevated size="md" outline rounded color="red" label="Cancelar" class="center" to="/listarAnimais/"/>
         </center>
       </q-card>
     </div>
@@ -73,22 +62,21 @@
 </template>
 
 <script>
-import {
-  api
-} from 'boot/axios'
+import { api } from 'boot/axios'
 
 export default {
   name: 'amostraAnimais',
+  props: [
+    'horse_id'
+  ],
   data () {
     return {
-      horse: null,
-      filesImages: null,
-      dense: false
+      horse: {}
     }
   },
   methods: {
     async getHorse (id) {
-      api.defaults.headers.authorization = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MjA3MzU0MzcsImV4cCI6MTYyMzMyNzQzNywic3ViIjoie1wiaWRcIjpcImY1ODU0OGQ2LWU5MWQtNGUwOC1iMWYyLTIyZWI4OTJhM2Y4OFwiLFwiaXNfYWRtaW5pc3RyYXRvclwiOnRydWV9In0.O923JprdiG5q2RKmzWQh41FYWV6fqM3oYVbEWAnQ-iQ'
+      api.defaults.headers.authorization = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MjEyNTE1ODEsImV4cCI6MTYyMzg0MzU4MSwic3ViIjoie1wiaWRcIjpcImU1MGMzODQyLTQ3ZGQtNGIwNi1iNzUxLWVjNGVlOWRlZDE0YVwiLFwiaXNfYWRtaW5pc3RyYXRvclwiOnRydWV9In0.VlUiuyIIN4MrocMzn4HJLt93KuWVnz7BTPYGuziUAHU'
       try {
         const response = await api.get(`/horses/${id}`)
         const birthDate = new Date(response.data.birth_date)
@@ -107,7 +95,8 @@ export default {
     }
   },
   async created () {
-    await this.getHorse('49d37b10-929b-4c05-a75c-9edefb88cab2')
+    console.log(this.$route.params.horse_id)
+    await this.getHorse(this.$route.params.horse_id)
     console.log(this.horse)
   }
 }

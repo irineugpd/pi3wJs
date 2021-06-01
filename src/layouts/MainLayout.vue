@@ -9,7 +9,7 @@
           round
           icon="menu"
           aria-label="Menu"
-          color="black"
+          color="green"
           @click="leftDrawerOpen = !leftDrawerOpen"
         />
       </q-toolbar>
