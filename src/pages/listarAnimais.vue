@@ -8,15 +8,11 @@
     <br/>
     <q-list bordered style="width:100%;">
       <!-- <q-table title="Usuários" :data="horses" :columns="columns" @row-click="onRowClick" row-key="name"/> -->
-      <q-item clickable v-ripple v-for="horse in horses" :key="horse.horses" to="">
+      <q-item clickable v-ripple v-for="horse in horses" :key="horse.id" :to="`/amostraAnimais/${horse.id}`">
         <q-item-section avatar>
           <q-avatar>
             <q-icon color="primary" name="perm_identity" />
           </q-avatar>
-        </q-item-section>
-
-        <q-item-section class="userList">
-          {{horse.id}}
         </q-item-section>
         <q-item-section class="userList">
           {{horse.name}}

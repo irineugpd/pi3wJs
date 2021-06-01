@@ -113,14 +113,38 @@ export default {
     }
   },
   methods: {
-    async register () {
-      const params = {
-        owner_id: '60a23d26-2d2b-4827-b20a-fa77385ea659'
-      }
-      const response = await api.post('/amostraAnimais', params)
+    async getVaccineHistory (horseId) {
+      try {
+        api.defaults.headers.authorization = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MjIxNDk3NjAsImV4cCI6MTYyNDc0MTc2MCwic3ViIjoie1wiaWRcIjpcImU1MGMzODQyLTQ3ZGQtNGIwNi1iNzUxLWVjNGVlOWRlZDE0YVwiLFwiaXNfYWRtaW5pc3RyYXRvclwiOnRydWV9In0.AUEMgIqN4IeeVpufVPNMGPwDVmQNr5t0_ty6sSwHwkw'
 
-      console.log(response.data)
+        const response = await api.get(`/vaccines/history/${horseId}`)
+
+        const vaccineEvents = response.data.map(vaccine => {
+          const vaccineDate = new Date(vaccine.date)
+          const year = vaccineDate.getUTCFullYear()
+          const month = vaccineDate.getUTCMonth()
+          const day = vaccineDate.getUTCDate()
+
+          return {
+            detailBtn: false,
+            id: vaccine.id,
+            vaccineName: vaccine.name,
+            description: vaccine.description,
+            diseaseType: vaccine.diseases_type,
+            vaccineDate: `${day}/${month}/${year}`
+          }
+        })
+
+        console.log(vaccineEvents)
+      } catch (e) {
+        console.log(e)
+      }
     }
+  },
+  async created () {
+    console.log('ola')
+    console.log(this.$route.params.horse_id)
+    await this.getVaccineHistory(this.$route.params.horse_id)
   }
 }
 </script>
