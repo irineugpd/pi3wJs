@@ -5,6 +5,16 @@
       <q-btn filled rounded color="cyan-10" label="Começar" class="q-px-lg shadow-24" size="20px" to="/Login" text-color="white"/>
       <div class="logo"/>
     </center>
+    <div class="logoApp">
+      <div class="q-pa-md">
+        <div class="q-col-gutter-md row items-start">
+          <q-img
+          src="/logoCSvet.png"
+          :ratio="16/9"
+          />
+        </div>
+      </div>
+    </div>
   </q-page>
 </template>
 

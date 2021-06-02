@@ -141,14 +141,11 @@ export default {
         console.log(e)
       }
     }
-<<<<<<< HEAD
-=======
   },
   async created () {
     console.log('ola')
     console.log(this.$route.params.horse_id)
     await this.getVaccineHistory(this.$route.params.horse_id)
->>>>>>> 0f9b006f595abc1d5eed40834c0e6e3417ff52d5
   }
 }
 </script>
