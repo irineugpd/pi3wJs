@@ -1,13 +1,12 @@
 <template>
   <q-page class="q-pa-md">
-      <center>
-        <h4 class="loginTitle">CONFIRMAR E-MAIL</h4>
-      </center>
       <div class="absolute-bottom q-pb-md">
         <q-form class="q-px-sm q-pb-xl">
           <q-input
+            bg-color="grey-4"
             filled
             v-model="email"
+            hint="Confirme seu e-mail"
             label="E-mail"
             class="q-pa-md"
             :rules="[val => val && val.length > 0 || 'E-mail Obrigatório!']"

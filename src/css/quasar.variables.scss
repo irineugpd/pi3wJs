@@ -25,7 +25,9 @@ $warning   : #F2C037;
 
 $btn       : #297747;
 
-
+.cardAmostraAnimais {
+  color: black;
+}
 .logo {
   background-image: url(/horselogo.jpeg);
   background-repeat: no-repeat;
@@ -54,13 +56,14 @@ $btn       : #297747;
   font-family: 'bxn';
 }
 .loginTitle {
+  text-orientation: inherit;
   font-family: 'tomorrow';
-  color: white;
+  color: black;
   font-style: bold;
-  // padding-top: 120px;
-  // padding-left: 160px;
-  text-align: center;
-  background: #00000045;
+  padding-top: 90px;
+  //padding-left: 160px;
+  text-align: left;
+  //background: #66666645;
 }
 .avatar {
   border: outset;

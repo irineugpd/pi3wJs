@@ -1,17 +1,19 @@
 <template>
   <q-page
-    class="window-height window-width row justify-center items-center"
-    style="background: white;"
+    class="justify-center items-center"
+    style="background: transparent;"
   >
     <div class="column q-pa-lg">
       <q-card square class="shadow-24" style="width:auto;height:auto;">
-        <q-card-section class="registroAnimal">
-          <h4 class="text-h5 text-white q-my-sm">Amostra de Animais:</h4>
-          <div class="absolute-bottom-right q-pr-md" style="transform: translateY(50%);">
-          </div>
-        </q-card-section>
         <center>
-          <div class="col-6">
+          <q-card-section>
+            <h4 class="text-h4 formtitle q-my-sm">Perfil do Animal</h4>
+            <div class="absolute-bottom-right q-pr-md" style="transform: translateY(50%);"/>
+            <div class="linha"></div>
+          </q-card-section>
+        </center>
+        <center>
+          <div class="col-6 q-pa-md">
             <q-img :src="`${this.horse.avatar_url}`" native-context-menu>
               <div class="absolute-bottom-right text-subtitle2">
                 {{this.horse.name}}
@@ -20,42 +22,76 @@
           </div>
         </center>
         <center>
-          <div class="q-pa-md">
-            <h5>NOME:</h5>
-            <h6>
-              {{this.horse.name}}
-            </h6>
-          </div>
-          <div class="q-pa-md">
-            <h5>PELAGEM:</h5>
-            <h6>
-              {{this.horse.fluffy}}
-            </h6>
-          </div>
-          <div class="q-pa-md">
-            <h5>DATA DE NASCIMENTO:</h5>
-            <h6>
-              {{this.horse.birth_date}}
-            </h6>
-          </div>
-          <div class="q-pa-md">
-            <h5>RAÇA DO ANIMAL:</h5>
-            <h6>
-              {{this.horse.race}}
-            </h6>
-          </div>
+          <q-list bordered padding class="rounded-borders" style="max-width: 350px">
+
+            <q-item clickable v-ripple>
+              <q-item-section avatar top>
+                <q-avatar size="sm" icon="arrow_forward_ios" color="black" text-color="white" />
+              </q-item-section>
+
+              <q-item-section class="absolute-center">
+                <q-item-label lines="1">{{this.horse.name}}</q-item-label>
+                <q-item-label caption>NOME</q-item-label>
+              </q-item-section>
+            </q-item>
+            <q-separator color="grey-4"/>
+
+            <q-item clickable v-ripple>
+              <q-item-section avatar top>
+                <q-avatar size="sm" icon="arrow_forward_ios" color="black" text-color="white" />
+              </q-item-section>
+
+              <q-item-section class="absolute-center">
+                <q-item-label lines="1">{{this.horse.fluff}}</q-item-label>
+                <q-item-label caption>PELAGEM</q-item-label>
+              </q-item-section>
+            </q-item>
+            <q-separator color="grey-4"/>
+
+            <q-item clickable v-ripple>
+              <q-item-section avatar top>
+                <q-avatar size="sm" icon="arrow_forward_ios" color="black" text-color="white" />
+              </q-item-section>
+
+              <q-item-section class="absolute-center">
+                <q-item-label lines="1">{{this.horse.birth_date}}</q-item-label>
+                <q-item-label caption>DATA DE NASCIMENTO</q-item-label>
+              </q-item-section>
+            </q-item>
+            <q-separator color="grey-4"/>
+
+            <q-item clickable v-ripple>
+              <q-item-section avatar top>
+                <q-avatar size="sm" icon="arrow_forward_ios" color="black" text-color="white" />
+              </q-item-section>
+
+              <q-item-section class="absolute-center">
+                <q-item-label lines="1">{{this.horse.race}}</q-item-label>
+                <q-item-label caption>RAÇA</q-item-label>
+              </q-item-section>
+            </q-item>
+          </q-list>
         </center>
-        <br/>
-        <center>
-          <q-btn unelevated size="lg" color="secondary" rounded label="Histórico de Vacinas" class="center" :to="`/cartaoVacina/${horse.id}`"/>
-        </center>
-        <br/>
-        <center>
-          <q-btn unelevated size="md" color="primary" filled rounded class="q-px-lg" label="Salvar perfil" @click="salvar()" />
-          <br/>
-          <br/>
-          <q-btn unelevated size="md" outline rounded color="red" label="Cancelar" class="center" to="/listarAnimais/"/>
-        </center>
+        <div class="q-py-md">
+          <center>
+            <q-btn
+                rounded
+                unelevated
+                size="md"
+                color="green-13"
+                class="text-white"
+                label="VACINAS"
+                :to="`/cartaoVacina/${horse.id}`"
+              />
+          </center>
+        </div>
+
+        <div class="q-pb-md">
+          <center>
+            <!--<q-btn unelevated size="md" color="primary" filled rounded class="q-px-lg" label="Salvar perfil" @click="salvar()" />-->
+            <q-btn unelevated size="md" outline rounded color="red" label="Cancelar" class="center" to="/listarAnimais/"/>
+          </center>
+        </div>
       </q-card>
     </div>
   </q-page>
@@ -76,7 +112,7 @@ export default {
   },
   methods: {
     async getHorse (id) {
-      api.defaults.headers.authorization = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MjEyNTE1ODEsImV4cCI6MTYyMzg0MzU4MSwic3ViIjoie1wiaWRcIjpcImU1MGMzODQyLTQ3ZGQtNGIwNi1iNzUxLWVjNGVlOWRlZDE0YVwiLFwiaXNfYWRtaW5pc3RyYXRvclwiOnRydWV9In0.VlUiuyIIN4MrocMzn4HJLt93KuWVnz7BTPYGuziUAHU'
+      api.defaults.headers.authorization = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MjI1NzY3ODUsImV4cCI6MTYyNTE2ODc4NSwic3ViIjoie1wiaWRcIjpcIjQ4NTYwMWIwLTgyZjgtNDNlOS05NWQ1LTJiNGM2NWIxNjFkOFwiLFwiaXNfYWRtaW5pc3RyYXRvclwiOnRydWV9In0.EVKk4HQKCe1NkGXnxnmGhqWq3hUlYyP7ycaRiN0wJt0'
       try {
         const response = await api.get(`/horses/${id}`)
         const birthDate = new Date(response.data.birth_date)
