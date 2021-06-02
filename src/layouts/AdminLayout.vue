@@ -47,10 +47,16 @@ import EssentialLink from 'components/EssentialLink.vue'
 
 const linksData = [
   {
-    title: 'LOGIN CS_VET APP',
-    caption: 'Login',
+    title: 'MENU',
+    caption: 'Página Principal',
+    icon: 'home',
+    link: '#/menu'
+  },
+  {
+    title: 'LISTA DE USUÁRIOS',
+    caption: 'Clientes cadastrados',
     icon: 'account_box',
-    link: '#/Login'
+    link: '#/UserList'
   },
   {
     title: 'CADASTRO ANIMAL',
@@ -69,24 +75,6 @@ const linksData = [
     caption: 'Eventos marcados',
     icon: 'event',
     link: '#/calendario'
-  },
-  {
-    title: 'AMOSTRA DE ANIMAIS',
-    caption: 'Lista de Animais',
-    icon: 'gesture',
-    link: '#/amostraAnimais'
-  },
-  {
-    title: 'CARTAO DE VACINA',
-    caption: 'Vacinas do Animal',
-    icon: 'dashboard_customize',
-    link: '#/cartaoVacina'
-  },
-  {
-    title: 'LISTA DE ANIMAIS',
-    caption: 'Perfil de Animais',
-    icon: 'list',
-    link: '#/listarAnimais'
   }
 ]
 

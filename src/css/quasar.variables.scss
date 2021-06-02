@@ -25,6 +25,24 @@ $warning   : #F2C037;
 
 $btn       : #297747;
 
+<<<<<<< HEAD
+=======
+.cardAmostraAnimais {
+  color: black;
+}
+.logo {
+  background-image: url(/horselogo.jpeg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+}
+.linha1 {
+  width: 150px;
+  border: 2px solid;
+  border-color: #080f09;
+}
+>>>>>>> 0f9b006f595abc1d5eed40834c0e6e3417ff52d5
 .linha {
   width: 150px;
   border: 2px solid;
@@ -37,17 +55,18 @@ $btn       : #297747;
   text-align: right;
 }
 .formtitle {
-  color: black; 
+  color: black;
   font-family: 'bxn';
 }
 .loginTitle {
+  text-orientation: inherit;
   font-family: 'tomorrow';
-  color: white;
+  color: black;
   font-style: bold;
-  // padding-top: 120px;
-  // padding-left: 160px;
-  text-align: center;
-  background: #00000045;
+  padding-top: 90px;
+  //padding-left: 160px;
+  text-align: left;
+  //background: #66666645;
 }
 .avatar {
   border: outset;
@@ -66,11 +85,11 @@ $btn       : #297747;
   background-attachment: fixed;
 }
 .backgroundIndex {
-  background-image: url(/backgroundIndex.png);
+  background-image: url(/backgroundIndex.jpeg);
   background-repeat: no-repeat;
-  background-size: cover;
   background-attachment: fixed;
   background-position: center;
+  background-size: cover;
 }
 .backgroundMainLayout {
   background-color: transparent !important;

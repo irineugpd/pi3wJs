@@ -1,24 +1,30 @@
 <template>
-  <q-page class="window-height window-width row justify-center items-center" style="background: white;">
-    <div class="column q-pa-lg">
+  <q-page class="justify-center items-center" style="background: white;">
+    <div class="column q-pa-sm">
       <center>
-        <h4 class="text-h5 text-black q-my-sm">Vacinas</h4>
+        <h3 class="formtitle q-my-sm">Vacinas</h3>
+        <div class="linha1"></div>
       </center>
-      <div class="col-sm row items-center q-pa-lg">
-        <q-card v-for="singleVaccine in vaccineEvents" :key="singleVaccine.vaccineDate" class="my-card2 bg-primary text-white">
+      <div class="col-sm row items-center q-pa-md">
+        <q-card v-for="singleVaccine in vaccineEvents" :key="singleVaccine.vaccineDate" class="my-card2 bg-teal-9 text-white">
           <q-card-section>
-            <div class="text-h6">{{ singleVaccine.vaccineName }}</div>
-            <div class="text-subtitle2">{{ singleVaccine.vaccineDate }}</div>
+            <center>
+              <div class="text-h6">{{ singleVaccine.vaccineName }}</div>
+              <div class="text-subtitle2">{{ singleVaccine.vaccineDate }}</div>
+              <q-separator color="white"/>
+            </center>
           </q-card-section>
 
-          <q-card-section>
-            {{ singleVaccine.diseaseType }}
+          <q-card-section class="q-pb-sm">
+            <center>
+              {{ singleVaccine.diseaseType }}
+            </center>
           </q-card-section>
 
           <q-dialog v-model="singleVaccine.detailBtn">
             <q-card>
               <q-card-section>
-                <div class="text-h6">Descrição:</div>
+                <div class="text-h6">Descrição</div>
               </q-card-section>
               <q-card-section class="q-pt-none">
                 {{ singleVaccine.description }}
@@ -31,7 +37,13 @@
 
           <q-separator dark />
           <q-card-actions vertical>
-            <q-btn flat label="Mais Detalhes" @click="singleVaccine.detailBtn=true"/>
+            <center>
+              <div class="q-gutter-sm">
+                <q-btn padding="xs" icon="list" class="bg-grey-10" @click="singleVaccine.detailBtn=true"/>
+                <q-btn padding="xs" icon="edit" class="bg-grey-10"/>
+                <q-btn padding="xs" icon="delete" class="bg-grey-10"/>
+              </div>
+            </center>
           </q-card-actions>
         </q-card>
       </div>
@@ -102,14 +114,41 @@ export default {
     }
   },
   methods: {
-    async register () {
-      const params = {
-        owner_id: '60a23d26-2d2b-4827-b20a-fa77385ea659'
-      }
-      const response = await api.post('/amostraAnimais', params)
+    async getVaccineHistory (horseId) {
+      try {
+        api.defaults.headers.authorization = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MjIxNDk3NjAsImV4cCI6MTYyNDc0MTc2MCwic3ViIjoie1wiaWRcIjpcImU1MGMzODQyLTQ3ZGQtNGIwNi1iNzUxLWVjNGVlOWRlZDE0YVwiLFwiaXNfYWRtaW5pc3RyYXRvclwiOnRydWV9In0.AUEMgIqN4IeeVpufVPNMGPwDVmQNr5t0_ty6sSwHwkw'
 
-      console.log(response.data)
+        const response = await api.get(`/vaccines/history/${horseId}`)
+
+        const vaccineEvents = response.data.map(vaccine => {
+          const vaccineDate = new Date(vaccine.date)
+          const year = vaccineDate.getUTCFullYear()
+          const month = vaccineDate.getUTCMonth()
+          const day = vaccineDate.getUTCDate()
+
+          return {
+            detailBtn: false,
+            id: vaccine.id,
+            vaccineName: vaccine.name,
+            description: vaccine.description,
+            diseaseType: vaccine.diseases_type,
+            vaccineDate: `${day}/${month}/${year}`
+          }
+        })
+
+        console.log(vaccineEvents)
+      } catch (e) {
+        console.log(e)
+      }
     }
+<<<<<<< HEAD
+=======
+  },
+  async created () {
+    console.log('ola')
+    console.log(this.$route.params.horse_id)
+    await this.getVaccineHistory(this.$route.params.horse_id)
+>>>>>>> 0f9b006f595abc1d5eed40834c0e6e3417ff52d5
   }
 }
 </script>

@@ -9,7 +9,7 @@
           round
           icon="menu"
           aria-label="Menu"
-          color="green"
+          color="black"
           @click="leftDrawerOpen = !leftDrawerOpen"
         />
       </q-toolbar>
@@ -26,7 +26,7 @@
           header
           class="text-grey-8"
         >
-          Links Rápidos
+          CS.VET
         </q-item-label>
         <EssentialLink
           v-for="link in essentialLinks"

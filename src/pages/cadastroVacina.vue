@@ -4,67 +4,74 @@
   >
     <div class="column q-pa-lg">
         <center>
-            <h4 class="q-my-sm formtitle">Cadastro de Vacina</h4>
+            <h4 class="q-my-sm formtitle">Vacina</h4>
             <div class="linha"></div>
         </center>
           <div class="text-center q-pa-sm">
             <q-form class="q-px-sm q-pb-lg">
               <q-input
                 class="q-pa-md"
+                bg-color="grey-4"
                 rounded
                 filled
                 v-model="name"
-                placeholder="Nome da Vacina"
+                hint="Nome da Vacina"
                 type="name"
                 color="teal-10"
                 :rules="[val => val && val.length > 0 || 'Campo Obrigatório']"
               />
               <q-input
+                bg-color="grey-4"
                 class="q-pa-md"
                 filled
                 rounded
                 v-model="diseases_type"
-                placeholder="Doença a ser tratada"
+                hint="Doença a ser tratada"
                 type="name"
                 color="teal-10"
                 :rules="[val => val && val.length > 0 || 'Campo Obrigatório']"
               />
               <q-input
+                bg-color="grey-4"
                 class="q-pa-md"
                 filled
                 rounded
+                hint="Data de aplicação"
                 v-model="first_date"
                 type="date"
                 color="white"
                 :rules="[val => val && val.length > 0 || 'Campo Obrigatório']"
               />
               <q-input
+                bg-color="grey-4"
                 class="q-pa-md"
                 filled
                 rounded
                 v-model="number_of_doses"
                 type="number"
-                label="Qtde. de aplicações:"
+                hint="Quantidade de aplicações:"
                 color="teal-10"
                 :rules="[val => val && val.length > 0 || 'Campo Obrigatório']"
               />
               <q-input
+                bg-color="grey-4"
                 class="q-pa-md"
                 filled
                 rounded
                 v-model="period_days_bettwen_doses"
                 type="number"
-                label="Dias entre aplicações:"
+                hint="Dias entre aplicações:"
                 color="teal-10"
                 :rules="[val => val && val.length > 0 || 'Campo Obrigatório']"
               />
               <q-input
+                bg-color="grey-4"
                 class="q-pa-md"
                 filled
                 rounded
                 v-model="description"
                 type="text"
-                placeholder="Descrição"
+                hint="Descrição"
                 color="teal-10"
                 :rules="[val => val && val.length > 0 || 'Campo Obrigatório']"
               />
@@ -76,7 +83,7 @@
               size="lg"
               color="green-13"
               class="full-width text-white"
-              label="Registrar"
+              label="Cadastrar"
               @click="register()"
             />
           <q-card-section class="text-center q-pa-sm">

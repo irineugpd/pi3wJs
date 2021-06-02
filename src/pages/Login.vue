@@ -1,11 +1,12 @@
 <template>
   <q-page class="q-pa-md">
       <center>
-        <h4 class="loginTitle">SEJA<br/>BEM VINDO!</h4>
+        <!--<h4 class="loginTitle">SEJA<br/>BEM VINDO!</h4>-->
       </center>
       <div class="absolute-bottom q-pb-md">
         <q-form class="q-px-sm q-pb-xl">
           <q-input
+            bg-color="grey-4"
             filled
             v-model="email"
             label="E-mail"
@@ -18,6 +19,7 @@
             </template>
           </q-input>
           <q-input
+            bg-color="grey-4"
             v-model="password"
             filled :type="isPwd ? 'password' : 'text'"
             label="Senha"
