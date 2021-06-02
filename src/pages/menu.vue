@@ -60,8 +60,7 @@
             </q-item-section>
           </div>
         </q-item>
-
-        <q-separator />
+        <q-separator/>
       </q-card>
     </div>
   </q-page>

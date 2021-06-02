@@ -110,11 +110,6 @@ export default {
 
       console.log(response.data)
     }
-  },
-  computed: {
-    getDescription () {
-      return this.vaccineOptions.map(option => option.description)
-    }
   }
 }
 </script>

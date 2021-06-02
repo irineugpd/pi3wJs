@@ -1,25 +1,39 @@
 <template>
-  <q-page class="window-height window-width row justify-center items-center" style="background: white;">
-    <div class="column q-pa-lg">
-      <center>
-        <h4 class="text-h5 text-black q-my-sm q-pt-lg absolute-top">Listar Animais</h4>
-      </center>
-      <q-card class="my-card">
-        <q-card-section>
-          <div class="text-h6">Perfis dos Animais</div>
-          <div class="text-subtitle2">by John Doe</div>
-        </q-card-section>
-    <q-separator />
-        <q-card-actions vertical>
-          <q-btn flat to="/amostraAnimais/06c2ff10-cd7b-4374-b061-fd58120eecd">Perfil 1</q-btn>
-          <q-btn flat to="/amostraAnimais/30d6ef0a-b82b-42b5-a9d9-717ddc99919b">Perfil 2</q-btn>
-          <q-btn flat to="/amostraAnimais/a768b60e-e97b-4335-ba3e-01bd1f51ceeb">Perfil 3</q-btn>
-          <q-btn flat to="/amostraAniamis/07933137-4481-4fee-a094-590ea80e80a2">Perfil 4</q-btn>
-          <q-btn flat to="/amostraAnimais/81165ad8-9b05-485a-b328-723de4210fcb">Perfil 5</q-btn>
-        </q-card-actions>
-      </q-card>
-    </div>
-  </q-page>
+  <div class="q-pa-md">
+    <center>
+      <h4 class="q-my-sm formtitle">Lista de Animais</h4>
+      <div class="linha"></div>
+    </center>
+    <br/>
+    <br/>
+    <q-list bordered style="width:100%;">
+      <!-- <q-table title="Usuários" :data="horses" :columns="columns" @row-click="onRowClick" row-key="name"/> -->
+      <q-item clickable v-ripple v-for="horse in horses" :key="horse.horses" to="">
+        <q-item-section avatar>
+          <q-avatar>
+            <q-icon color="primary" name="perm_identity" />
+          </q-avatar>
+        </q-item-section>
+
+        <q-item-section class="userList">
+          {{horse.id}}
+        </q-item-section>
+        <q-item-section class="userList">
+          {{horse.name}}
+        </q-item-section>
+        <q-item-section class="userList">
+          {{horse.race}}
+        </q-item-section>
+        <q-item-section class="userList">
+          {{horse.birth_date}}
+        </q-item-section>
+        <q-item-section class="userList">
+          {{horse.pelagem}}
+        </q-item-section>
+      </q-item>
+      <q-separator />
+    </q-list>
+  </div>
 </template>
 
 <script>
@@ -28,24 +42,59 @@ import {
 } from 'boot/axios'
 
 export default {
-  name: 'listarAnimais',
+  name: 'horseList',
   data () {
     return {
+      // columns: [
+      //   {
+      //     name: 'id',
+      //     label: 'Cliente',
+      //     field: 'id',
+      //     align: 'left'
+      //   },
+      //   {
+      //     name: 'name',
+      //     required: true,
+      //     label: 'Nome',
+      //     field: row => row.name,
+      //     format: val => `${val}`,
+      //     sortable: true
+      //   },
+      //   { name: 'phone_number', label: 'Contato', field: 'phone_number' },
+      //   { name: 'address', label: 'Endereço', field: 'address' },
+      //   { name: 'email', label: 'E-Mail', field: 'email' }
+      // ],
+      horses: [
+        {
+          id: 'd34abcd4-a379-41db-8524-5c45c2b4f79f',
+          name: 'Alasão',
+          pelagem: 'Branco',
+          race: 'Pangaré',
+          birth_date: '19/05/2020'
+        },
+        {
+          id: 'd34abcd4-a379-41db-8524-5c45c2b4f79f',
+          name: 'Alasão 2',
+          pelagem: 'Branco',
+          race: 'Pangaré',
+          birth_date: '21/05/2020'
+        }
+      ]
     }
   },
   methods: {
-    async register () {
-      const params = {
-        owner_id: '60a23d26-2d2b-4827-b20a-fa77385ea659'
-      }
-      const response = await api.post('/listarAnimais', params)
+    // onRowClick (evt, row) {
+    //   console.log('clicked on', row)
+    // },
 
-      console.log(response.data)
-    }
-  },
-  computed: {
-    getDescription () {
-      return this.horseOptions.map(option => option.description)
+    async getHorseList () {
+      api.defaults.headers.authorization = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MjA3MzU0MzcsImV4cCI6MTYyMzMyNzQzNywic3ViIjoie1wiaWRcIjpcImY1ODU0OGQ2LWU5MWQtNGUwOC1iMWYyLTIyZWI4OTJhM2Y4OFwiLFwiaXNfYWRtaW5pc3RyYXRvclwiOnRydWV9In0.O923JprdiG5q2RKmzWQh41FYWV6fqM3oYVbEWAnQ-iQ'
+      try {
+        const response = await api.get('/horses/list')
+        this.horses = response.data
+      } catch (e) {
+        console.log(e)
+      }
     }
   }
 }

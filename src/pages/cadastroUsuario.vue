@@ -1,8 +1,8 @@
 <template>
   <q-page class="q-pa-md">
-      <!--<center>
-        <h4 class="loginTitle">USUÁRIO</h4>
-      </center>-->
+      <center>
+        <h4 class="loginTitle">CADASTRO DE USUÁRIO</h4>
+      </center>
       <div class="absolute-bottom q-pb-md">
         <q-form class="q-px-sm q-pb-xl">
           <q-input
