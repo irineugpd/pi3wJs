@@ -35,7 +35,7 @@ const routes = [
       { path: '/cadastroVacina', component: () => import('pages/cadastroVacina.vue') },
       { path: '/cadastroAnimais', component: () => import('pages/cadastroAnimais.vue') },
       { path: '/cadastroAgenda', component: () => import('pages/cadastroAgenda.vue') },
-      { path: '/menu', component: () => import('pages/menu.vue') },
+      { path: '/menuAdmin', component: () => import('src/pages/menuAdmin.vue') },
       { path: '/UserList', component: () => import('src/pages/UserList.vue') }
     ]
   },
