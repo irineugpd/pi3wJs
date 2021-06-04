@@ -6,7 +6,7 @@
         <div class="linha1"></div>
       </center>
       <div class="col-sm row items-center q-pa-md">
-        <q-card v-for="singleVaccine in vaccineEvents" :key="singleVaccine.vaccineDate" class="my-card2 bg-teal-9 text-white">
+        <q-card v-for="singleVaccine in vaccineEvents" :key="singleVaccine.id" class="my-card2 bg-teal-9 text-white">
           <q-card-section>
             <center>
               <div class="text-h6">{{ singleVaccine.vaccineName }}</div>
@@ -41,7 +41,7 @@
               <div class="q-gutter-sm">
                 <q-btn padding="xs" icon="list" class="bg-grey-10" @click="singleVaccine.detailBtn=true"/>
                 <q-btn padding="xs" icon="edit" class="bg-grey-10"/>
-                <q-btn padding="xs" icon="delete" class="bg-grey-10"/>
+                <q-btn padding="xs" icon="delete" class="bg-grey-10" @click="deleteVaccine(singleVaccine.id, singleVaccine.user_id, singleVaccine.horse_id)"/>
               </div>
             </center>
           </q-card-actions>
@@ -55,80 +55,33 @@
 import {
   api
 } from 'boot/axios'
+import { LocalStorage } from 'quasar'
 
 export default {
   name: 'cartaoVacina',
   data () {
     return {
-      vaccineEvents: [
-        {
-          detailBtn: false,
-          vaccineName: 'Vacina 1',
-          description: 'Descrição 1',
-          diseaseType: 'Doença 1',
-          vaccineDate: '08/05/2021'
-        },
-        {
-          detailBtn: false,
-          vaccineName: 'Vacina 2',
-          description: 'Descrição 2',
-          diseaseType: 'Doença 2',
-          vaccineDate: '09/05/2021'
-        },
-        {
-          detailBtn: false,
-          vaccineName: 'Vacina 3',
-          description: 'Descrição 3',
-          diseaseType: 'Doença 3',
-          vaccineDate: '10/05/2021'
-        },
-        {
-          detailBtn: false,
-          vaccineName: 'Vacina 4',
-          description: 'Descrição 4',
-          diseaseType: 'Doença 4',
-          vaccineDate: '11/05/2021'
-        },
-        {
-          detailBtn: false,
-          vaccineName: 'Vacina 5',
-          description: 'Descrição 5',
-          diseaseType: 'Doença 5',
-          vaccineDate: '12/05/2021'
-        },
-        {
-          detailBtn: false,
-          vaccineName: 'Vacina 6',
-          description: 'Descrição 6',
-          diseaseType: 'Doença 6',
-          vaccineDate: '13/05/2021'
-        },
-        {
-          detailBtn: false,
-          vaccineName: 'Vacina 7',
-          description: 'Descrição 7',
-          diseaseType: 'Doença 7',
-          vaccineDate: '14/05/2021'
-        }
-      ]
+      vaccineEvents: []
     }
   },
   methods: {
     async getVaccineHistory (horseId) {
       try {
-        api.defaults.headers.authorization = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MjIxNDk3NjAsImV4cCI6MTYyNDc0MTc2MCwic3ViIjoie1wiaWRcIjpcImU1MGMzODQyLTQ3ZGQtNGIwNi1iNzUxLWVjNGVlOWRlZDE0YVwiLFwiaXNfYWRtaW5pc3RyYXRvclwiOnRydWV9In0.AUEMgIqN4IeeVpufVPNMGPwDVmQNr5t0_ty6sSwHwkw'
+        api.defaults.headers.authorization = `Bearer ${JSON.parse(LocalStorage.getItem('@AppCamila:Token'))}`
 
         const response = await api.get(`/vaccines/history/${horseId}`)
 
         const vaccineEvents = response.data.map(vaccine => {
           const vaccineDate = new Date(vaccine.date)
           const year = vaccineDate.getUTCFullYear()
-          const month = vaccineDate.getUTCMonth()
-          const day = vaccineDate.getUTCDate()
+          const month = String(vaccineDate.getUTCMonth()).padStart(2, '0')
+          const day = String(vaccineDate.getUTCDate()).padStart(2, '0')
 
           return {
             detailBtn: false,
             id: vaccine.id,
+            user_id: vaccine.user_id,
+            horse_id: vaccine.horse_id,
             vaccineName: vaccine.name,
             description: vaccine.description,
             diseaseType: vaccine.diseases_type,
@@ -136,15 +89,28 @@ export default {
           }
         })
 
-        console.log(vaccineEvents)
+        this.vaccineEvents = vaccineEvents
       } catch (e) {
-        console.log(e)
+        this.$q.notify({
+          type: 'negative',
+          message: 'Erro ao obter o histŕico de vacinas, tente novamente!'
+        })
+      }
+    },
+    async deleteVaccine (vaccinId, userId, horseId) {
+      try {
+        await api.delete(`/vaccines?user_id=${userId}&vaccine_id=${vaccinId}&horse_id=${horseId}`)
+
+        await this.getVaccineHistory(this.$route.params.horse_id)
+      } catch (e) {
+        this.$q.notify({
+          type: 'negative',
+          message: 'Erro ao deletar a vacina, tente novamente!'
+        })
       }
     }
   },
   async created () {
-    console.log('ola')
-    console.log(this.$route.params.horse_id)
     await this.getVaccineHistory(this.$route.params.horse_id)
   }
 }

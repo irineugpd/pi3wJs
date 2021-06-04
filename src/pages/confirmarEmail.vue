@@ -41,16 +41,24 @@ export default {
   methods: {
     async confirmar () {
       if (this.email.length > 0) {
-        this.$q.notify({
-          type: 'positive',
-          message: 'Solicitação enviada com sucesso!',
-          position: 'top'
-        })
-        const params = {
-          email: this.email
+        try {
+          const params = {
+            email: this.email
+          }
+          await api.post('/password/forgot', params)
+
+          this.$q.notify({
+            type: 'positive',
+            message: 'Solicitação enviada com sucesso!',
+            position: 'top'
+          })
+        } catch (e) {
+          this.$q.notify({
+            type: 'negative',
+            message: 'Solicitação não enviada, verifique o e-mail e tente novamente.',
+            position: 'top'
+          })
         }
-        const response = await api.post('/confirmarEmail', params)
-        console.log(response.data)
       } else {
         this.$q.notify({
           type: 'negative',

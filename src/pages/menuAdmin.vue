@@ -14,7 +14,7 @@
           </q-item-section>
           <div class="q-pl-xl q-pa-sm q-gutter-md">
             <q-item-section>
-              <q-btn rounded color="green-13" icon="add" to="/cadastroAnimais"/>
+              <q-btn rounded color="green-13" icon="add" to="/UserList"/>
             </q-item-section>
           </div>
         </q-item>

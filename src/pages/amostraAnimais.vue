@@ -89,7 +89,7 @@
         <div class="q-pb-md">
           <center>
             <!--<q-btn unelevated size="md" color="primary" filled rounded class="q-px-lg" label="Salvar perfil" @click="salvar()" />-->
-            <q-btn unelevated size="md" outline rounded color="red" label="Cancelar" class="center" to="/listarAnimais/"/>
+            <q-btn unelevated size="md" outline rounded color="red" label="Cancelar" class="center" :to="`/listarAnimais/${this.horse.owner_id}`"/>
           </center>
         </div>
       </q-card>
@@ -99,6 +99,7 @@
 
 <script>
 import { api } from 'boot/axios'
+import { LocalStorage } from 'quasar'
 
 export default {
   name: 'amostraAnimais',
@@ -112,7 +113,7 @@ export default {
   },
   methods: {
     async getHorse (id) {
-      api.defaults.headers.authorization = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MjI1NzY3ODUsImV4cCI6MTYyNTE2ODc4NSwic3ViIjoie1wiaWRcIjpcIjQ4NTYwMWIwLTgyZjgtNDNlOS05NWQ1LTJiNGM2NWIxNjFkOFwiLFwiaXNfYWRtaW5pc3RyYXRvclwiOnRydWV9In0.EVKk4HQKCe1NkGXnxnmGhqWq3hUlYyP7ycaRiN0wJt0'
+      api.defaults.headers.authorization = `Bearer ${JSON.parse(LocalStorage.getItem('@AppCamila:Token'))}`
       try {
         const response = await api.get(`/horses/${id}`)
         const birthDate = new Date(response.data.birth_date)

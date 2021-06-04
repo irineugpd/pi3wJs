@@ -47,6 +47,7 @@
 import {
   api
 } from 'boot/axios'
+import { LocalStorage } from 'quasar'
 
 export default {
 
@@ -59,14 +60,26 @@ export default {
   },
   methods: {
     async login () {
-      if (this.email.length && this.password.length > 0) {
+      if (this.email.length > 0 && this.password.length > 0) {
         const params = {
           email: this.email,
           password: this.password
         }
-        const response = await api.post('/users', params)
 
-        console.log(response.data)
+        try {
+          const response = await api.post('/sessions', params)
+
+          LocalStorage.set('@AppCamila:User', JSON.stringify(response.data.user))
+          LocalStorage.set('@AppCamila:Token', JSON.stringify(response.data.token))
+
+          this.$router.push('/menu')
+        } catch (e) {
+          console.log(e)
+          this.$q.notify({
+            type: 'negative',
+            message: 'Email ou senha incorretos, tente novamente!'
+          })
+        }
       } else {
         this.$q.notify({
           type: 'negative',
