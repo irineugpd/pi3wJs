@@ -19,6 +19,7 @@
 </template>
 
 <script>
+import helper from 'src/utils/helper.vue'
 export default {
   data () {
     return {
@@ -42,6 +43,9 @@ export default {
         this.email = data
       })
     }
+  },
+  created () {
+    helper.verifyIsAuthenticated()
   }
 }
 </script>

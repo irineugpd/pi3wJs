@@ -49,6 +49,7 @@
           />
           <q-input
             bg-color="grey-4"
+            v-model="avatar"
             @input="val => { file = val[0] }"
             filled
             rounded
@@ -78,6 +79,7 @@
 import {
   api
 } from 'boot/axios'
+import { LocalStorage } from 'quasar'
 
 export default {
   name: 'cadastroAnimal',
@@ -92,6 +94,7 @@ export default {
   },
   methods: {
     async register () {
+      console.log(this.avatar)
       if (this.name.length && this.race.length && this.birth_date.length && this.fluff.length > 0) {
         const data = new FormData()
         data.append('name', this.name)
@@ -99,9 +102,9 @@ export default {
         data.append('fluff', this.fluff)
         data.append('birth_date', this.birth_date)
         data.append('race', this.race)
-        // data.append('avatar', this.avatar)
+        data.append('avatar', this.avatar)
         try {
-          api.defaults.headers.authorization = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MjI1NzY3ODUsImV4cCI6MTYyNTE2ODc4NSwic3ViIjoie1wiaWRcIjpcIjQ4NTYwMWIwLTgyZjgtNDNlOS05NWQ1LTJiNGM2NWIxNjFkOFwiLFwiaXNfYWRtaW5pc3RyYXRvclwiOnRydWV9In0.EVKk4HQKCe1NkGXnxnmGhqWq3hUlYyP7ycaRiN0wJt0'
+          api.defaults.headers.authorization = `Bearer ${JSON.parse(LocalStorage.getItem('@AppCamila:Token'))}`
           const response = await api.post('/horses', data)
           console.log(response)
           this.$q.notify({
@@ -111,7 +114,7 @@ export default {
         } catch (e) {
           this.$q.notify({
             type: 'negative',
-            message: 'Animal não cadastrado, verifique os campos e tente novamente!'
+            message: 'Animal não encontrado, tente novamente mais tarde!'
           })
         }
       }
