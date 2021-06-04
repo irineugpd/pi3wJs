@@ -55,6 +55,7 @@
             class="q-pa-md"
             type="file"
             hint="Foto do Animal"
+            v-model="avatar"
           />
         </q-form>
         <!--<div class="q-px-lg">-->
