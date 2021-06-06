@@ -1,17 +1,7 @@
 <template>
-  <q-page
-    class="justify-center items-center"
-    style="background: transparent;"
-  >
-    <div class="column q-pa-lg">
-      <q-card square class="shadow-24" style="width:auto;height:auto;">
-        <center>
-          <q-card-section>
-            <h4 class="text-h4 formtitle q-my-sm">Menu</h4>
-            <div class="absolute-bottom-right q-pr-md" style="transform: translateY(50%);"/>
-            <div class="linha"></div>
-          </q-card-section>
-        </center>
+  <q-page class="items-center justify-center">
+    <div class="q-pa-md justify-center items-center q-gutter-md">
+      <q-card class="my-card" flat bordered>
         <q-item>
           <q-item-section avatar>
             <q-avatar>
@@ -24,12 +14,15 @@
           </q-item-section>
           <div class="q-pl-xl q-pa-sm q-gutter-md">
             <q-item-section>
-              <q-btn rounded color="green-13" icon="add" to="/UserList"/>
+              <q-btn rounded color="green-13" icon="add" to="/cadastroAnimais"/>
             </q-item-section>
           </div>
         </q-item>
-        <q-separator />
 
+        <q-separator />
+      </q-card>
+
+      <q-card class="my-card" flat bordered>
         <q-item>
           <q-item-section avatar>
             <q-avatar>
@@ -42,12 +35,15 @@
           </q-item-section>
           <div class="q-pl-xl q-pa-sm q-gutter-md">
             <q-item-section>
-              <q-btn rounded color="green-13" icon="add" to="/Userlist"/>
+              <q-btn rounded color="green-13" icon="add" to="/cadastroVacina"/>
             </q-item-section>
           </div>
         </q-item>
-        <q-separator />
 
+        <q-separator />
+      </q-card>
+
+      <q-card class="my-card" flat bordered>
         <q-item>
           <q-item-section avatar>
             <q-avatar>
@@ -60,20 +56,23 @@
           </q-item-section>
           <div class="q-pl-xl q-pa-sm q-gutter-md">
             <q-item-section>
-              <q-btn rounded color="green-13" icon="add" to="/Userlist"/>
+              <q-btn rounded color="green-13" icon="add" to="/cadastroAgenda"/>
             </q-item-section>
           </div>
         </q-item>
+        <q-separator/>
       </q-card>
     </div>
-    <center>
-      <text-overline style="color: gray" size="11px" class="absolute-botttom">CS.VET</text-overline>
-    </center>
   </q-page>
 </template>
 
 <script>
 export default {
-  name: 'AdminDashboard'
+  name: 'menu',
+  data () {
+    return {
+      lorem: 'text'
+    }
+  }
 }
 </script>

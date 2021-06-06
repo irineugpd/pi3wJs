@@ -1,16 +1,17 @@
 <script>
 import { api } from 'src/boot/axios'
+import { LocalStorage } from 'quasar'
 export default {
   methods: {
     verifyIsAuthenticated () {
-      const user = JSON.parse(this.$q.localStorage.getItem('@AppCamila:User'))
-      const token = JSON.parse(this.$q.localStorage.getItem('@AppCamila:Token'))
+      const user = JSON.parse(LocalStorage.getItem('@AppCamila:User'))
+      const token = JSON.parse(LocalStorage.getItem('@AppCamila:Token'))
 
       if (user && token) {
         api.defaults.headers.authorization = `Bearer ${token}`
-        this.$router.push('/menu')
+        return true
       } else {
-        this.$router.push('/login')
+        return false
       }
     }
   }

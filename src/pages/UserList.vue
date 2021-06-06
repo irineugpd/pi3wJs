@@ -27,7 +27,7 @@
           </center>
         </q-item-section>
       </q-item>
-      <q-separator />
+      <q-separator/>
     </q-list>
   </div>
 </template>

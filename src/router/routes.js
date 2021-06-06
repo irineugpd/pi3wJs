@@ -24,8 +24,8 @@ const routes = [
       { path: '/calendario', component: () => import('pages/calendario.vue') },
       // { path: '/resetAdm', component: () => import('pages/resetAdm.vue') },
       { path: '/cartaoVacina/:horse_id', component: () => import('pages/cartaoVacina.vue'), props: true },
-      { path: '/listarAnimais/', component: () => import('pages/listarAnimais.vue') },
-      { path: '/UserDashboard', component: () => import('pages/UserDashboard.vue') }
+      { path: '/UserDashboard', component: () => import('pages/UserDashboard.vue') },
+      { path: '/listarAnimais/:owner_id', component: () => import('pages/listarAnimais.vue'), props: true }
     ]
   },
   {
