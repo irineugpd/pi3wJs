@@ -72,7 +72,9 @@ export default {
           LocalStorage.set('@AppCamila:User', JSON.stringify(response.data.user))
           LocalStorage.set('@AppCamila:Token', JSON.stringify(response.data.token))
 
-          if (response.data.token.is_administrator) {
+          console.log(response.data.user.is_administrator)
+
+          if (response.data.user.is_administrator) {
             this.$router.push('/AdminDashboard')
           } else {
             this.$router.push('/UserDashboard')

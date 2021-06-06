@@ -72,24 +72,37 @@
             </q-item>
           </q-list>
         </center>
-        <div class="q-py-md">
+        <div class="q-py-sm">
           <center>
             <q-btn
-                rounded
-                unelevated
-                size="md"
-                color="green-13"
-                class="text-white"
-                label="VACINAS"
-                :to="`/cartaoVacina/${horse.id}`"
+              rounded
+              unelevated
+              size="md"
+              color="green-13"
+              class="text-black"
+              label="VACINAS"
+              :to="`/cartaoVacina/${horse.id}`"
+              />
+          </center>
+        </div>
+        <div class="q-py-sm">
+          <center>
+            <q-btn
+              rounded
+              unelevated
+              size="md"
+              color="green-13"
+              class="text-black"
+              label="CADASTRAR VACINAS"
+              :to="`/cadastroVacina/${horse.id}`"
               />
           </center>
         </div>
 
-        <div class="q-pb-md">
+        <div class="q-py-sm">
           <center>
             <!--<q-btn unelevated size="md" color="primary" filled rounded class="q-px-lg" label="Salvar perfil" @click="salvar()" />-->
-            <q-btn unelevated size="md" outline rounded color="red" label="Cancelar" class="center" :to="`/listarAnimais/${this.horse.owner_id}`"/>
+            <q-btn unelevated size="md" outline rounded color="red" label="Voltar" class="center" :to="`/listarAnimais/${this.horse.owner_id}`"/>
           </center>
         </div>
       </q-card>
