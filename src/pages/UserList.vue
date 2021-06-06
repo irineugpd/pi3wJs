@@ -53,12 +53,16 @@ export default {
     async getUserList () {
       api.defaults.headers.authorization = `Bearer ${JSON.parse(LocalStorage.getItem('@AppCamila:Token'))}`
       try {
-        const response = await api.get('/users/')
+        const response = await api.get('/users/list')
         this.users = response.data
+        console.log(response.data)
       } catch (e) {
         console.log(e)
       }
     }
+  },
+  async created () {
+    await this.getUserList()
   }
 }
 </script>

@@ -1,7 +1,7 @@
 <template>
   <div class="q-pa-md">
     <center>
-      <h4 class="q-my-sm formtitle">Lista de Animais</h4>
+      <h4 class="q-my-sm formtitle">Animais</h4>
       <div class="linha"></div>
     </center>
     <br/>
@@ -11,20 +11,16 @@
       <q-item clickable v-ripple v-for="horse in horses" :key="horse.id" :to="`/amostraAnimais/${horse.id}`">
         <q-item-section avatar>
           <q-avatar>
-            <q-icon color="primary" name="perm_identity" />
+            <font-awesome-icon icon="horse-head" />
           </q-avatar>
         </q-item-section>
         <q-item-section class="userList">
           {{horse.name}}
+          <q-item-label caption>Nome</q-item-label>
         </q-item-section>
         <q-item-section class="userList">
           {{horse.race}}
-        </q-item-section>
-        <q-item-section class="userList">
-          {{horse.birth_date}}
-        </q-item-section>
-        <q-item-section class="userList">
-          {{horse.pelagem}}
+          <q-item-label caption>Raça</q-item-label>
         </q-item-section>
       </q-item>
       <q-separator />

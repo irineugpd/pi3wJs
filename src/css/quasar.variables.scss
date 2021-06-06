@@ -24,7 +24,9 @@ $info      : #31CCEC;
 $warning   : #F2C037;
 
 $btn       : #297747;
-
+.separator {
+  padding-right: 10px;
+}
 .my-card {
   width: 100%;
   max-width: 350px;
@@ -79,7 +81,7 @@ $btn       : #297747;
   border: outset;
 }
 .userList{
-  margin-right: 100px;
+  margin-right: 10px;
 }
 .buttonFont {
   font-family: 'tomorrow';

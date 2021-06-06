@@ -1,9 +1,17 @@
+/* eslint-disable no-new */
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faUserSecret } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import routes from './routes'
 
 Vue.use(VueRouter)
+library.add(faUserSecret)
+
+Vue.component('font-awesome-icon', FontAwesomeIcon)
+
+Vue.config.productionTip = false
 
 /*
  * If not building with SSR mode, you can
