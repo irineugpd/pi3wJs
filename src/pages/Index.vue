@@ -45,7 +45,11 @@ export default {
     }
   },
   created () {
-    helper.verifyIsAuthenticated()
+    if (helper.methods.verifyIsAuthenticated()) {
+      this.$router.push('/menu')
+    } else {
+      this.$router.push('/login')
+    }
   }
 }
 </script>
