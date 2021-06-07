@@ -1,11 +1,11 @@
 <script>
 import { api } from 'src/boot/axios'
-import { LocalStorage } from 'quasar'
 export default {
   methods: {
     verifyIsAuthenticated () {
-      const user = JSON.parse(LocalStorage.getItem('@AppCamila:User'))
-      const token = JSON.parse(LocalStorage.getItem('@AppCamila:Token'))
+      var storage = window.localStorage
+      const user = JSON.parse(storage.getItem('@AppCamila:User'))
+      const token = JSON.parse(storage.getItem('@AppCamila:Token'))
 
       if (user && token) {
         api.defaults.headers.authorization = `Bearer ${token}`

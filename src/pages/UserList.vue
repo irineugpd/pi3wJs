@@ -36,7 +36,6 @@
 import {
   api
 } from 'boot/axios'
-import { LocalStorage } from 'quasar'
 
 export default {
   name: 'UserList',
@@ -52,7 +51,8 @@ export default {
     // },
 
     async getUserList () {
-      api.defaults.headers.authorization = `Bearer ${JSON.parse(LocalStorage.getItem('@AppCamila:Token'))}`
+      var storage = window.localStorage
+      api.defaults.headers.authorization = `Bearer ${JSON.parse(storage.getItem('@AppCamila:Token'))}`
       try {
         const response = await api.get('/users/list')
         this.users = response.data

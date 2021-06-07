@@ -47,7 +47,6 @@
 import {
   api
 } from 'boot/axios'
-import { LocalStorage } from 'quasar'
 
 export default {
 
@@ -69,10 +68,10 @@ export default {
         try {
           const response = await api.post('/sessions', params)
 
-          LocalStorage.set('@AppCamila:User', JSON.stringify(response.data.user))
-          LocalStorage.set('@AppCamila:Token', JSON.stringify(response.data.token))
+          var storage = window.localStorage
 
-          console.log(response.data.user.is_administrator)
+          storage.setItem('@AppCamila:User', JSON.stringify(response.data.user))
+          storage.setItem('@AppCamila:Token', JSON.stringify(response.data.token))
 
           if (response.data.user.is_administrator) {
             this.$router.push('/AdminDashboard')

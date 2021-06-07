@@ -78,7 +78,6 @@
 import {
   api
 } from 'boot/axios'
-import { LocalStorage } from 'quasar'
 
 export default {
   name: 'cadastroAnimal',
@@ -93,7 +92,7 @@ export default {
   },
   methods: {
     async register () {
-      console.log(this.avatar)
+      var storage = window.localStorage
       if (this.name.length && this.race.length && this.birth_date.length && this.fluff.length > 0) {
         const data = new FormData()
         data.append('name', this.name)
@@ -103,7 +102,7 @@ export default {
         data.append('race', this.race)
         data.append('avatar', this.avatar)
         try {
-          api.defaults.headers.authorization = `Bearer ${JSON.parse(LocalStorage.getItem('@AppCamila:Token'))}`
+          api.defaults.headers.authorization = `Bearer ${JSON.parse(storage.getItem('@AppCamila:Token'))}`
           const response = await api.post('/horses', data)
           console.log(response)
           this.$q.notify({

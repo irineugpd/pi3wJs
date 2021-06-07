@@ -112,7 +112,6 @@
 
 <script>
 import { api } from 'boot/axios'
-import { LocalStorage } from 'quasar'
 
 export default {
   name: 'amostraAnimais',
@@ -126,7 +125,9 @@ export default {
   },
   methods: {
     async getHorse (id) {
-      api.defaults.headers.authorization = `Bearer ${JSON.parse(LocalStorage.getItem('@AppCamila:Token'))}`
+      var storage = window.localStorage
+
+      api.defaults.headers.authorization = `Bearer ${JSON.parse(storage.getItem('@AppCamila:Token'))}`
       try {
         const response = await api.get(`/horses/${id}`)
         const birthDate = new Date(response.data.birth_date)

@@ -20,7 +20,6 @@
 
 <script>
 import helper from 'src/utils/helper.vue'
-import { LocalStorage } from 'quasar'
 export default {
   data () {
     return {
@@ -46,8 +45,9 @@ export default {
     }
   },
   created () {
+    var storage = window.localStorage
     if (helper.methods.verifyIsAuthenticated()) {
-      const user = JSON.parse(LocalStorage.getItem('@AppCamila:User'))
+      const user = JSON.parse(storage.getItem('@AppCamila:User'))
       if (user.is_administrator) {
         this.$router.push('/AdminDashboard')
       } else {
