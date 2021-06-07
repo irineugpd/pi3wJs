@@ -32,7 +32,7 @@ const routes = [
     path: '/AdminDashboard',
     component: () => import('layouts/AdminLayout.vue'),
     children: [
-      { path: '/cadastroVacina', component: () => import('pages/cadastroVacina.vue') },
+      { path: '/cadastroVacina/:owner_id/:horse_id', component: () => import('pages/cadastroVacina.vue'), props: true },
       { path: '/cadastroAnimais/:user_id', component: () => import('pages/cadastroAnimais.vue'), props: true },
       { path: '/cadastroAgenda', component: () => import('pages/cadastroAgenda.vue') },
       { path: '/AdminDashboard', component: () => import('src/pages/AdminDashboard.vue') },

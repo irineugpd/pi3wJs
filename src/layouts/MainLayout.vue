@@ -47,7 +47,7 @@ import EssentialLink from 'components/EssentialLink.vue'
 
 const linksData = [
   {
-    title: 'LOGIN CS_VET APP',
+    title: 'MENU',
     caption: 'Login',
     icon: 'account_box',
     link: '#/Login'

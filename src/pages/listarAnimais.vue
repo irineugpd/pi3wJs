@@ -8,7 +8,7 @@
     <br/>
     <q-list bordered style="width:100%;">
       <!-- <q-table title="Usuários" :data="horses" :columns="columns" @row-click="onRowClick" row-key="name"/> -->
-      <q-item clickable v-ripple v-for="horse in horses" :key="horse.id" :to="`/amostraAnimais/${horse.id}`">
+      <q-item clickable v-ripple v-for="horse in horses" :key="horse.id">
         <q-item-section avatar>
           <q-avatar>
             <font-awesome-icon :icon="['fas', 'horse-head']" />
