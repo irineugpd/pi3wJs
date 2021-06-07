@@ -7,7 +7,7 @@
     <br/>
     <q-list bordered style="width:100%;">
       <!-- <q-table title="Usuários" :data="users" :columns="columns" @row-click="onRowClick" row-key="name"/> -->
-      <q-item clickable v-ripple v-for="user in users" :key="user.id">
+      <q-item clickable v-ripple @click="goToNextPage(user.id)" v-for="user in users" :key="user.id">
         <q-item-section avatar>
           <q-avatar>
             <q-icon color="primary" name="perm_identity" />
@@ -17,7 +17,7 @@
         <q-item-section class="userList">
           {{user.name}}
         </q-item-section>
-        <q-item-section class="userList">
+        <q-item-section v-if="!eventType" class="userList">
           <center>
               <div class="q-gutter-sm">
                 <q-btn padding="xs" icon="list" class="bg-green"/>
@@ -42,7 +42,8 @@ export default {
   name: 'UserList',
   data () {
     return {
-      users: []
+      users: [],
+      eventType: ''
     }
   },
   methods: {
@@ -55,13 +56,32 @@ export default {
       try {
         const response = await api.get('/users/list')
         this.users = response.data
-        console.log(response.data)
       } catch (e) {
         console.log(e)
+      }
+    },
+    async goToNextPage (userId) {
+      switch (this.eventType) {
+        case 'register-horse':
+          this.$router.push(`/cadastroAnimais/${userId}`)
+          break
+        case 'register-vaccine':
+          this.$router.push(`/listarAnimais/${userId}`)
+          break
+        case 'register-event':
+          this.$router.push(`/cadastroAgenda/${userId}`)
+          break
+        default:
+          this.$q.notify({
+            type: 'negative',
+            message: 'Ops, parece que algo deu errado, tente novamente mais tarde!',
+            position: 'bottom'
+          })
       }
     }
   },
   async created () {
+    this.eventType = this.$route.params.event_type
     await this.getUserList()
   }
 }

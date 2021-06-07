@@ -33,10 +33,10 @@ const routes = [
     component: () => import('layouts/AdminLayout.vue'),
     children: [
       { path: '/cadastroVacina', component: () => import('pages/cadastroVacina.vue') },
-      { path: '/cadastroAnimais', component: () => import('pages/cadastroAnimais.vue') },
+      { path: '/cadastroAnimais/:user_id', component: () => import('pages/cadastroAnimais.vue'), props: true },
       { path: '/cadastroAgenda', component: () => import('pages/cadastroAgenda.vue') },
       { path: '/AdminDashboard', component: () => import('src/pages/AdminDashboard.vue') },
-      { path: '/UserList', component: () => import('src/pages/UserList.vue') }
+      { path: '/UserList/:event_type', component: () => import('src/pages/UserList.vue'), props: true }
     ]
   },
   // Always leave this as last one,

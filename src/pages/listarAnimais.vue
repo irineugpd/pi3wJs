@@ -11,7 +11,7 @@
       <q-item clickable v-ripple v-for="horse in horses" :key="horse.id" :to="`/amostraAnimais/${horse.id}`">
         <q-item-section avatar>
           <q-avatar>
-            <font-awesome-icon icon="horse-head" />
+            <font-awesome-icon :icon="['fas', 'horse-head']" />
           </q-avatar>
         </q-item-section>
         <q-item-section class="userList">
