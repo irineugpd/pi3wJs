@@ -55,7 +55,6 @@
 import {
   api
 } from 'boot/axios'
-import { LocalStorage } from 'quasar'
 
 export default {
   name: 'cartaoVacina',
@@ -66,8 +65,9 @@ export default {
   },
   methods: {
     async getVaccineHistory (horseId) {
+      var storage = window.localStorage
       try {
-        api.defaults.headers.authorization = `Bearer ${JSON.parse(LocalStorage.getItem('@AppCamila:Token'))}`
+        api.defaults.headers.authorization = `Bearer ${JSON.parse(storage.getItem('@AppCamila:Token'))}`
 
         const response = await api.get(`/vaccines/history/${horseId}`)
 

@@ -24,18 +24,19 @@ const routes = [
       { path: '/calendario', component: () => import('pages/calendario.vue') },
       // { path: '/resetAdm', component: () => import('pages/resetAdm.vue') },
       { path: '/cartaoVacina/:horse_id', component: () => import('pages/cartaoVacina.vue'), props: true },
-      { path: '/listarAnimais/', component: () => import('pages/listarAnimais.vue') }
+      { path: '/UserDashboard', component: () => import('pages/UserDashboard.vue') },
+      { path: '/listarAnimais/:owner_id', component: () => import('pages/listarAnimais.vue'), props: true }
     ]
   },
   {
     path: '/AdminDashboard',
     component: () => import('layouts/AdminLayout.vue'),
     children: [
-      { path: '/cadastroVacina', component: () => import('pages/cadastroVacina.vue') },
-      { path: '/cadastroAnimais', component: () => import('pages/cadastroAnimais.vue') },
+      { path: '/cadastroVacina/:owner_id/:horse_id', component: () => import('pages/cadastroVacina.vue'), props: true },
+      { path: '/cadastroAnimais/:user_id', component: () => import('pages/cadastroAnimais.vue'), props: true },
       { path: '/cadastroAgenda', component: () => import('pages/cadastroAgenda.vue') },
-      { path: '/menuAdmin', component: () => import('src/pages/menuAdmin.vue') },
-      { path: '/UserList', component: () => import('src/pages/UserList.vue') }
+      { path: '/AdminDashboard', component: () => import('src/pages/AdminDashboard.vue') },
+      { path: '/UserList/:event_type', component: () => import('src/pages/UserList.vue'), props: true }
     ]
   },
   // Always leave this as last one,

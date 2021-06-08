@@ -72,24 +72,37 @@
             </q-item>
           </q-list>
         </center>
-        <div class="q-py-md">
+        <div class="q-py-sm">
           <center>
             <q-btn
-                rounded
-                unelevated
-                size="md"
-                color="green-13"
-                class="text-white"
-                label="VACINAS"
-                :to="`/cartaoVacina/${horse.id}`"
+              rounded
+              unelevated
+              size="md"
+              color="green-13"
+              class="text-black"
+              label="VACINAS"
+              :to="`/cartaoVacina/${horse.id}`"
+              />
+          </center>
+        </div>
+        <div class="q-py-sm">
+          <center>
+            <q-btn
+              rounded
+              unelevated
+              size="md"
+              color="green-13"
+              class="text-black"
+              label="CADASTRAR VACINAS"
+              :to="`/cadastroVacina/${horse.id}`"
               />
           </center>
         </div>
 
-        <div class="q-pb-md">
+        <div class="q-py-sm">
           <center>
             <!--<q-btn unelevated size="md" color="primary" filled rounded class="q-px-lg" label="Salvar perfil" @click="salvar()" />-->
-            <q-btn unelevated size="md" outline rounded color="red" label="Cancelar" class="center" :to="`/listarAnimais/${this.horse.owner_id}`"/>
+            <q-btn unelevated size="md" outline rounded color="red" label="Voltar" class="center" :to="`/listarAnimais/${this.horse.owner_id}`"/>
           </center>
         </div>
       </q-card>
@@ -99,7 +112,6 @@
 
 <script>
 import { api } from 'boot/axios'
-import { LocalStorage } from 'quasar'
 
 export default {
   name: 'amostraAnimais',
@@ -113,7 +125,9 @@ export default {
   },
   methods: {
     async getHorse (id) {
-      api.defaults.headers.authorization = `Bearer ${JSON.parse(LocalStorage.getItem('@AppCamila:Token'))}`
+      var storage = window.localStorage
+
+      api.defaults.headers.authorization = `Bearer ${JSON.parse(storage.getItem('@AppCamila:Token'))}`
       try {
         const response = await api.get(`/horses/${id}`)
         const birthDate = new Date(response.data.birth_date)
@@ -132,7 +146,6 @@ export default {
     }
   },
   async created () {
-    console.log(this.$route.params.horse_id)
     await this.getHorse(this.$route.params.horse_id)
     console.log(this.horse)
   }

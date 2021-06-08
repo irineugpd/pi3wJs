@@ -1,7 +1,16 @@
+/* eslint-disable no-new */
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faHorseHead } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import routes from './routes'
+
+library.add(faHorseHead)
+
+Vue.component('font-awesome-icon', FontAwesomeIcon)
+
+Vue.config.productionTip = false
 
 Vue.use(VueRouter)
 

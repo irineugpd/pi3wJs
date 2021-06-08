@@ -3,14 +3,15 @@ import { api } from 'src/boot/axios'
 export default {
   methods: {
     verifyIsAuthenticated () {
-      const user = JSON.parse(this.$q.localStorage.getItem('@AppCamila:User'))
-      const token = JSON.parse(this.$q.localStorage.getItem('@AppCamila:Token'))
+      var storage = window.localStorage
+      const user = JSON.parse(storage.getItem('@AppCamila:User'))
+      const token = JSON.parse(storage.getItem('@AppCamila:Token'))
 
       if (user && token) {
         api.defaults.headers.authorization = `Bearer ${token}`
-        this.$router.push('/menu')
+        return true
       } else {
-        this.$router.push('/login')
+        return false
       }
     }
   }

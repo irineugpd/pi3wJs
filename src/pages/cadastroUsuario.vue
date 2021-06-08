@@ -1,9 +1,9 @@
 <template>
   <q-page class="q-pa-md">
-      <center>
-        <h4 class="loginTitle">USUÁRIO</h4>
-      </center>
       <div class="absolute-bottom q-pb-md">
+      <center>
+        <h4 class="loginTitle text-center">USUÁRIO</h4>
+      </center>
         <q-form class="q-px-sm q-pb-xl">
           <q-input
             filled
@@ -34,6 +34,7 @@
           <q-input
             filled
             bg-color="grey-3"
+            type="email"
             v-model="email"
             label="E-mail"
             class="q-pa-md"

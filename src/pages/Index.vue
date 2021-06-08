@@ -45,7 +45,17 @@ export default {
     }
   },
   created () {
-    helper.verifyIsAuthenticated()
+    var storage = window.localStorage
+    if (helper.methods.verifyIsAuthenticated()) {
+      const user = JSON.parse(storage.getItem('@AppCamila:User'))
+      if (user.is_administrator) {
+        this.$router.push('/AdminDashboard')
+      } else {
+        this.$router.push('/UserDashboard')
+      }
+    } else {
+      this.$router.push('/')
+    }
   }
 }
 </script>

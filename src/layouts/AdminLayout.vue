@@ -50,7 +50,7 @@ const linksData = [
     title: 'MENU',
     caption: 'Página Principal',
     icon: 'home',
-    link: '#/menu'
+    link: '#/AdminDashboard'
   },
   {
     title: 'LISTA DE USUÁRIOS',

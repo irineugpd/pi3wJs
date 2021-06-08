@@ -9,8 +9,9 @@
       </center>
       <br/>
       <div class="text-center q-pa-sm">
-        <q-form class="q-px-sm q-pb-lg">
+        <q-form @reset.prevent.stop="register" class="q-px-sm q-pb-lg">
           <q-input
+            ref="name"
             bg-color="grey-4"
             filled
             rounded
@@ -20,15 +21,17 @@
             :rules="[val => !!val || 'Campo Obrigatorio']"
           />
           <q-input
-              bg-color="grey-4"
-              filled
-              rounded
-              v-model="fluff"
-              hint="Pelagem"
-              class="q-pa-md"
-              :rules="[val => !!val || 'Campo Obrigatorio']"
-            />
+            ref="fluff"
+            bg-color="grey-4"
+            filled
+            rounded
+            v-model="fluff"
+            hint="Pelagem"
+            class="q-pa-md"
+            :rules="[val => !!val || 'Campo Obrigatorio']"
+          />
           <q-input
+            ref="birth_date"
             bg-color="grey-4"
             rounded
             v-model="birth_date"
@@ -39,6 +42,7 @@
             hint="Data de nascimento"
           />
           <q-input
+            ref="race"
             bg-color="grey-4"
             filled
             rounded
@@ -48,6 +52,7 @@
             :rules="[val => !!val || 'Campo Obrigatorio']"
           />
           <q-input
+            ref="avatar"
             bg-color="grey-4"
             v-model="avatar"
             @input="val => { file = val[0] }"
@@ -66,7 +71,7 @@
               color="green-13"
               class="full-width text-white"
               label="Cadastrar"
-              @click="register()"
+              type="reset"
           />
         </div>
       </div>
@@ -78,7 +83,6 @@
 import {
   api
 } from 'boot/axios'
-import { LocalStorage } from 'quasar'
 
 export default {
   name: 'cadastroAnimal',
@@ -88,24 +92,35 @@ export default {
       race: '',
       birth_date: '',
       fluff: '',
-      avatar: null
+      avatar: null,
+      user_id: ''
     }
   },
   methods: {
     async register () {
-      console.log(this.avatar)
+      var storage = window.localStorage
       if (this.name.length && this.race.length && this.birth_date.length && this.fluff.length > 0) {
         const data = new FormData()
         data.append('name', this.name)
-        data.append('user_id', 'e0fa345a-0524-462b-897f-7165d4bea64f')
+        data.append('user_id', this.user_id)
         data.append('fluff', this.fluff)
         data.append('birth_date', this.birth_date)
         data.append('race', this.race)
-        data.append('avatar', this.avatar)
+        data.append('avatar', this.avatar[0])
         try {
-          api.defaults.headers.authorization = `Bearer ${JSON.parse(LocalStorage.getItem('@AppCamila:Token'))}`
-          const response = await api.post('/horses', data)
-          console.log(response)
+          api.defaults.headers.authorization = `Bearer ${JSON.parse(storage.getItem('@AppCamila:Token'))}`
+          await api.post('/horses', data)
+          this.name = null
+          this.race = null
+          this.birth_date = null
+          this.fluff = null
+          this.avatar = null
+
+          this.$refs.name.resetValidation()
+          this.$refs.fluff.resetValidation()
+          this.$refs.birth_date.resetValidation()
+          this.$refs.avatar.resetValidation()
+          this.$refs.race.resetValidation()
           this.$q.notify({
             type: 'positive',
             message: 'Animal registrado com sucesso!'
@@ -113,11 +128,14 @@ export default {
         } catch (e) {
           this.$q.notify({
             type: 'negative',
-            message: 'Animal não encontrado, tente novamente mais tarde!'
+            message: 'Não foi possível registrar o animal, tente novamente mais tarde!'
           })
         }
       }
     }
+  },
+  created () {
+    this.user_id = this.$route.params.user_id
   }
 }
 </script>
