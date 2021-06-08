@@ -10,6 +10,7 @@
             filled
             v-model="email"
             label="E-mail"
+            type="email"
             class="q-pa-md"
             :rules="[val => val && val.length > 0 || 'E-mail Obrigatorio']"
             color="teal-10"

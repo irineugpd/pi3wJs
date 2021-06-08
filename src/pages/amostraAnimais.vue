@@ -146,7 +146,6 @@ export default {
     }
   },
   async created () {
-    console.log(this.$route.params.horse_id)
     await this.getHorse(this.$route.params.horse_id)
     console.log(this.horse)
   }

@@ -54,7 +54,7 @@ export default {
         this.$router.push('/UserDashboard')
       }
     } else {
-      this.$router.push('/login')
+      this.$router.push('/')
     }
   }
 }
