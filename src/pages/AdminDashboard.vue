@@ -1,7 +1,14 @@
 <template>
-  <q-page class="items-center justify-center">
+  <q-page class="items-center justify-center" style="background: transparent;">
     <div class="q-pa-md justify-center items-center q-gutter-md">
-      <q-card class="my-card" flat bordered>
+      <q-card square class="shadow-24" style="width:auto;height:auto;">
+        <center>
+          <q-card-section>
+            <h4 class="text-h4 formtitle q-my-sm">Menu</h4>
+            <div class="absolute-bottom-right q-pr-md" style="transform: translateY(50%);"/>
+            <div class="linha"></div>
+          </q-card-section>
+        </center>
         <q-item>
           <q-item-section avatar>
             <q-avatar>
@@ -20,9 +27,7 @@
         </q-item>
 
         <q-separator />
-      </q-card>
 
-      <q-card class="my-card" flat bordered>
         <q-item>
           <q-item-section avatar>
             <q-avatar>
@@ -41,9 +46,7 @@
         </q-item>
 
         <q-separator />
-      </q-card>
 
-      <q-card class="my-card" flat bordered>
         <q-item>
           <q-item-section avatar>
             <q-avatar>
@@ -60,8 +63,13 @@
             </q-item-section>
           </div>
         </q-item>
-        <q-separator/>
+        <center>
+          <div class="linha"></div>
+        </center>
       </q-card>
+      <center>
+        <text-overline style="color: gray" size="11px" class="absolute-botttom">CS.VET</text-overline>
+      </center>
     </div>
   </q-page>
 </template>

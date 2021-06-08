@@ -29,6 +29,19 @@
       </q-item>
       <q-separator/>
     </q-list>
+    <div class="absolute-bottom q-pb-md">
+      <center>
+        <q-btn
+          rounded
+          unelevated
+          size="md"
+          color="green-13"
+          class="text-black"
+          label="VOLTAR"
+          :to="`/AdminDashboard`"
+          />
+      </center>
+    </div>
   </div>
 </template>
 
