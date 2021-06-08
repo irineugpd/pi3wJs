@@ -2,7 +2,7 @@
   <q-page class="backgroundIndex">
 
     <center class="absolute-bottom q-pa-md q-gutter-md buttonFont">
-      <q-btn filled rounded color="cyan-10" label="Começar" class="q-px-lg shadow-24" size="20px" to="/Login" text-color="white"/>
+      <q-btn filled rounded color="green-13" label="Começar" class="q-px-lg" size="20px" to="/Login" text-color="white"/>
       <div class="logo"/>
     </center>
     <div class="logoApp">
