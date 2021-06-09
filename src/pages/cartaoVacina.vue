@@ -2,11 +2,11 @@
   <q-page class="justify-center items-center" style="background: white;">
     <div class="column q-pa-sm">
       <center>
-        <h3 class="formtitle q-my-sm">Vacinas</h3>
-        <div class="linha1"></div>
+        <h3 class="formtitle q-my-sm">Histórico</h3>
+        <div class="linha"></div>
       </center>
       <div class="col-sm row items-center q-pa-md">
-        <q-card v-for="singleVaccine in vaccineEvents" :key="singleVaccine.id" class="my-card2 bg-teal-9 text-white">
+        <q-card v-for="singleVaccine in vaccineEvents" :key="singleVaccine.id" class="my-card2 text-white" style="background: #35e675">
           <q-card-section>
             <center>
               <div class="text-h6">{{ singleVaccine.vaccineName }}</div>
@@ -40,7 +40,7 @@
             <center>
               <div class="q-gutter-sm">
                 <q-btn padding="xs" icon="list" class="bg-grey-10" @click="singleVaccine.detailBtn=true"/>
-                <q-btn padding="xs" icon="edit" class="bg-grey-10"/>
+                <!--<q-btn padding="xs" icon="edit" class="bg-grey-10"/>-->
                 <q-btn padding="xs" icon="delete" class="bg-grey-10" @click="deleteVaccine(singleVaccine.id, singleVaccine.user_id, singleVaccine.horse_id)"/>
               </div>
             </center>

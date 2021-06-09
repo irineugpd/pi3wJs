@@ -2,7 +2,8 @@
   <q-page class="justify-center items-center">
     <div class="column q-pa-lg">
       <center>
-        <h4 class="text-h5 q-my-sm">Cadastro de Eventos</h4>
+        <h4 class="text-h4 formtitle q-my-sm">Cadastro de Eventos</h4>
+        <div class="linha"></div>
       </center>
       <br/>
       <br/>
@@ -14,7 +15,7 @@
         </q-form>
       </div>
       <div class="q-px-lg">
-        <q-btn unelevated size="lg" color="primary" class="full-width text-white" label="Registrar" @click="register()" />
+        <q-btn unelevated size="lg" color="green-13" class="full-width text-white" label="Registrar" @click="register()" />
       </div>
     </div>
   </q-page>

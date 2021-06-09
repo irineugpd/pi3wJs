@@ -4,7 +4,7 @@
     style="background: transparent;"
   >
     <div class="column q-pa-lg">
-      <q-card square class="shadow-24" style="width:auto;height:auto;">
+      <q-card square class="shadow-24" style="">
         <center>
           <q-card-section>
             <h4 class="text-h4 formtitle q-my-sm">Perfil do Animal</h4>
@@ -72,7 +72,7 @@
             </q-item>
           </q-list>
         </center>
-        <div class="q-py-sm">
+        <q-card-section style="padding-bottom: 50px">
           <center>
             <q-btn
               rounded
@@ -80,31 +80,11 @@
               size="md"
               color="green-13"
               class="text-black"
-              label="VACINAS"
+              label="HISTÒRICO DE VACINAS"
               :to="`/cartaoVacina/${horse.id}`"
               />
           </center>
-        </div>
-        <div class="q-py-sm">
-          <center>
-            <q-btn
-              rounded
-              unelevated
-              size="md"
-              color="green-13"
-              class="text-black"
-              label="CADASTRAR VACINAS"
-              :to="`/cadastroVacina/${horse.id}`"
-              />
-          </center>
-        </div>
-
-        <div class="q-py-sm">
-          <center>
-            <!--<q-btn unelevated size="md" color="primary" filled rounded class="q-px-lg" label="Salvar perfil" @click="salvar()" />-->
-            <q-btn unelevated size="md" outline rounded color="red" label="Voltar" class="center" :to="`/listarAnimais/${this.horse.owner_id}`"/>
-          </center>
-        </div>
+        </q-card-section>
       </q-card>
     </div>
   </q-page>

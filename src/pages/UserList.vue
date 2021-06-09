@@ -81,6 +81,9 @@ export default {
         case 'register-vaccine':
           this.$router.push(`/listarAnimais/${userId}/register-vaccine`)
           break
+        case 'show-horse':
+          this.$router.push(`/listarAnimais/${userId}/show-profile`)
+          break
         case 'register-event':
           this.$router.push(`/cadastroAgenda/${userId}`)
           break

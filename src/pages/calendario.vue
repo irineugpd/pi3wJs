@@ -10,11 +10,22 @@
             <div class="q-pa-md q-pt-xl">
               <q-date v-model="date" @navigation="loadEventsByMonthAndYear" today-btn :events="event_date" event-color="black" color="green-13"/>
             </div>
-            <q-card v-for="event in events" :key="event.id" v-bind="event.id" style="max-width: 75%;">
-              <div class="q-mb-md">
-                <h4 class="text-h4">{{ event.title }}</h4>
-                <p>{{event.message}}</p>
-              </div>
+            <q-card
+              class="my-card text-white"
+              style="
+                background: radial-gradient(circle, #49e882 0%, #35e675 100%);
+                max-width: 84%;
+                margin-bottom: 16px;
+              "
+              v-for="event in events" :key="event.id" v-bind="event.id"
+            >
+              <q-card-section>
+                <div class="text-h6">{{ event.title }}</div>
+              </q-card-section>
+
+              <q-card-section class="q-pt-none">
+                {{ event.message }}
+              </q-card-section>
             </q-card>
           </div>
         </center>
