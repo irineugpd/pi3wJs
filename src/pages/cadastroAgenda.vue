@@ -31,26 +31,30 @@ export default {
     return {
       name_event: '',
       description: '',
-      event_date: ''
+      event_date: '',
+      user_id: ''
     }
   },
   methods: {
     async register () {
       if (this.name_event.length && this.description.length && this.event_date.length > 0) {
+        const storage = window.localStorage
+        const user = JSON.parse(storage.getItem('@AppCamila:User'))
+        api.defaults.headers.authorization = `Bearer ${JSON.parse(storage.getItem('@AppCamila:Token'))}`
         const params = {
           name: this.name_event,
           message: this.description,
           date: this.event_date,
-          user_id: '60a23d26-2d2b-4827-b20a-fa77385ea658'
+          user_id: user.is_administrator ? this.user_id : user.id
 
         }
         try {
-          const response = await api.post('/appointments', params)
-          console.log(response.data)
+          await api.post('/appointments', params)
           this.$q.notify({
             type: 'positive',
             message: 'Evento registrado com sucesso!'
           })
+          this.$router.back()
         } catch (e) {
           this.$q.notify({
             type: 'negative',
@@ -60,6 +64,9 @@ export default {
         }
       }
     }
+  },
+  created () {
+    this.user_id = this.$route.params.user_id
   }
 }
 </script>

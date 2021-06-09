@@ -92,7 +92,7 @@
               style="color: gray"
               label="Retornar para o Menu"
               size="11px"
-              to="/menu"/>
+              to="/AdminDashboard"/>
           </q-card-section>
       </div>
   </q-page>
@@ -112,7 +112,9 @@ export default {
       number_of_doses: '',
       first_date: '',
       period_days_bettwen_doses: '',
-      description: ''
+      description: '',
+      owner_id: '',
+      horse_id: ''
     }
   },
   methods: {
@@ -120,21 +122,24 @@ export default {
       if (this.name.length && this.diseases_type.length && this.number_of_doses.length && this.first_date.length && this.period_days_bettwen_doses.length && this.description.length > 0) {
         const params = {
           name: this.name,
+          user_id: this.owner_id,
           diseases_type: this.diseases_type,
           first_date: this.first_date,
           description: this.description,
           number_of_doses: this.number_of_doses,
           period_days_bettwen_doses: this.period_days_bettwen_doses,
-          horse_id: '5852b061-293e-4ecf-be55-156d2dee693b',
-          user_id: '60a23d26-2d2b-4827-b20a-fa77385ea658'
+          horse_id: this.horse_id
+
         }
         try {
-          const response = await api.post('/vacines', params)
-          console.log(response.data)
+          const storage = window.localStorage
+          api.defaults.headers.authorization = `Bearer ${JSON.parse(storage.getItem('@AppCamila:Token'))}`
+          await api.post('/vaccines', params)
           this.$q.notify({
             type: 'positive',
             message: 'Vacina cadastrada com sucesso!'
           })
+          this.$router.back()
         } catch (e) {
           this.$q.notify({
             type: 'negative',
@@ -144,6 +149,10 @@ export default {
         }
       }
     }
+  },
+  created () {
+    this.owner_id = this.$route.params.owner_id
+    this.horse_id = this.$route.params.horse_id
   }
 }
 </script>

@@ -18,9 +18,6 @@
             </q-card>
           </div>
         </center>
-        <center>
-          <q-btn flat style="color: gray" label="Retornar para LogIn" size="11px" to="/"/>
-        </center>
     </div>
   </q-page>
 </template>
@@ -52,21 +49,7 @@ export default {
     const month = currentDate.getUTCMonth() + 1
     const year = currentDate.getUTCFullYear()
 
-    var storage = window.localStorage
-
-    const token = JSON.parse(storage.getItem('@AppCamila:Token'))
-
-    api.defaults.headers.authorization = `Bearer ${token}`
-    const response = await api.get(`/appointments/month-availability?month=${month}&year=${year}`)
-    const hasEventDates = response.data.filter(element => {
-      return element.hasEvent
-    })
-    const datesFormated = hasEventDates.map(element => {
-      const formatedDay = String(element.day).padStart(2, '0')
-      const formatedMonth = String(month).padStart(2, '0')
-      return `${year}/${formatedMonth}/${formatedDay}`
-    })
-    this.event_date = datesFormated
+    this.loadEventsByMonthAndYear({ year, month })
   },
   methods: {
     async loadEventsByMonthAndYear ({ year, month }) {
@@ -75,16 +58,25 @@ export default {
       const token = JSON.parse(storage.getItem('@AppCamila:Token'))
 
       api.defaults.headers.authorization = `Bearer ${token}`
-      const response = await api.get(`/appointments/month-availability?month=${month}&year=${year}`)
-      const hasEventDates = response.data.filter(element => {
-        return element.hasEvent
-      })
-      const datesFormated = hasEventDates.map(element => {
-        const formatedDay = String(element.day).padStart(2, '0')
-        const formatedMonth = String(month).padStart(2, '0')
-        return `${year}/${formatedMonth}/${formatedDay}`
-      })
-      this.event_date = datesFormated
+
+      try {
+        const response = await api.get(`/appointments/month-availability?month=${month}&year=${year}`)
+        const hasEventDates = response.data.filter(element => {
+          return element.hasEvent
+        })
+        const datesFormated = hasEventDates.map(element => {
+          const formatedDay = String(element.day).padStart(2, '0')
+          const formatedMonth = String(month).padStart(2, '0')
+          return `${year}/${formatedMonth}/${formatedDay}`
+        })
+        this.event_date = datesFormated
+      } catch (e) {
+        this.$q.notify({
+          type: 'negative',
+          message: 'Falha ao campos e tente novamente!',
+          position: 'top'
+        })
+      }
     },
     async loadEventsInDay (date) {
       const dateObject = new Date(date)
@@ -110,7 +102,6 @@ export default {
         }
       })
       this.events = events
-      console.log(this.events)
     }
   }
 

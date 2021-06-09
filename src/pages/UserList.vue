@@ -38,7 +38,7 @@
           color="green-13"
           class="text-black"
           label="VOLTAR"
-          :to="`/AdminDashboard`"
+          @click="goBack"
           />
       </center>
     </div>
@@ -59,10 +59,6 @@ export default {
     }
   },
   methods: {
-    // onRowClick (evt, row) {
-    //   console.log('clicked on', row)
-    // },
-
     async getUserList () {
       var storage = window.localStorage
       api.defaults.headers.authorization = `Bearer ${JSON.parse(storage.getItem('@AppCamila:Token'))}`
@@ -70,7 +66,11 @@ export default {
         const response = await api.get('/users/list')
         this.users = response.data
       } catch (e) {
-        console.log(e)
+        this.$q.notify({
+          type: 'negative',
+          message: 'Não foi possível carregar a lista de usuários, tente novamente mais tarde!',
+          position: 'bottom'
+        })
       }
     },
     async goToNextPage (userId) {
@@ -79,7 +79,7 @@ export default {
           this.$router.push(`/cadastroAnimais/${userId}`)
           break
         case 'register-vaccine':
-          this.$router.push(`/listarAnimais/${userId}`)
+          this.$router.push(`/listarAnimais/${userId}/register-vaccine`)
           break
         case 'register-event':
           this.$router.push(`/cadastroAgenda/${userId}`)
@@ -91,6 +91,9 @@ export default {
             position: 'bottom'
           })
       }
+    },
+    goBack () {
+      this.$router.back()
     }
   },
   async created () {

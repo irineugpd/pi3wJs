@@ -9,7 +9,7 @@
       </center>
       <br/>
       <div class="text-center q-pa-sm">
-        <q-form @reset.prevent.stop="register" class="q-px-sm q-pb-lg">
+        <q-form @submit.prevent.stop="register" class="q-px-sm q-pb-lg">
           <q-input
             ref="name"
             bg-color="grey-4"
@@ -71,7 +71,7 @@
               color="green-13"
               class="full-width text-white"
               label="Cadastrar"
-              type="reset"
+              @click="register"
           />
         </div>
       </div>
@@ -110,21 +110,11 @@ export default {
         try {
           api.defaults.headers.authorization = `Bearer ${JSON.parse(storage.getItem('@AppCamila:Token'))}`
           await api.post('/horses', data)
-          this.name = null
-          this.race = null
-          this.birth_date = null
-          this.fluff = null
-          this.avatar = null
-
-          this.$refs.name.resetValidation()
-          this.$refs.fluff.resetValidation()
-          this.$refs.birth_date.resetValidation()
-          this.$refs.avatar.resetValidation()
-          this.$refs.race.resetValidation()
           this.$q.notify({
             type: 'positive',
             message: 'Animal registrado com sucesso!'
           })
+          this.$router.back()
         } catch (e) {
           this.$q.notify({
             type: 'negative',
